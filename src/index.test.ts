@@ -5,5 +5,5 @@ test('index contains a getHarpIds function', () => {
 })
 
 test('index contains a getAHarp function', () => {
-  expect(getAHarp).toBeDefined()
+  expect(getAHarp()).toBeDefined()
 })
