@@ -1,5 +1,9 @@
-import i from './index'
+import { getHarpIds, getAHarp } from './index'
 
-test('index contains an index function', () => {
-  expect(i).toBeDefined()
+test('index contains a getHarpIds function', () => {
+  expect(getHarpIds).toBeDefined()
+})
+
+test('index contains a getAHarp function', () => {
+  expect(getAHarp).toBeDefined()
 })

@@ -1,4 +1,3 @@
-const index2 = (input: string): string => input
+export { getHarpIds } from 'harpstrata'
 
-// module.exports = index2(1); // Uncomment to demonstrate that ts-jest performs type checking
-export default index2('1')
+export const getAHarp = (): boolean => true
