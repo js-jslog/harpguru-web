@@ -5,10 +5,11 @@ import { Square } from './Square'
 import './HarpFace.css'
 
 const harpfaceValues = [
-  [ undefined, '2', '3', '4' ],
-  [ '5', '6', '7', '8' ],
-  [ '9', '10', '11', '12' ],
-  [ '13', '14', '15', '16' ]
+  [ '1','1','1','1','1','1','1','1','1','1','1' ],
+  [ '2','2','2','2','2','2','2','2','2','2','2' ],
+  [ '3','3','3','3','3','3','3','3','3','3','3' ],
+  [ '4','4','4','4','4','4','4','4','4','4','4' ],
+  [ '5','5','5','5','5','5','5','5','5','5','5' ],
 ]
 
 type harpValue = string | undefined
@@ -23,9 +24,15 @@ export class HarpFace extends React.Component {
     const flattened = mapped.flat()
     return flattened
   }
+
   render(): ReactElement {
+    const [ { length: columnCount } ] = harpfaceValues
+    const gridTemplateColumnsValue = Array(columnCount).fill('auto').join(' ')
+    const divStyle = {
+      gridTemplateColumns: gridTemplateColumnsValue,
+    }
     return (
-      <div className='harpface'>
+      <div style={divStyle} className='harpface'>
         { this.generateSquares(harpfaceValues) }
       </div>
     )
