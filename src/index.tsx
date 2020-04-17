@@ -1,13 +1,12 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 
-import './index.css'
 import * as serviceWorker from './serviceWorker'
-import App from './App'
+import { Square } from './HarpFace/Square'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Square value='test'/>
   </React.StrictMode>,
   document.getElementById('root')
 )

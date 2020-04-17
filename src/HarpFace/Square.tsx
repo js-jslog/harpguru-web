@@ -1,12 +1,16 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-export class Square extends React.Component {
+interface SquareInputProps {
+  value: string;
+}
+
+export class Square extends React.Component<SquareInputProps> {
   render(): ReactElement {
     return (
-      <button className="square">
-        this is a square
-      </button>
+      <div className="square">
+        {this.props.value}
+      </div>
     )
   }
 }
