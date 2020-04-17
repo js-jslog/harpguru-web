@@ -7,8 +7,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clear-jest": "jest --clearCache",
-    "lint": "tsc --noEmit && eslint './**'",
-    "fix-lint": "eslint './**' --fix"
+    "lint": "tsc --noEmit && eslint './src/**'",
+    "fix-lint": "eslint './src/**' --fix"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
