@@ -3,3 +3,8 @@
   font-size: 30px;
   text-align: center;
 }
+
+.no-contents {
+  border-color: transparent;
+  color: transparent;
+}
