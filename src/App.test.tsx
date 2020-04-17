@@ -8,3 +8,9 @@ test('renders learn react link', () => {
   const linkElement = getByText(/learn react/i)
   expect(linkElement).toBeInTheDocument()
 })
+
+test('renders harpstrata element', () => {
+  const { getByText } = render(<App />)
+  const harpstrataElement = getByText(/harpstrata/i)
+  expect(harpstrataElement).toBeInTheDocument()
+})

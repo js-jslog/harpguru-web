@@ -3,6 +3,7 @@ import type { ReactElement } from 'react'
 
 import logo from './logo.svg'
 import './App.css'
+import { getAHarp } from './harpstrataimport'
 
 function App(): ReactElement {
   return (
@@ -21,6 +22,12 @@ function App(): ReactElement {
           Learn React
         </a>
       </header>
+      <div>
+        harpstrata
+      </div>
+      <div>
+        {JSON.stringify(getAHarp())}
+      </div>
     </div>
   )
 }
