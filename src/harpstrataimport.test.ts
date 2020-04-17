@@ -1,6 +1,6 @@
 import type { HarpStrata } from 'harpstrata'
 
-import { getAHarp } from './index'
+import { getAHarp } from './harpstrataimport'
 
 test('index contains a getAHarp function', () => {
   const harpStrata: HarpStrata = getAHarp()
