@@ -14,8 +14,8 @@ const harpfaceValues = [
 
 type harpValue = string | undefined
 
-export class HarpFace extends React.Component {
-  generateSquares = (twoD: harpValue[][]): ReactElement[] => {
+export function HarpFace(): ReactElement {
+  const generateSquares = (twoD: harpValue[][]): ReactElement[] => {
     const mapped = twoD.map(function (row: harpValue[], indexy) {
       return row.map(function (value: harpValue, indexx) {
         return <Square key={indexx + indexy} value={value} />
@@ -25,16 +25,14 @@ export class HarpFace extends React.Component {
     return flattened
   }
 
-  render(): ReactElement {
-    const [ { length: columnCount } ] = harpfaceValues
-    const gridTemplateColumnsValue = Array(columnCount).fill('auto').join(' ')
-    const divStyle = {
-      gridTemplateColumns: gridTemplateColumnsValue,
-    }
-    return (
-      <div style={divStyle} className='harpface'>
-        { this.generateSquares(harpfaceValues) }
-      </div>
-    )
+  const [ { length: columnCount } ] = harpfaceValues
+  const gridTemplateColumnsValue = Array(columnCount).fill('auto').join(' ')
+  const divStyle = {
+    gridTemplateColumns: gridTemplateColumnsValue,
   }
+  return (
+    <div style={divStyle} className='harpface'>
+      { generateSquares(harpfaceValues) }
+    </div>
+  )
 }
