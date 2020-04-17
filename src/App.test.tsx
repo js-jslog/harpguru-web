@@ -11,6 +11,6 @@ test('renders learn react link', () => {
 
 test('renders harpstrata element', () => {
   const { getByText } = render(<App />)
-  const harpstrataElement = getByText(/harpstrata/i)
-  expect(harpstrataElement).toBeInTheDocument()
+  const harpstrataElementSign = getByText(/MAJOR-DIATONIC/i)
+  expect(harpstrataElementSign).toBeInTheDocument()
 })
