@@ -1,9 +1,8 @@
-import { getHarpIds, getAHarp } from './index'
+import type { HarpStrata } from 'harpstrata'
 
-test('index contains a getHarpIds function', () => {
-  expect(getHarpIds).toBeDefined()
-})
+import { getAHarp } from './index'
 
 test('index contains a getAHarp function', () => {
-  expect(getAHarp()).toBeDefined()
+  const harpStrata: HarpStrata = getAHarp()
+  expect(harpStrata).toBeDefined()
 })
