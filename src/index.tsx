@@ -6,7 +6,18 @@ import { Square } from './HarpFace/Square'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Square value='test'/>
+    <div>
+      <Square value='test'/>
+      <Square value='test'/>
+      <Square value='test'/>
+      <Square value='test'/>
+    </div>
+    <div>
+      <Square value='test'/>
+      <Square value='test'/>
+      <Square value='test'/>
+      <Square value='test'/>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 )
