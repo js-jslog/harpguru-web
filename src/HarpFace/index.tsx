@@ -1,3 +1,4 @@
+import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
 
@@ -14,24 +15,26 @@ const harpfaceValues = [
 
 type harpValue = string | undefined
 
+const useStyles = createUseStyles({
+  harpface: {
+    display: 'grid',
+    'grid-template-columns': Array(harpfaceValues[0].length).fill('auto').join(' '),
+  }
+})
 export function HarpFace(): ReactElement {
+  const classes = useStyles()
   const generateSquares = (twoD: harpValue[][]): ReactElement[] => {
     const mapped = twoD.map(function (row: harpValue[], indexy) {
       return row.map(function (value: harpValue, indexx) {
-        return <Square key={indexx + indexy} value={value} />
+        return <Square key={indexx + '' + indexy} value={value} />
       })
     })
     const flattened = mapped.flat()
     return flattened
   }
 
-  const [ { length: columnCount } ] = harpfaceValues
-  const gridTemplateColumnsValue = Array(columnCount).fill('auto').join(' ')
-  const divStyle = {
-    gridTemplateColumns: gridTemplateColumnsValue,
-  }
   return (
-    <div style={divStyle} className='harpface'>
+    <div id='harpface' className={classes.harpface}>
       { generateSquares(harpfaceValues) }
     </div>
   )
