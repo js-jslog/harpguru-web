@@ -2,22 +2,11 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
-import { Square } from './HarpFace/Square'
+import { HarpFace } from './HarpFace'
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>
-      <Square value='test'/>
-      <Square value='test'/>
-      <Square value='test'/>
-      <Square value='test'/>
-    </div>
-    <div>
-      <Square value='test'/>
-      <Square value='test'/>
-      <Square value='test'/>
-      <Square value='test'/>
-    </div>
+    <HarpFace />
   </React.StrictMode>,
   document.getElementById('root')
 )
