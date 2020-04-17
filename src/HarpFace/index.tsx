@@ -12,32 +12,35 @@ const harpfaceValues = [
 ]
 
 export class HarpFace extends React.Component {
+  renderSquare(x: number, y: number): ReactElement {
+    return <Square value={harpfaceValues[x][y]}/>
+  }
   render(): ReactElement {
     return (
       <div className='harpface'>
         <div className='harprow'>
-          <Square value={harpfaceValues[0][0]}/>
-          <Square value={harpfaceValues[0][1]}/>
-          <Square value={harpfaceValues[0][2]}/>
-          <Square value={harpfaceValues[0][3]}/>
+          { this.renderSquare(0,0) }
+          { this.renderSquare(0,1) }
+          { this.renderSquare(0,2) }
+          { this.renderSquare(0,3) }
         </div>
         <div className='harprow'>
-          <Square value={harpfaceValues[1][0]}/>
-          <Square value={harpfaceValues[1][1]}/>
-          <Square value={harpfaceValues[1][2]}/>
-          <Square value={harpfaceValues[1][3]}/>
+          { this.renderSquare(1,0) }
+          { this.renderSquare(1,1) }
+          { this.renderSquare(1,2) }
+          { this.renderSquare(1,3) }
         </div>
         <div className='harprow'>
-          <Square value={harpfaceValues[2][0]}/>
-          <Square value={harpfaceValues[2][1]}/>
-          <Square value={harpfaceValues[2][2]}/>
-          <Square value={harpfaceValues[2][3]}/>
+          { this.renderSquare(2,0) }
+          { this.renderSquare(2,1) }
+          { this.renderSquare(2,2) }
+          { this.renderSquare(2,3) }
         </div>
         <div className='harprow'>
-          <Square value={harpfaceValues[3][0]}/>
-          <Square value={harpfaceValues[3][1]}/>
-          <Square value={harpfaceValues[3][2]}/>
-          <Square value={harpfaceValues[3][3]}/>
+          { this.renderSquare(3,0) }
+          { this.renderSquare(3,1) }
+          { this.renderSquare(3,2) }
+          { this.renderSquare(3,3) }
         </div>
       </div>
     )
