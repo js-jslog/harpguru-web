@@ -1,10 +1,15 @@
 import React from 'react'
 import type { ReactElement } from 'react'
+import type { Degree } from 'harpstrata'
 
-export function HoleInteraction(): ReactElement {
+type HoleInteractionProps = {
+  degree: Degree;
+}
+
+export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   return (
     <div>
-      hole interaction
+      { props.degree.id }
     </div>
   )
 }
