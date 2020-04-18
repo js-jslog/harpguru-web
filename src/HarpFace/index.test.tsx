@@ -38,15 +38,28 @@ test('HarpFace renders a dom element with the required grid styles when a two co
 })
 
 test('The HoleInteraction children have correct styles on them', () => {
-  const degreeMatrix: DegreeMatrix = [[{id: DegreeIds.Root}, {id: DegreeIds.Second}]]
-  const expectedStylesLeftMost = `
+  const degreeMatrix: DegreeMatrix = [
+    [undefined            , {id: DegreeIds.Root}  , {id: DegreeIds.Second}],
+    [{id: DegreeIds.Third}, {id: DegreeIds.Fourth}, undefined             ],
+  ]
+  const expectedStylesUndefined = `
+    color: white;
     border-color: black;
     border: 0px;
     border-left: 0px;
     font-size: 30px;
     text-align: centre;
   `
-  const expectedStylesRightMost = `
+  const expectedStylesVoidLeft = `
+    color: black;
+    border-color: black;
+    border: 0px;
+    border-left: 0px;
+    font-size: 30px;
+    text-align: centre;
+  `
+  const expectedStylesNonVoidLeft = `
+    color: black;
     border-color: black;
     border: 0px;
     border-left: 1px;
@@ -54,6 +67,10 @@ test('The HoleInteraction children have correct styles on them', () => {
     text-align: centre;
   `
   render(<HarpFace degreeMatrix={ degreeMatrix }/>)
-  expect(screen.getByText(DegreeIds.Root)).toHaveStyle(expectedStylesLeftMost)
-  expect(screen.getByText(DegreeIds.Second)).toHaveStyle(expectedStylesRightMost)
+  expect(screen.getAllByText('/')[0]).toHaveStyle(expectedStylesUndefined)
+  expect(screen.getByText(DegreeIds.Root)).toHaveStyle(expectedStylesVoidLeft)
+  expect(screen.getByText(DegreeIds.Second)).toHaveStyle(expectedStylesNonVoidLeft)
+  expect(screen.getByText(DegreeIds.Third)).toHaveStyle(expectedStylesVoidLeft)
+  expect(screen.getByText(DegreeIds.Fourth)).toHaveStyle(expectedStylesNonVoidLeft)
+  expect(screen.getAllByText('/')[1]).toHaveStyle(expectedStylesUndefined)
 })
