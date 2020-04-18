@@ -9,7 +9,9 @@ type HoleInteractionProps = {
 
 const useStyles = createUseStyles({
   holeInteractionClass: {
-    display: 'inline',
+    border: '1px solid rgba(0, 0, 0, 0.8)',
+    'font-size': '30px',
+    'text-align': 'centre',
   }
 })
 
