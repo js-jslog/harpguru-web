@@ -37,17 +37,23 @@ test('HarpFace renders a dom element with the required grid styles when a two co
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
 
-test('The degree element has some style on it', () => {
-  const degreeMatrix: DegreeMatrix = [[{
-    id: DegreeIds.Root 
-  }]]
-  const expectedStyles = `
+test('The HoleInteraction children have correct styles on them', () => {
+  const degreeMatrix: DegreeMatrix = [[{id: DegreeIds.Root}, {id: DegreeIds.Second}]]
+  const expectedStylesLeftMost = `
     border-color: black;
     border: 0px;
     border-left: 0px;
     font-size: 30px;
     text-align: centre;
   `
+  const expectedStylesRightMost = `
+    border-color: black;
+    border: 0px;
+    border-left: 1px;
+    font-size: 30px;
+    text-align: centre;
+  `
   render(<HarpFace degreeMatrix={ degreeMatrix }/>)
-  expect(screen.getByText(DegreeIds.Root)).toHaveStyle(expectedStyles)
+  expect(screen.getByText(DegreeIds.Root)).toHaveStyle(expectedStylesLeftMost)
+  expect(screen.getByText(DegreeIds.Second)).toHaveStyle(expectedStylesRightMost)
 })
