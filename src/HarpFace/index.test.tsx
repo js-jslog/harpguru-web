@@ -24,3 +24,16 @@ test('HarpFace renders a dom element with the required grid styles', () => {
   const { container } = render(<HarpFace degreeMatrix={ degreeMatrix }/>)
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
+
+test('HarpFace renders a dom element with the required grid styles when a two column DegreeMatrix is provided', () => {
+  const degreeMatrix: DegreeMatrix = [[
+    { id: DegreeIds.Root },
+    { id: DegreeIds.Second }
+  ]]
+  const expectedStyle = `
+    display: grid;
+    grid-template-columns: auto auto;
+  `
+  const { container } = render(<HarpFace degreeMatrix={ degreeMatrix }/>)
+  expect(container.firstChild).toHaveStyle(expectedStyle)
+})

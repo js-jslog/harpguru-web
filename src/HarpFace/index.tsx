@@ -7,10 +7,14 @@ type HarpFaceProps = {
   degreeMatrix: DegreeMatrix;
 }
 
+const constructColumnStyle = (props: HarpFaceProps): string => {
+  const { degreeMatrix } = props
+  return Array(degreeMatrix[0].length).fill('auto').join(' ')
+}
 const useStyles = createUseStyles({
   harpFaceClass: {
     display: 'grid',
-    'grid-template-columns': 'auto',
+    'grid-template-columns': (props: HarpFaceProps): string => constructColumnStyle(props)
   }
 })
 
