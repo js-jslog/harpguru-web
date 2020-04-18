@@ -2,11 +2,14 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
+import { getAHarp } from './harpstrataimport'
 import { HarpFace } from './HarpFace'
+
+const { degreeMatrix } = getAHarp()
 
 ReactDOM.render(
   <React.StrictMode>
-    <HarpFace />
+    <HarpFace degreeMatrix={degreeMatrix}/>
   </React.StrictMode>,
   document.getElementById('root')
 )
