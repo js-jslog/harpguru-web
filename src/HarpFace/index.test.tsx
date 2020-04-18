@@ -12,3 +12,15 @@ test('HarpFace will render a single degree', () => {
   render(<HarpFace degreeMatrix={ degreeMatrix }/>)
   expect(screen.getByText(DegreeIds.Root)).toBeInTheDocument()
 })
+
+test('HarpFace renders a dom element with the required grid styles', () => {
+  const degreeMatrix: DegreeMatrix = [[{
+    id: DegreeIds.Root 
+  }]]
+  const expectedStyle = `
+    display: grid;
+    grid-template-columns: auto;
+  `
+  const { container } = render(<HarpFace degreeMatrix={ degreeMatrix }/>)
+  expect(container.firstChild).toHaveStyle(expectedStyle)
+})
