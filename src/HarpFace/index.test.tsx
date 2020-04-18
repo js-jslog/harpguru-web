@@ -5,12 +5,11 @@ import { render, screen } from '@testing-library/react'
 
 import { HarpFace } from './index'
 
-test('HarpFace will render a single degree', () => {
-  const degreeMatrix: DegreeMatrix = [[{
-    id: DegreeIds.Root 
-  }]]
+test('HarpFace renders multiple HoleInteraction components', () => {
+  const degreeMatrix: DegreeMatrix = [[{ id: DegreeIds.Root }, { id: DegreeIds.Second }]]
   render(<HarpFace degreeMatrix={ degreeMatrix }/>)
   expect(screen.getByText(DegreeIds.Root)).toBeInTheDocument()
+  expect(screen.getByText(DegreeIds.Second)).toBeInTheDocument()
 })
 
 test('HarpFace renders a dom element with the required grid styles', () => {

@@ -1,7 +1,7 @@
 import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
-import type { DegreeMatrix } from 'harpstrata'
+import type { DegreeMatrix, DegreeRow, Degree } from 'harpstrata'
 
 import { HoleInteraction } from '../HoleInteraction'
 
@@ -20,13 +20,22 @@ const useStyles = createUseStyles({
   }
 })
 
+const generateHoleInteractions = (degreeMatrix: DegreeMatrix): ReactElement[] => {
+  const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {
+    return degreeRow.map(function (degree: Degree | undefined, indexx) {
+      return <HoleInteraction key={indexx + '' + indexy} degree={degree} leftVoid={false} />
+    })
+  })
+  const flattened = mapped.flat()
+  return flattened
+}
+
 export function HarpFace(props: HarpFaceProps): ReactElement {
   const classes = useStyles(props)
   const { degreeMatrix } = props
-  const [[ degree ]] = degreeMatrix
   return (
     <div className={classes.harpFaceClass}>
-      <HoleInteraction degree={degree} leftVoid={false} />
+      { generateHoleInteractions(degreeMatrix) }
     </div>
   )
 }
