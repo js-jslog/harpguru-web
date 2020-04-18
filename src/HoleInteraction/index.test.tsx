@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Degree } from 'harpstrata'
 import { DegreeIds } from 'harpstrata'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { HoleInteraction } from './index'
 
@@ -9,8 +9,8 @@ test('HoleInteraction renders a dom element with the expected value included', (
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
-  render(<HoleInteraction degree={ flat3 } leftVoid={ false } />)
-  expect(screen.getByText(DegreeIds.Flat3)).toBeInTheDocument()
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } />)
+  expect(getByText(DegreeIds.Flat3)).toBeInTheDocument()
 })
 
 test('HoleInteraction renders a dom element with a left border if the position next to it is not void', () => {
@@ -26,8 +26,8 @@ test('HoleInteraction renders a dom element with a left border if the position n
     font-size: 30px;
     text-align: center;
   `
-  render(<HoleInteraction degree={ flat3 } leftVoid={ false } />)
-  expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } />)
+  expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
 })
 
 test('HoleInteraction renders a dom element without a left border if there are no holes directly to it\'s left', () => {
@@ -43,8 +43,8 @@ test('HoleInteraction renders a dom element without a left border if there are n
     font-size: 30px;
     text-align: center;
   `
-  render(<HoleInteraction degree={ flat3 } leftVoid={ true } />)
-  expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ true } />)
+  expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
 })
 
 test('HoleInteraction renders a dom element with \'/\' conent and white color without a left border if it is void itelf', () => {
@@ -57,6 +57,6 @@ test('HoleInteraction renders a dom element with \'/\' conent and white color wi
     font-size: 30px;
     text-align: center;
   `
-  render(<HoleInteraction degree={ undefined } leftVoid={ false } />)
-  expect(screen.getByText('/')).toHaveStyle(expectedStyle)
+  const { getByText } = render(<HoleInteraction degree={ undefined } leftVoid={ false } />)
+  expect(getByText('/')).toHaveStyle(expectedStyle)
 })
