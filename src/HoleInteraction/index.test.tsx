@@ -13,7 +13,7 @@ test('HoleInteraction renders a dom element with the expected value included', (
   expect(screen.getByText(DegreeIds.Flat3)).toBeInTheDocument()
 })
 
-test('HoleInteraction renders a dom element with an inline style element', () => {
+test('HoleInteraction renders a dom element with a left border if the position next to it is not void', () => {
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
