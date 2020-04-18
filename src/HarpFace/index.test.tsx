@@ -44,7 +44,7 @@ test('The degree element has some style on it', () => {
   const expectedStyles = `
     border-color: black;
     border: 0px;
-    border-left: 1px;
+    border-left: 0px;
     font-size: 30px;
     text-align: centre;
   `

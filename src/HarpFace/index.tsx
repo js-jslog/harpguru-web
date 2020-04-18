@@ -23,7 +23,8 @@ const useStyles = createUseStyles({
 const generateHoleInteractions = (degreeMatrix: DegreeMatrix): ReactElement[] => {
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {
     return degreeRow.map(function (degree: Degree | undefined, indexx) {
-      return <HoleInteraction key={indexx + '' + indexy} degree={degree} leftVoid={false} />
+      const leftVoid = (indexx === 0 || degreeMatrix[indexy][indexx -1] === undefined)
+      return <HoleInteraction key={indexx + '' + indexy} degree={degree} leftVoid={leftVoid} />
     })
   })
   const flattened = mapped.flat()
