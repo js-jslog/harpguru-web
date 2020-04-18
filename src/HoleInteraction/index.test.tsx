@@ -12,3 +12,11 @@ test('HoleInteraction renders a dom element with the expected value included', (
   render(<HoleInteraction degree={ flat3 }/>)
   expect(screen.getByText(DegreeIds.Flat3)).toBeInTheDocument()
 })
+
+test('HoleInteraction renders a dom element with an inline style element', () => {
+  const flat3: Degree = {
+    id: DegreeIds.Flat3,
+  }
+  const { container } = render(<HoleInteraction degree={ flat3 } />)
+  expect(container.firstChild).toHaveStyle('display: inline')
+})
