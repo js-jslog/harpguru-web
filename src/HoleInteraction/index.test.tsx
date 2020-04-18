@@ -17,8 +17,8 @@ test('HoleInteraction renders a dom element with an inline style element', () =>
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
-  const { container } = render(<HoleInteraction degree={ flat3 } />)
-  expect(container.firstChild).toHaveStyle('border: 1px solid rgba(0, 0, 0, 0.8)')
-  expect(container.firstChild).toHaveStyle('font-size: 30px')
-  expect(container.firstChild).toHaveStyle('text-align: centre')
+  render(<HoleInteraction degree={ flat3 } />)
+  expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle('border: 1px solid rgba(0, 0, 0, 0.8)')
+  expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle('font-size: 30px')
+  expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle('text-align: centre')
 })
