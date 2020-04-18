@@ -23,7 +23,7 @@ test('HoleInteraction renders a dom element with a left border if the position n
     border: 0px;
     border-left: 1px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   render(<HoleInteraction degree={ flat3 } leftVoid={ false } />)
   expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
@@ -39,7 +39,7 @@ test('HoleInteraction renders a dom element without a left border if there are n
     border: 0px;
     border-left: 0px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   render(<HoleInteraction degree={ flat3 } leftVoid={ true } />)
   expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
@@ -52,7 +52,7 @@ test('HoleInteraction renders a dom element with \'/\' conent and white color wi
     border: 0px;
     border-left: 0px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   render(<HoleInteraction degree={ undefined } leftVoid={ false } />)
   expect(screen.getByText('/')).toHaveStyle(expectedStyle)

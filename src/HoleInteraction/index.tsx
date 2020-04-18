@@ -25,7 +25,7 @@ const useStyles = createUseStyles({
     border: '0px',
     'border-left': (props: HoleInteractionProps): string => determineLeftBorder(props),
     'font-size': '30px',
-    'text-align': 'centre',
+    'text-align': 'center',
   }
 })
 
