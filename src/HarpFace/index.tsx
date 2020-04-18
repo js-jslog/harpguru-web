@@ -3,6 +3,8 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { DegreeMatrix } from 'harpstrata'
 
+import { HoleInteraction } from '../HoleInteraction'
+
 type HarpFaceProps = {
   degreeMatrix: DegreeMatrix;
 }
@@ -22,11 +24,9 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
   const classes = useStyles(props)
   const { degreeMatrix } = props
   const [[ degree ]] = degreeMatrix
-  let degreeId = undefined
-  if ( degree !== undefined ) ({ id: degreeId } = degree)
   return (
     <div className={classes.harpFaceClass}>
-      { degreeId }
+      <HoleInteraction degree={degree} leftVoid={false} />
     </div>
   )
 }

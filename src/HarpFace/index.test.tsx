@@ -37,3 +37,18 @@ test('HarpFace renders a dom element with the required grid styles when a two co
   const { container } = render(<HarpFace degreeMatrix={ degreeMatrix }/>)
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
+
+test('The degree element has some style on it', () => {
+  const degreeMatrix: DegreeMatrix = [[{
+    id: DegreeIds.Root 
+  }]]
+  const expectedStyles = `
+    border-color: black;
+    border: 0px;
+    border-left: 1px;
+    font-size: 30px;
+    text-align: centre;
+  `
+  render(<HarpFace degreeMatrix={ degreeMatrix }/>)
+  expect(screen.getByText(DegreeIds.Root)).toHaveStyle(expectedStyles)
+})

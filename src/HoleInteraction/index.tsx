@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 import type { Degree } from 'harpstrata'
 
 type HoleInteractionProps = {
-  degree: Degree;
+  degree: Degree | undefined;
   leftVoid: boolean;
 }
 
@@ -26,7 +26,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const classes = useStyles(props)
   return (
     <div className={classes.holeInteractionClass}>
-      { props.degree.id }
+      { (props.degree && props.degree.id) || '/' }
     </div>
   )
 }
