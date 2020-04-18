@@ -1,8 +1,20 @@
 import type { HarpStrata } from 'harpstrata'
+import { DegreeIds } from 'harpstrata'
 
-import { getAHarp } from './harpstrataimport'
+import { getFirstPositionHarp, getSecondPositionHarp } from './harpstrataimport'
 
-test('index contains a getAHarp function', () => {
-  const harpStrata: HarpStrata = getAHarp()
+test('index contains a getFirstPositionHarp function', () => {
+  const harpStrata: HarpStrata = getFirstPositionHarp()
+  const { degreeMatrix } = harpStrata
+  const degree = degreeMatrix[1][0] && degreeMatrix[1][0].id || undefined
   expect(harpStrata).toBeDefined()
+  expect(degree).toBe(DegreeIds.Root)
+})
+
+test('index contains a getSecondPositionHarp function', () => {
+  const harpStrata: HarpStrata = getSecondPositionHarp()
+  const { degreeMatrix } = harpStrata
+  const degree = degreeMatrix[2][1] && degreeMatrix[2][1].id || undefined
+  expect(harpStrata).toBeDefined()
+  expect(degree).toBe(DegreeIds.Root)
 })
