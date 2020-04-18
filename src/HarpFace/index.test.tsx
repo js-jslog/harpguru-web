@@ -44,27 +44,27 @@ test('The HoleInteraction children have correct styles on them', () => {
   ]
   const expectedStylesUndefined = `
     color: white;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 0px;
+    border-left-width: 0px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   const expectedStylesVoidLeft = `
     color: black;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 0px;
+    border-left-width: 0px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   const expectedStylesNonVoidLeft = `
     color: black;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 1px;
+    border-left-width: 1px;
     font-size: 30px;
-    text-align: centre;
+    text-align: center;
   `
   render(<HarpFace degreeMatrix={ degreeMatrix }/>)
   expect(screen.getAllByText('/')[0]).toHaveStyle(expectedStylesUndefined)

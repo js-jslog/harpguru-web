@@ -19,9 +19,10 @@ test('HoleInteraction renders a dom element with a left border if the position n
   }
   const expectedStyle = `
     color: black;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 1px;
+    border-style: solid;
+    border-left-width: 1px;
     font-size: 30px;
     text-align: center;
   `
@@ -35,9 +36,10 @@ test('HoleInteraction renders a dom element without a left border if there are n
   }
   const expectedStyle = `
     color: black;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 0px;
+    border-style: solid;
+    border-left-width: 0px;
     font-size: 30px;
     text-align: center;
   `
@@ -48,9 +50,10 @@ test('HoleInteraction renders a dom element without a left border if there are n
 test('HoleInteraction renders a dom element with \'/\' conent and white color without a left border if it is void itelf', () => {
   const expectedStyle = `
     color: white;
+    border-width: 0px;
     border-color: black;
-    border: 0px;
-    border-left: 0px;
+    border-style: solid;
+    border-left-width: 0px;
     font-size: 30px;
     text-align: center;
   `

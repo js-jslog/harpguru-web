@@ -21,9 +21,10 @@ const determineColor = (props: HoleInteractionProps): string => {
 const useStyles = createUseStyles({
   holeInteractionClass: {
     color: (props: HoleInteractionProps): string => determineColor(props),
+    'border-width': '0px',
     'border-color': 'black',
-    border: '0px',
-    'border-left': (props: HoleInteractionProps): string => determineLeftBorder(props),
+    'border-style': 'solid',
+    'border-left-width': (props: HoleInteractionProps): string => determineLeftBorder(props),
     'font-size': '30px',
     'text-align': 'center',
   }
