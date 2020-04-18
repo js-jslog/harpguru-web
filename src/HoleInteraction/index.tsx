@@ -9,11 +9,18 @@ type HoleInteractionProps = {
 }
 
 const determineLeftBorder = (props: HoleInteractionProps): string => {
-  return (props.leftVoid ? '0px' : '1px')
+  const { degree, leftVoid } = props
+  return (leftVoid || degree === undefined ? '0px' : '1px')
+}
+
+const determineColor = (props: HoleInteractionProps): string => {
+  const { degree } = props
+  return (degree === undefined ? 'white' : 'black')
 }
 
 const useStyles = createUseStyles({
   holeInteractionClass: {
+    color: (props: HoleInteractionProps): string => determineColor(props),
     'border-color': 'black',
     border: '0px',
     'border-left': (props: HoleInteractionProps): string => determineLeftBorder(props),

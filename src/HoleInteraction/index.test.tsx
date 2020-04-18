@@ -18,6 +18,7 @@ test('HoleInteraction renders a dom element with a left border if the position n
     id: DegreeIds.Flat3,
   }
   const expectedStyle = `
+    color: black;
     border-color: black;
     border: 0px;
     border-left: 1px;
@@ -33,6 +34,7 @@ test('HoleInteraction renders a dom element without a left border if there are n
     id: DegreeIds.Flat3,
   }
   const expectedStyle = `
+    color: black;
     border-color: black;
     border: 0px;
     border-left: 0px;
@@ -41,4 +43,17 @@ test('HoleInteraction renders a dom element without a left border if there are n
   `
   render(<HoleInteraction degree={ flat3 } leftVoid={ true } />)
   expect(screen.getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+})
+
+test('HoleInteraction renders a dom element with \'/\' conent and white color without a left border if it is void itelf', () => {
+  const expectedStyle = `
+    color: white;
+    border-color: black;
+    border: 0px;
+    border-left: 0px;
+    font-size: 30px;
+    text-align: centre;
+  `
+  render(<HoleInteraction degree={ undefined } leftVoid={ false } />)
+  expect(screen.getByText('/')).toHaveStyle(expectedStyle)
 })
