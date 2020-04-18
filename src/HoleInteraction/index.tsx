@@ -8,11 +8,15 @@ type HoleInteractionProps = {
   leftVoid: boolean;
 }
 
+const determineLeftBorder = (props: HoleInteractionProps): string => {
+  return (props.leftVoid ? '0px' : '1px')
+}
+
 const useStyles = createUseStyles({
   holeInteractionClass: {
     'border-color': 'black',
     border: '0px',
-    'border-left': (props: HoleInteractionProps): string => (props.leftVoid ? '0px' : '1px'),
+    'border-left': (props: HoleInteractionProps): string => determineLeftBorder(props),
     'font-size': '30px',
     'text-align': 'centre',
   }
