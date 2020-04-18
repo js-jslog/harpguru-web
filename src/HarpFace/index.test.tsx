@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react'
 
 import { HarpFace } from './index'
 
-test('HarpFace will render', () => {
+test('HarpFace will render a single degree', () => {
   const degreeMatrix: DegreeMatrix = [[{
     id: DegreeIds.Root 
   }]]
