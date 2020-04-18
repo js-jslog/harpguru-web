@@ -7,10 +7,13 @@ type HarpFaceProps = {
 }
 
 export function HarpFace(props: HarpFaceProps): ReactElement {
-  const [[{ id: singleDegree }]] = props.degreeMatrix
+  const { degreeMatrix } = props
+  const [[ degree ]] = degreeMatrix
+  let degreeId = undefined
+  if ( degree !== undefined ) ({ id: degreeId } = degree)
   return (
     <div>
-      { singleDegree }
+      { degreeId }
     </div>
   )
 }
