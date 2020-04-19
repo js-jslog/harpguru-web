@@ -60,3 +60,12 @@ test('HoleInteraction renders a dom element with \'/\' conent and white color wi
   const { getByText } = render(<HoleInteraction degree={ undefined } leftVoid={ false } />)
   expect(getByText('/')).toHaveStyle(expectedStyle)
 })
+
+test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
+  const flat3: Degree = {
+    id: DegreeIds.Flat3,
+  }
+  const yxCoord = '0-0'
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ yxCoord } />)
+  expect(getByText(DegreeIds.Flat3).getAttribute('class')).toMatch(/yx-coord-0-0/)
+})
