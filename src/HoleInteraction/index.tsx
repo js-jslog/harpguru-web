@@ -41,7 +41,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { degreeMatrix, yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
   const { [yCoord]: row } = degreeMatrix
-  const degree = row[xCoord]
+  const { [xCoord]: degree } = row
   const degreeId = (degree && degree.id) || '/'
   return (
     <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
