@@ -24,7 +24,7 @@ const generateHoleInteractions = (degreeMatrix: DegreeMatrix): ReactElement[] =>
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {
     return degreeRow.map(function (degree: Degree | undefined, indexx) {
       const yxCoord: [number, number] = [indexy, indexx]
-      return <HoleInteraction key={indexx + '' + indexy} degree={degree} degreeMatrix={degreeMatrix} yxCoord={yxCoord} />
+      return <HoleInteraction key={indexx + '' + indexy} degreeMatrix={degreeMatrix} yxCoord={yxCoord} />
     })
   })
   const flattened = mapped.flat()

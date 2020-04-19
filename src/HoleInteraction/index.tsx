@@ -1,10 +1,9 @@
 import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
-import type { Degree, DegreeMatrix } from 'harpstrata'
+import type { DegreeMatrix } from 'harpstrata'
 
 type HoleInteractionProps = {
-  degree: Degree | undefined;
   degreeMatrix: DegreeMatrix;
   yxCoord: [ number, number ];
 }
@@ -18,8 +17,10 @@ const determineLeftBorder = (props: HoleInteractionProps): string => {
 }
 
 const determineColor = (props: HoleInteractionProps): string => {
-  const { degree } = props
-  return (degree === undefined ? 'white' : 'black')
+  const { degreeMatrix, yxCoord } = props
+  const [ yCoord, xCoord ] = yxCoord
+  const thisDegree = degreeMatrix[yCoord][xCoord]
+  return (thisDegree === undefined ? 'white' : 'black')
 }
 
 const useStyles = createUseStyles({
@@ -37,9 +38,12 @@ const useStyles = createUseStyles({
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const classes = useStyles(props)
   const yxCoordString = `${props.yxCoord[0]}-${props.yxCoord[1]}`
+  const { degreeMatrix, yxCoord } = props
+  const [ yCoord, xCoord ] = yxCoord
+  const thisDegree = degreeMatrix[yCoord][xCoord] && degreeMatrix[yCoord][xCoord].id
   return (
     <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
-      { (props.degree && props.degree.id) || '/' }
+      { thisDegree || '/' }
     </div>
   )
 }
