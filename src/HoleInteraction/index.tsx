@@ -40,10 +40,12 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const yxCoordString = `${props.yxCoord[0]}-${props.yxCoord[1]}`
   const { degreeMatrix, yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
-  const thisDegree = degreeMatrix[yCoord][xCoord] && degreeMatrix[yCoord][xCoord].id
+  const { [yCoord]: row } = degreeMatrix
+  const degree = row[xCoord]
+  const degreeId = (degree && degree.id) || '/'
   return (
     <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
-      { thisDegree || '/' }
+      { degreeId }
     </div>
   )
 }
