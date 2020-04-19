@@ -2,7 +2,7 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { DegreeMatrix, DegreeRow, Degree } from 'harpstrata'
 
-import { HoleInteraction } from '../HoleInteraction'
+import { HoleInteraction } from './HoleInteraction'
 
 import { useStyles } from './useStyles'
 import type { HarpFaceProps, YXCoords } from './types'

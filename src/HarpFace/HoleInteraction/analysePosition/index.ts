@@ -1,6 +1,6 @@
 import type { Degree, DegreeMatrix } from 'harpstrata'
 
-import type { YXCoords } from '../../HarpFace'
+import type { YXCoords } from '../../index'
 
 export type PositionFacts = {
   readonly atHere: Degree | undefined;
