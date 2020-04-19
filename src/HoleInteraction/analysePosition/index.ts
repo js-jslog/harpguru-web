@@ -1,11 +1,13 @@
 import type { Degree, DegreeMatrix } from 'harpstrata'
 
-export interface PositionFacts {
+import type { YXCoords } from '../../HarpFace'
+
+export type PositionFacts = {
   readonly atHere: Degree | undefined;
   readonly occupiedLeft: boolean;
 }
 
-export const analysePosition = (degreeMatrix: DegreeMatrix, yxCoord: [number, number]): PositionFacts => {
+export const analysePosition = (degreeMatrix: DegreeMatrix, yxCoord: YXCoords): PositionFacts => {
   const [ yCoord, xCoord ] = yxCoord
   const { [yCoord]: {[xCoord]: atHere} } = degreeMatrix
   const { [yCoord]: {[xCoord-1]: leftDegree} } = degreeMatrix
