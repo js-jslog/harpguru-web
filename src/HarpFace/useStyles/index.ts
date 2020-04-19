@@ -1,10 +1,11 @@
 import { createUseStyles } from 'react-jss'
 
-import type { HarpFaceProps } from '../types'
+import type { HarpFaceProps } from '../index'
 
 const constructColumnStyle = (props: HarpFaceProps): string => {
   const { degreeMatrix } = props
-  return Array(degreeMatrix[0].length).fill('auto').join(' ')
+  const [ degreeRow ] = degreeMatrix
+  return Array(degreeRow.length).fill('auto').join(' ')
 }
 
 export const useStyles = createUseStyles({
