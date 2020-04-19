@@ -6,7 +6,6 @@ import type { Degree, DegreeMatrix } from 'harpstrata'
 type HoleInteractionProps = {
   degree: Degree | undefined;
   degreeMatrix: DegreeMatrix;
-  leftVoid: boolean;
   yxCoord: [ number, number ];
 }
 
