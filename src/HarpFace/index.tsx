@@ -1,22 +1,11 @@
-import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
 import type { DegreeMatrix, DegreeRow, Degree } from 'harpstrata'
 
 import { HoleInteraction } from '../HoleInteraction'
 
-import { HarpFaceProps, YXCoords } from './types'
-
-const constructColumnStyle = (props: HarpFaceProps): string => {
-  const { degreeMatrix } = props
-  return Array(degreeMatrix[0].length).fill('auto').join(' ')
-}
-const useStyles = createUseStyles({
-  harpFaceClass: {
-    display: 'grid',
-    'grid-template-columns': (props: HarpFaceProps): string => constructColumnStyle(props)
-  }
-})
+import { useStyles } from './useStyles'
+import type { HarpFaceProps, YXCoords } from './types'
 
 const generateHoleInteractions = (degreeMatrix: DegreeMatrix): ReactElement[] => {
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {

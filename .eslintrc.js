@@ -40,6 +40,10 @@ module.exports = {
             'alphabetize': { order: 'desc' },
             'pathGroups': [
                 {
+                  'pattern': './useStyles',
+                  'group': 'index'
+                },
+                {
                   'pattern': './types',
                   'group': 'index'
                 },
