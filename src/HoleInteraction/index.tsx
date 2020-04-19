@@ -6,7 +6,7 @@ import type { Degree } from 'harpstrata'
 type HoleInteractionProps = {
   degree: Degree | undefined;
   leftVoid: boolean;
-  yxCoord: string;
+  yxCoord: [ number, number ];
 }
 
 const determineLeftBorder = (props: HoleInteractionProps): string => {
@@ -33,8 +33,9 @@ const useStyles = createUseStyles({
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const classes = useStyles(props)
+  const yxCoordString = `${props.yxCoord[0]}-${props.yxCoord[1]}`
   return (
-    <div className={`${classes.holeInteractionClass} yx-coord-${props.yxCoord}`}>
+    <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
       { (props.degree && props.degree.id) || '/' }
     </div>
   )

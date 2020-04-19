@@ -9,7 +9,7 @@ test('HoleInteraction renders a dom element with the expected value included', (
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
-  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ '0-0' } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ [0,0] } />)
   expect(getByText(DegreeIds.Flat3)).toBeInTheDocument()
 })
 
@@ -26,7 +26,7 @@ test('HoleInteraction renders a dom element with a left border if the position n
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ '0-0' } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ [0,0] } />)
   expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
 })
 
@@ -43,7 +43,7 @@ test('HoleInteraction renders a dom element without a left border if there are n
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ true } yxCoord={ '0-0' } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ true } yxCoord={ [0,0] } />)
   expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
 })
 
@@ -57,7 +57,7 @@ test('HoleInteraction renders a dom element with \'/\' conent and white color wi
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degree={ undefined } leftVoid={ false } yxCoord={ '0-0' } />)
+  const { getByText } = render(<HoleInteraction degree={ undefined } leftVoid={ false } yxCoord={ [0,0] } />)
   expect(getByText('/')).toHaveStyle(expectedStyle)
 })
 
@@ -65,7 +65,6 @@ test('HoleInteraction renders with a class identifying it\'s position in the mat
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
-  const yxCoord = '0-0'
-  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ yxCoord } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } leftVoid={ false } yxCoord={ [0,0] } />)
   expect(getByText(DegreeIds.Flat3).getAttribute('class')).toMatch(/yx-coord-0-0/)
 })
