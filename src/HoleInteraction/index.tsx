@@ -11,15 +11,15 @@ type HoleInteractionProps = {
 const determineLeftBorder = (props: HoleInteractionProps): string => {
   const { degreeMatrix, yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
-  const thisDegree = degreeMatrix[yCoord][xCoord]
-  const leftVoid = (xCoord === 0 || degreeMatrix[yCoord][xCoord -1] === undefined)
-  return (leftVoid || thisDegree === undefined ? '0px' : '1px')
+  const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
+  const { [yCoord]: {[xCoord-1]: leftDegree} } = degreeMatrix
+  return (thisDegree === undefined || leftDegree === undefined ? '0px' : '1px')
 }
 
 const determineColor = (props: HoleInteractionProps): string => {
   const { degreeMatrix, yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
-  const thisDegree = degreeMatrix[yCoord][xCoord]
+  const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
   return (thisDegree === undefined ? 'white' : 'black')
 }
 
@@ -40,8 +40,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const yxCoordString = `${props.yxCoord[0]}-${props.yxCoord[1]}`
   const { degreeMatrix, yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
-  const { [yCoord]: row } = degreeMatrix
-  const { [xCoord]: degree } = row
+  const { [yCoord]: {[xCoord]: degree} } = degreeMatrix
   const degreeId = (degree && degree.id) || '/'
   return (
     <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
