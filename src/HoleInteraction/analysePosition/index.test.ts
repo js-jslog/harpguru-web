@@ -1,4 +1,5 @@
 import { DegreeIds } from 'harpstrata'
+import type { Degree } from 'harpstrata'
 
 import { analysePosition } from './index'
 
@@ -22,4 +23,15 @@ test('occupiedLeft is false if the provided coord has an undefined position to i
   const { occupiedLeft: undefinedLeftOccupiedLeft} = analysePosition(degreeMatrix, yxCoordUndefinedLeft)
   expect(leftmostOccupiedLeft).toBeFalsy()
   expect(undefinedLeftOccupiedLeft).toBeFalsy()
+})
+
+test('atHere provides the degree at this position', () => {
+  const ourDegree: Degree = {id: DegreeIds.Second}
+  const degreeMatrix = [
+    [{id: DegreeIds.Root}, ourDegree             ],
+    [undefined           , {id: DegreeIds.Second}],
+  ]
+  const ourDegreeCoords: [number, number] = [ 0, 1 ]
+  const { atHere } = analysePosition(degreeMatrix, ourDegreeCoords)
+  expect(atHere).toBe(ourDegree)
 })
