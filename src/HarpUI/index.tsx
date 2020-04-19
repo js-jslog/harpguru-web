@@ -1,21 +1,43 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
+import { getHarpIds, getPozitions, getHarpStrata } from 'harpstrata'
+import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
-import { getFirstPositionHarp, getSecondPositionHarp } from '../harpstrataimport'
 import { HarpFace } from '../HarpFace'
 
 export function HarpUI(): ReactElement {
-  const { degreeMatrix: firstHarp } = getFirstPositionHarp()
-  const { degreeMatrix: secondHarp } = getSecondPositionHarp()
-  const [ degreeMatrix, setDegreeMatrix ] = useState(firstHarp)
+  const harpIds = getHarpIds()
+  const availablePozitionIds = getPozitions()
+  const [ aHarpId ] = harpIds
+  const [ aPozitionId ] = availablePozitionIds
+  const [ activeHarpId, setActiveHarpId ] = useState(aHarpId)
+  const [ activePozitionId, setActivePozitionId ] = useState(aPozitionId)
+  const { degreeMatrix } = getHarpStrata(activeHarpId, activePozitionId)
+  const [ activeDegreeMatrix, setDegreeMatrix ] = useState(degreeMatrix)
+
+  const selectHarpId = (harpId: ApparatusIds): void => {
+    setActiveHarpId(harpId)
+    setDegreeMatrix(getHarpStrata(harpId, activePozitionId).degreeMatrix)
+  }
+  const selectPozitionId = (pozitionId: PozitionIds): void => {
+    setActivePozitionId(pozitionId)
+    setDegreeMatrix(getHarpStrata(activeHarpId, pozitionId).degreeMatrix)
+  }
   return (
     <div>
-      <HarpFace degreeMatrix={degreeMatrix}/>
-      <button onClick={(): void => setDegreeMatrix(firstHarp)}>
-        First
+      <label htmlFor='apparatus'>Apparatus: </label>
+      <span id='apparatus'>{activeHarpId}</span>
+      <label htmlFor='pozition'>Position: </label>
+      <span id='pozition'>{activePozitionId}</span>
+      <HarpFace degreeMatrix={activeDegreeMatrix}/>
+      <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
+        { availablePozitionIds[0] }
       </button>
-      <button onClick={(): void => setDegreeMatrix(secondHarp)}>
-        Second
+      <button onClick={(): void => selectPozitionId(availablePozitionIds[1])}>
+        { availablePozitionIds[1] }
+      </button>
+      <button onClick={(): void => selectHarpId(harpIds[0])}>
+        { harpIds[0] }
       </button>
     </div>
   )
