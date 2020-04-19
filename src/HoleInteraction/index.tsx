@@ -11,23 +11,23 @@ type HoleInteractionProps = {
   yxCoord: [ number, number ];
 }
 
-const determineLeftBorder = (props: PositionFacts): string => {
-  const { atHere, occupiedLeft } = props
+const determineLeftBorder = (facts: PositionFacts): string => {
+  const { atHere, occupiedLeft } = facts
   return (atHere === undefined || !occupiedLeft ? '0px' : '1px')
 }
 
-const determineColor = (props: PositionFacts): string => {
-  const { atHere } = props
+const determineColor = (facts: PositionFacts): string => {
+  const { atHere } = facts
   return (atHere === undefined ? 'white' : 'black')
 }
 
 const useStyles = createUseStyles({
   holeInteractionClass: {
-    color: (props: PositionFacts): string => determineColor(props),
+    color: (facts: PositionFacts): string => determineColor(facts),
     'border-width': '0px',
     'border-color': 'black',
     'border-style': 'solid',
-    'border-left-width': (props: PositionFacts): string => determineLeftBorder(props),
+    'border-left-width': (facts: PositionFacts): string => determineLeftBorder(facts),
     'font-size': '30px',
     'text-align': 'center',
   }
@@ -36,14 +36,14 @@ const useStyles = createUseStyles({
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { degreeMatrix, yxCoord } = props
   const positionFacts = analysePosition(degreeMatrix, yxCoord)
-  const [ yCoord, xCoord ] = yxCoord
-  const { atHere: degree } = positionFacts
-  const degreeId = (degree && degree.id) || '/'
-  const yxCoordString = `${yCoord}-${xCoord}`
+  const { atHere } = positionFacts
+
   const classes = useStyles(positionFacts)
+  const [ yCoord, xCoord ] = yxCoord
+
   return (
-    <div className={`${classes.holeInteractionClass} yx-coord-${yxCoordString}`}>
-      { degreeId }
+    <div className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+      { (atHere && atHere.id) || '/' }
     </div>
   )
 }
