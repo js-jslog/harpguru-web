@@ -1,10 +1,11 @@
 import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
-import type { Degree } from 'harpstrata'
+import type { Degree, DegreeMatrix } from 'harpstrata'
 
 type HoleInteractionProps = {
   degree: Degree | undefined;
+  degreeMatrix: DegreeMatrix;
   leftVoid: boolean;
   yxCoord: [ number, number ];
 }
