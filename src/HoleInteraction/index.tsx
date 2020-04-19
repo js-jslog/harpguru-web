@@ -11,8 +11,11 @@ type HoleInteractionProps = {
 }
 
 const determineLeftBorder = (props: HoleInteractionProps): string => {
-  const { degree, leftVoid } = props
-  return (leftVoid || degree === undefined ? '0px' : '1px')
+  const { degreeMatrix, yxCoord } = props
+  const [ yCoord, xCoord ] = yxCoord
+  const thisDegree = degreeMatrix[yCoord][xCoord]
+  const leftVoid = (xCoord === 0 || degreeMatrix[yCoord][xCoord -1] === undefined)
+  return (leftVoid || thisDegree === undefined ? '0px' : '1px')
 }
 
 const determineColor = (props: HoleInteractionProps): string => {

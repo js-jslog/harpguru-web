@@ -7,18 +7,18 @@ import { HoleInteraction } from './index'
 
 test('HoleInteraction renders a dom element with the expected value included', () => {
   const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Flat3}, {id: DegreeIds.Third}
+    {id: DegreeIds.Second}, {id: DegreeIds.Flat3}
   ]]
   const flat3: Degree = {
     id: DegreeIds.Flat3,
   }
-  const { getByText } = render(<HoleInteraction degree={ flat3 } degreeMatrix={degreeMatrix} leftVoid={ false } yxCoord={ [0,0] } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } degreeMatrix={degreeMatrix} leftVoid={ false } yxCoord={ [0,1] } />)
   expect(getByText(DegreeIds.Flat3)).toBeInTheDocument()
 })
 
 test('HoleInteraction renders a dom element with a left border if the position next to it is not void', () => {
   const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Flat3}, {id: DegreeIds.Third}
+    {id: DegreeIds.Second}, {id: DegreeIds.Flat3}
   ]]
   const flat3: Degree = {
     id: DegreeIds.Flat3,
@@ -32,7 +32,7 @@ test('HoleInteraction renders a dom element with a left border if the position n
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degree={ flat3 } degreeMatrix={degreeMatrix} leftVoid={ false } yxCoord={ [0,0] } />)
+  const { getByText } = render(<HoleInteraction degree={ flat3 } degreeMatrix={degreeMatrix} leftVoid={ false } yxCoord={ [0,1] } />)
   expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
 })
 
