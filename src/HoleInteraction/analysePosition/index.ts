@@ -1,1 +1,9 @@
-export const analysePosition = (): boolean => true
+interface PositionAnalysis {
+  readonly occupiedLeft: boolean;
+}
+
+export const analysePosition = (): PositionAnalysis => {
+  return {
+    occupiedLeft: true
+  }
+}
