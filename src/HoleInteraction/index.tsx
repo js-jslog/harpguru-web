@@ -1,15 +1,11 @@
 import { createUseStyles } from 'react-jss'
 import React from 'react'
 import type { ReactElement } from 'react'
-import type { DegreeMatrix } from 'harpstrata'
 
 import { analysePosition } from './analysePosition'
 import type { PositionFacts } from './analysePosition'
 
-type HoleInteractionProps = {
-  degreeMatrix: DegreeMatrix;
-  yxCoord: [ number, number ];
-}
+import type { HoleInteractionProps } from './types'
 
 const determineLeftBorder = (facts: PositionFacts): string => {
   const { atHere, occupiedLeft } = facts
