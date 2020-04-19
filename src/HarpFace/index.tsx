@@ -27,3 +27,5 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
     </div>
   )
 }
+
+export type { HarpFaceProps, YXCoords } from './types'
