@@ -6,7 +6,7 @@ import type { Degree } from 'harpstrata'
 type HoleInteractionProps = {
   degree: Degree | undefined;
   leftVoid: boolean;
-  yxCoord?: string;
+  yxCoord: string;
 }
 
 const determineLeftBorder = (props: HoleInteractionProps): string => {
