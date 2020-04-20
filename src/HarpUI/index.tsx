@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { getHarpIds, getPozitions, getHarpStrata } from 'harpstrata'
+import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
 import { HarpFace } from '../HarpFace'
 
 export function HarpUI(): ReactElement {
-  const harpIds = getHarpIds()
-  const availablePozitionIds = getPozitions()
+  const harpIds = getApparatusIds()
+  const availablePozitionIds = getPozitionIds()
   const [ aHarpId ] = harpIds
   const [ aPozitionId ] = availablePozitionIds
   const [ activeHarpId, setActiveHarpId ] = useState(aHarpId)
@@ -38,6 +38,9 @@ export function HarpUI(): ReactElement {
       </button>
       <button onClick={(): void => selectHarpId(harpIds[0])}>
         { harpIds[0] }
+      </button>
+      <button onClick={(): void => selectHarpId(harpIds[1])}>
+        { harpIds[1] }
       </button>
     </div>
   )
