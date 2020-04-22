@@ -25,5 +25,7 @@ export const useStyles = createUseStyles({
     'border-left-width': (facts: PositionFacts): string => determineLeftBorder(facts),
     'font-size': '30px',
     'text-align': 'center',
+    'padding-top': '15px',
+    'padding-bottom': '15px',
   }
 })
