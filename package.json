@@ -1,22 +1,50 @@
 {
-  "name": "tdd",
-  "description": "A basic tdd project with typescript",
+  "name": "harpguru",
+  "description": "A proof of concept of building harpguru from create-react-app typescript template",
   "scripts": {
-    "test": "jest",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "clear-jest": "jest --clearCache",
-    "lint": "tsc --noEmit && eslint './**'",
-    "fix-lint": "eslint './**' --fix"
+    "lint": "tsc --noEmit && eslint './src/**'",
+    "fix-lint": "eslint './src/**' --fix"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "harpstrata": "^2.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-jss": "^10.1.1",
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.0",
-    "@typescript-eslint/parser": "^2.28.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "jest": "^25.2.7",
     "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

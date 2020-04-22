@@ -7,7 +7,8 @@ module.exports = {
     'extends': [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended'
     ],
     'globals': {
         'Atomics': 'readonly',
@@ -38,6 +39,10 @@ module.exports = {
         'import/order': ['error', {
             'alphabetize': { order: 'desc' },
             'pathGroups': [
+                {
+                  'pattern': './useStyles',
+                  'group': 'index'
+                },
                 {
                   'pattern': './types',
                   'group': 'index'
