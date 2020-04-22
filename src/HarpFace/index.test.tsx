@@ -30,30 +30,18 @@ test('HarpFace renders a dom element with the required grid styles when a two co
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
 
-test('The HoleInteraction children have correct styles on them', () => {
+test('The HoleInteraction children have correct conditional styles on them', () => {
   const expectedStylesUndefined = `
       color: white;
-      border-width: 0px;
-      border-color: black;
       border-left-width: 0px;
-      font-size: 30px;
-      text-align: center;
     `
   const expectedStylesLeftmost = `
     color: black;
-    border-width: 0px;
-    border-color: black;
     border-left-width: 0px;
-    font-size: 30px;
-    text-align: center;
   `
   const expectedStylesNonLeftmost = `
     color: black;
-    border-width: 0px;
-    border-color: black;
     border-left-width: 1px;
-    font-size: 30px;
-    text-align: center;
   `
   const { getByText } = render(<HarpFace harpstrata={ harpstrata }/>)
   expect(getByText('/')).toHaveStyle(expectedStylesUndefined)
