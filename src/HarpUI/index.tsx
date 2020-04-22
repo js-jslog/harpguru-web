@@ -42,6 +42,9 @@ export function HarpUI(): ReactElement {
       <button onClick={(): void => selectHarpId(harpIds[1])}>
         { harpIds[1] }
       </button>
+      <button onClick={(): void => selectHarpId(harpIds[2])}>
+        { harpIds[2] }
+      </button>
     </div>
   )
 }
