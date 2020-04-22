@@ -1,5 +1,5 @@
 import { ApparatusIds, InteractionIds, DegreeIds } from 'harpstrata'
-import type { HarpStrata, Degree } from 'harpstrata'
+import type { HarpStrata } from 'harpstrata'
 
 import type { YXCoord } from '../../index'
 
