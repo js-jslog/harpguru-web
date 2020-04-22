@@ -1,7 +1,7 @@
-import type { DegreeMatrix } from 'harpstrata'
+import type { HarpStrata } from 'harpstrata'
 
 export type HarpFaceProps = {
-  degreeMatrix: DegreeMatrix;
+  harpstrata: HarpStrata;
 }
 
 export type YXCoords = [ number, number ]

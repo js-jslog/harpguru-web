@@ -12,16 +12,16 @@ export function HarpUI(): ReactElement {
   const [ aPozitionId ] = availablePozitionIds
   const [ activeHarpId, setActiveHarpId ] = useState(aHarpId)
   const [ activePozitionId, setActivePozitionId ] = useState(aPozitionId)
-  const { degreeMatrix } = getHarpStrata(activeHarpId, activePozitionId)
-  const [ activeDegreeMatrix, setDegreeMatrix ] = useState(degreeMatrix)
+  const harpstrata = getHarpStrata(activeHarpId, activePozitionId)
+  const [ activeHarpStrata, setHarpStrata ] = useState(harpstrata)
 
   const selectHarpId = (harpId: ApparatusIds): void => {
     setActiveHarpId(harpId)
-    setDegreeMatrix(getHarpStrata(harpId, activePozitionId).degreeMatrix)
+    setHarpStrata(getHarpStrata(harpId, activePozitionId))
   }
   const selectPozitionId = (pozitionId: PozitionIds): void => {
     setActivePozitionId(pozitionId)
-    setDegreeMatrix(getHarpStrata(activeHarpId, pozitionId).degreeMatrix)
+    setHarpStrata(getHarpStrata(activeHarpId, pozitionId))
   }
   return (
     <div>
@@ -29,7 +29,7 @@ export function HarpUI(): ReactElement {
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace degreeMatrix={activeDegreeMatrix}/>
+      <HarpFace harpstrata={activeHarpStrata}/>
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>

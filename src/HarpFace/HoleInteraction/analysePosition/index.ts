@@ -1,18 +1,23 @@
-import type { Degree, DegreeMatrix } from 'harpstrata'
+import type { HarpStrata, Degree, Interaction } from 'harpstrata'
 
 import type { YXCoords } from '../../index'
 
 export type PositionFacts = {
-  readonly atHere: Degree | undefined;
-  readonly occupiedLeft: boolean;
+  readonly thisDegree: Degree | undefined;
+  readonly thisInteraction: Interaction | undefined;
+  readonly leftmost: boolean;
 }
 
-export const analysePosition = (degreeMatrix: DegreeMatrix, yxCoord: YXCoords): PositionFacts => {
+export const analysePosition = (harpstrata: HarpStrata, yxCoord: YXCoords): PositionFacts => {
+  const { degreeMatrix } = harpstrata
+  const { apparatus: {interactionMatrix} } = harpstrata
   const [ yCoord, xCoord ] = yxCoord
-  const { [yCoord]: {[xCoord]: atHere} } = degreeMatrix
-  const { [yCoord]: {[xCoord-1]: leftDegree} } = degreeMatrix
+  const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
+  const { [yCoord]: {[xCoord]: thisInteraction} } = interactionMatrix
+  const leftmost = (xCoord === 0)
   return {
-    atHere,
-    occupiedLeft: (leftDegree !== undefined)
+    thisDegree,
+    thisInteraction,
+    leftmost
   }
 }

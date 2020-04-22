@@ -1,22 +1,33 @@
 import React from 'react'
-import type { DegreeMatrix } from 'harpstrata'
+import { ApparatusIds, InteractionIds } from 'harpstrata'
+import type { HarpStrata } from 'harpstrata'
 import { DegreeIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
 import { HoleInteraction } from './index'
 
+const apparatus = {
+  id: ApparatusIds.MajorDiatonic,
+  halfstepIndexMatrix: [[ 0, 1]],
+  interactionMatrix: [
+    [{id: InteractionIds.Blow}, {id: InteractionIds.Blow}],
+    [undefined                , {id: InteractionIds.Draw}],
+  ],
+}
+const harpstrata: HarpStrata = {
+  apparatus,
+  degreeMatrix: [
+    [{ id: DegreeIds.Root }, { id: DegreeIds.Second }],
+    [undefined             , { id: DegreeIds.Third }],
+  ]
+}
+
 test('HoleInteraction renders a dom element with the expected value included', () => {
-  const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Second}, {id: DegreeIds.Flat3}
-  ]]
-  const { getByText } = render(<HoleInteraction degreeMatrix={degreeMatrix} yxCoord={ [0,1] } />)
-  expect(getByText(DegreeIds.Flat3)).toBeInTheDocument()
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,1] } />)
+  expect(getByText(DegreeIds.Second)).toBeInTheDocument()
 })
 
-test('HoleInteraction renders a dom element with a left border if the position next to it is not void', () => {
-  const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Second}, {id: DegreeIds.Flat3}
-  ]]
+test('HoleInteraction renders a dom element with a left border if it is not the leftmost', () => {
   const expectedStyle = `
     color: black;
     border-width: 0px;
@@ -26,14 +37,11 @@ test('HoleInteraction renders a dom element with a left border if the position n
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degreeMatrix={degreeMatrix} yxCoord={ [0,1] } />)
-  expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,1] } />)
+  expect(getByText(DegreeIds.Second)).toHaveStyle(expectedStyle)
 })
 
-test('HoleInteraction renders a dom element without a left border if there are no holes directly to it\'s left', () => {
-  const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Flat3}, {id: DegreeIds.Third}
-  ]]
+test('HoleInteraction renders a dom element without a left border if it is the leftmost', () => {
   const expectedStyle = `
     color: black;
     border-width: 0px;
@@ -43,31 +51,19 @@ test('HoleInteraction renders a dom element without a left border if there are n
     font-size: 30px;
     text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degreeMatrix={degreeMatrix} yxCoord={ [0,0] } />)
-  expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,0] } />)
+  expect(getByText(DegreeIds.Root)).toHaveStyle(expectedStyle)
 })
 
-test('HoleInteraction renders a dom element with \'/\' conent and white color without a left border if it is void itelf', () => {
-  const degreeMatrix: DegreeMatrix = [[
-    undefined, {id: DegreeIds.Third}
-  ]]
+test('HoleInteraction renders a dom element with \'/\' content and white color if it is undefined', () => {
   const expectedStyle = `
     color: white;
-    border-width: 0px;
-    border-color: black;
-    border-style: solid;
-    border-left-width: 0px;
-    font-size: 30px;
-    text-align: center;
   `
-  const { getByText } = render(<HoleInteraction degreeMatrix={degreeMatrix} yxCoord={ [0,0] } />)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [1,0] } />)
   expect(getByText('/')).toHaveStyle(expectedStyle)
 })
 
 test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
-  const degreeMatrix: DegreeMatrix = [[
-    {id: DegreeIds.Flat3}, {id: DegreeIds.Third}
-  ]]
-  const { getByText } = render(<HoleInteraction degreeMatrix={degreeMatrix} yxCoord={ [0,0] } />)
-  expect(getByText(DegreeIds.Flat3).getAttribute('class')).toMatch(/yx-coord-0-0/)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,0] } />)
+  expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-0-0/)
 })

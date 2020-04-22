@@ -1,15 +1,19 @@
 import { createUseStyles } from 'react-jss'
+import { InteractionIds } from 'harpstrata'
 
 import type { PositionFacts } from '../analysePosition'
 
 const determineLeftBorder = (facts: PositionFacts): string => {
-  const { atHere, occupiedLeft } = facts
-  return (atHere === undefined || !occupiedLeft ? '0px' : '1px')
+  const { thisInteraction, leftmost } = facts
+  const isBlow = (thisInteraction && thisInteraction.id === InteractionIds.Blow)
+  const isDraw = (thisInteraction && thisInteraction.id === InteractionIds.Draw)
+  const isBlowOrDraw = isBlow || isDraw
+  return (isBlowOrDraw && !leftmost ? '1px' : '0px')
 }
 
 const determineColor = (facts: PositionFacts): string => {
-  const { atHere } = facts
-  return (atHere === undefined ? 'white' : 'black')
+  const { thisDegree } = facts
+  return (thisDegree === undefined ? 'white' : 'black')
 }
 
 export const useStyles = createUseStyles({
