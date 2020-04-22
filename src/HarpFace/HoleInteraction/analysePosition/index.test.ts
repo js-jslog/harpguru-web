@@ -1,7 +1,7 @@
 import { ApparatusIds, InteractionIds, DegreeIds } from 'harpstrata'
 import type { HarpStrata, Degree } from 'harpstrata'
 
-import type { YXCoords } from '../../index'
+import type { YXCoord } from '../../index'
 
 import { analysePosition } from './index'
 
@@ -18,8 +18,8 @@ const harpstrata: HarpStrata = {
 }
 
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
-  const yxCoordLeftmostTrue: YXCoords = [ 0, 0 ]
-  const yxCoordLeftmostFalse: YXCoords = [ 0, 1 ]
+  const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
+  const yxCoordLeftmostFalse: YXCoord = [ 0, 1 ]
   const { leftmost: leftmostTrue } = analysePosition(harpstrata, yxCoordLeftmostTrue)
   const { leftmost: leftmostFalse } = analysePosition(harpstrata, yxCoordLeftmostFalse)
   expect(leftmostTrue).toBeTruthy()
@@ -27,8 +27,8 @@ test('leftmost is true if the provided coord has is 0 in the x axis and false ot
 })
 
 test('thisDegree & thisInteraction provide the degree and interaction at this position', () => {
-  const ourDegreeCoords: YXCoords = [ 0, 1 ]
-  const { thisDegree, thisInteraction } = analysePosition(harpstrata, ourDegreeCoords)
+  const ourDegreeCoord: YXCoord = [ 0, 1 ]
+  const { thisDegree, thisInteraction } = analysePosition(harpstrata, ourDegreeCoord)
   expect(thisDegree).toBe(ourDegree)
   expect(thisInteraction).toBe(ourInteraction)
 })

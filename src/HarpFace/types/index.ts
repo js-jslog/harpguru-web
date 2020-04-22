@@ -4,4 +4,4 @@ export type HarpFaceProps = {
   harpstrata: HarpStrata;
 }
 
-export type YXCoords = [ number, number ]
+export type YXCoord = [ number, number ]

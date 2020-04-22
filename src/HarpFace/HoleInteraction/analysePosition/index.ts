@@ -1,6 +1,6 @@
 import type { HarpStrata, Degree, Interaction } from 'harpstrata'
 
-import type { YXCoords } from '../../index'
+import type { YXCoord } from '../../index'
 
 export type PositionFacts = {
   readonly thisDegree: Degree | undefined;
@@ -8,7 +8,7 @@ export type PositionFacts = {
   readonly leftmost: boolean;
 }
 
-export const analysePosition = (harpstrata: HarpStrata, yxCoord: YXCoords): PositionFacts => {
+export const analysePosition = (harpstrata: HarpStrata, yxCoord: YXCoord): PositionFacts => {
   const { degreeMatrix } = harpstrata
   const { apparatus: {interactionMatrix} } = harpstrata
   const [ yCoord, xCoord ] = yxCoord

@@ -5,13 +5,13 @@ import type { HarpStrata, DegreeRow, Degree } from 'harpstrata'
 import { HoleInteraction } from './HoleInteraction'
 
 import { useStyles } from './useStyles'
-import type { HarpFaceProps, YXCoords } from './types'
+import type { HarpFaceProps, YXCoord } from './types'
 
 const generateHoleInteractions = (harpstrata: HarpStrata): ReactElement[] => {
   const { degreeMatrix } = harpstrata
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {
     return degreeRow.map(function (degree: Degree | undefined, indexx) {
-      const yxCoord: YXCoords = [indexy, indexx]
+      const yxCoord: YXCoord = [indexy, indexx]
       return <HoleInteraction key={indexy + '-' + indexx} harpstrata={harpstrata} yxCoord={yxCoord} />
     })
   })
@@ -29,4 +29,4 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
   )
 }
 
-export type { HarpFaceProps, YXCoords } from './types'
+export type { HarpFaceProps, YXCoord } from './types'
