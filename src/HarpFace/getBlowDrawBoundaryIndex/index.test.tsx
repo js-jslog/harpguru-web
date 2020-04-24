@@ -17,6 +17,7 @@ test('getBlowDrawBoundaryIndexRow returns the correct boundary index from an Int
   const interactionRow: InteractionRow = [
     {id: InteractionIds.Blow}, {id: InteractionIds.Blow},
     {id: InteractionIds.Draw}, {id: InteractionIds.Draw},
+    {id: InteractionIds.Bend1}, {id: InteractionIds.Bend1},
   ]
   const expectedIndex = 2
   const actualIndex = getBlowDrawBoundaryIndexRow(interactionRow)

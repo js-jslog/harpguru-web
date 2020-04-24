@@ -1,5 +1,5 @@
 import { InteractionIds } from 'harpstrata'
-import type { InteractionMatrix, InteractionRow } from 'harpstrata'
+import type { InteractionMatrix, InteractionRow, Interaction } from 'harpstrata'
 
 export const getBlowDrawBoundaryIndex = (interactionMatrix: InteractionMatrix): number => {
   return interactionMatrix.reduce((index, interactionRow) => {
@@ -12,8 +12,11 @@ export const getBlowDrawBoundaryIndex = (interactionMatrix: InteractionMatrix): 
 }
 
 export const getBlowDrawBoundaryIndexRow = (interactionRow: InteractionRow): number => {
-  return interactionRow.reduce((index, interaction) => {
-    if (interaction && interaction.id !== InteractionIds.Draw) return index + 1
-    return index
-  }, 0)
+  const reducedRow = interactionRow.reduce((indexTuple: [number, boolean], interaction: Interaction | undefined): [number, boolean] => {
+    let [index, drawSeen ] = indexTuple
+    if (!drawSeen && interaction && interaction.id === InteractionIds.Draw) drawSeen = true
+    if (!drawSeen && interaction && interaction.id !== InteractionIds.Draw) index +=1
+    return [index, drawSeen]
+  }, [0, false])
+  return reducedRow[0]
 }
