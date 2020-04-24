@@ -11,12 +11,11 @@ export const getBlowDrawBoundaryIndex = (interactionMatrix: InteractionMatrix): 
   }, 0)
 }
 
-export const getBlowDrawBoundaryIndexRow = (indexTupleInput: [number, boolean], interactionRow: InteractionRow): number => {
-  const reducedRow = interactionRow.reduce((indexTuple: [number, boolean], interaction: Interaction | undefined): [number, boolean] => {
+export const getBlowDrawBoundaryIndexRow = (indexTupleInput: [number, boolean], interactionRow: InteractionRow): [number, boolean] => {
+  return interactionRow.reduce((indexTuple: [number, boolean], interaction: Interaction | undefined): [number, boolean] => {
     let [index, drawSeen ] = indexTuple
     if (!drawSeen && interaction && interaction.id === InteractionIds.Draw) drawSeen = true
     if (!drawSeen && interaction && interaction.id !== InteractionIds.Draw) index +=1
     return [index, drawSeen]
   }, indexTupleInput)
-  return reducedRow[0]
 }

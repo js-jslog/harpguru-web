@@ -22,5 +22,5 @@ test('getBlowDrawBoundaryIndexRow returns the correct boundary index from an Int
   const expectedIndex = 2
   const indexTuple: [number, boolean] = [0, false]
   const actualIndex = getBlowDrawBoundaryIndexRow(indexTuple, interactionRow)
-  expect(actualIndex).toBe(expectedIndex)
+  expect(actualIndex[0]).toBe(expectedIndex)
 })
