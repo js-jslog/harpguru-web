@@ -8,7 +8,7 @@ const getBlowDrawBoundaryIndexRow = (reducedState: reducerState, interactionRow:
     let [index, drawSeen ] = reducedState
 
     if (!drawSeen && interaction && interaction.id === InteractionIds.Draw) drawSeen = true
-    if (!drawSeen && interaction && interaction.id !== InteractionIds.Draw) index +=1
+    if (!drawSeen) index +=1
 
     return [index, drawSeen]
   }, reducedState)
