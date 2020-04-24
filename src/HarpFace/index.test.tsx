@@ -7,7 +7,7 @@ import { HarpFace } from './index'
 
 const apparatus = {
   id: ApparatusIds.MajorDiatonic,
-  halfstepIndexMatrix: [[ 0, 1]],
+  halfstepIndexMatrix: [[0, 1], [undefined, 2]],
   interactionMatrix: [
     [{id: InteractionIds.Blow}, {id: InteractionIds.Blow}],
     [undefined                , {id: InteractionIds.Draw}],
