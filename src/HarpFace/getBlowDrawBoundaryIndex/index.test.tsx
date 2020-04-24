@@ -10,18 +10,18 @@ test('getBlowDrawBoundaryIndex returns the correct boundary index from an Intera
     [ {id: InteractionIds.Bend1}, {id: InteractionIds.Bend1} ],
   ]
   const expectedIndex = 2
-  const actualIndex = getBlowDrawBoundaryIndex([0, false], interactionMatrix)
-  expect(actualIndex[0]).toBe(expectedIndex)
+  const actualIndex = getBlowDrawBoundaryIndex(interactionMatrix)
+  expect(actualIndex).toBe(expectedIndex)
 })
 
-test('getBlowDrawBoundaryIndexRow returns the correct boundary index from an InteractionRow', () => {
-  const interactionRow: InteractionRow = [
-    {id: InteractionIds.Blow}, {id: InteractionIds.Blow},
-    {id: InteractionIds.Draw}, {id: InteractionIds.Draw},
-    {id: InteractionIds.Bend1}, {id: InteractionIds.Bend1},
-  ]
-  const expectedIndex = 2
-  const indexTuple: [number, boolean] = [0, false]
-  const actualIndex = getBlowDrawBoundaryIndexRow(indexTuple, interactionRow)
-  expect(actualIndex[0]).toBe(expectedIndex)
-})
+//test('getBlowDrawBoundaryIndexRow returns the correct boundary index from an InteractionRow', () => {
+//  const interactionRow: InteractionRow = [
+//    {id: InteractionIds.Blow}, {id: InteractionIds.Blow},
+//    {id: InteractionIds.Draw}, {id: InteractionIds.Draw},
+//    {id: InteractionIds.Bend1}, {id: InteractionIds.Bend1},
+//  ]
+//  const expectedIndex = 2
+//  const indexTuple: [number, boolean] = [0, false]
+//  const actualIndex = getBlowDrawBoundaryIndexRow(indexTuple, interactionRow)
+//  expect(actualIndex[0]).toBe(expectedIndex)
+//})
