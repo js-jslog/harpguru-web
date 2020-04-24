@@ -7,10 +7,11 @@ test('getBlowDrawBoundaryIndex returns the correct boundary index from an Intera
   const interactionMatrix: InteractionMatrix = [
     [ {id: InteractionIds.Blow}, {id: InteractionIds.Blow} ],
     [ {id: InteractionIds.Draw}, {id: InteractionIds.Draw} ],
+    [ {id: InteractionIds.Bend1}, {id: InteractionIds.Bend1} ],
   ]
   const expectedIndex = 2
-  const actualIndex = getBlowDrawBoundaryIndex(interactionMatrix)
-  expect(actualIndex).toBe(expectedIndex)
+  const actualIndex = getBlowDrawBoundaryIndex([0, false], interactionMatrix)
+  expect(actualIndex[0]).toBe(expectedIndex)
 })
 
 test('getBlowDrawBoundaryIndexRow returns the correct boundary index from an InteractionRow', () => {
