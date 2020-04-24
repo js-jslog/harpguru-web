@@ -6,7 +6,7 @@ const determineHarpFaceWidth = (props: HarpFaceProps): string => {
   const { harpstrata: { degreeMatrix } } = props
   const [ degreeRow ] = degreeMatrix
   const { length: columnNumber } = degreeRow
-  return `${(100 * columnNumber)}px`
+  return `${(50 * columnNumber)}px`
 }
 
 const constructColumnStyle = (props: HarpFaceProps): string => {

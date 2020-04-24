@@ -16,7 +16,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
 
   return (
     <div className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
-      { (thisDegree && thisDegree.id) || '/' }
+      {thisDegree && thisDegree.id}
     </div>
   )
 }
