@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactElement } from 'react'
-import type { HarpStrata, DegreeRow, Degree } from 'harpstrata'
+import type { DegreeRow, Degree } from 'harpstrata'
 
 import { getBlowDrawBoundaryIndex } from './getBlowDrawBoundaryIndex'
 import { HoleNumber } from './HoleNumber'
@@ -14,12 +14,13 @@ type twoHalfHoleInteractions = {
   readonly downFromDraw: ReactElement[];
 }
 
-const generateHoleInteractions = (harpstrata: HarpStrata): twoHalfHoleInteractions => {
+const generateHoleInteractions = (harpFaceProps: HarpFaceProps): twoHalfHoleInteractions => {
+  const { harpstrata, theme } = harpFaceProps
   const { degreeMatrix, apparatus: {interactionMatrix} } = harpstrata
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {
     return degreeRow.map(function (degree: Degree | undefined, indexx) {
       const yxCoord: YXCoord = [indexy, indexx]
-      return <HoleInteraction key={indexy + '-' + indexx} harpstrata={harpstrata} yxCoord={yxCoord} />
+      return <HoleInteraction key={indexy + '-' + indexx} harpstrata={harpstrata} yxCoord={yxCoord} theme={theme} />
     })
   })
   const flattened = mapped.flat()
@@ -34,20 +35,20 @@ const generateHoleInteractions = (harpstrata: HarpStrata): twoHalfHoleInteractio
   }
 }
 
-const generateHoleNumbers = (harpstrata: HarpStrata): ReactElement[] => {
+const generateHoleNumbers = (harpFaceProps: HarpFaceProps): ReactElement[] => {
+  const { harpstrata, theme } = harpFaceProps
   const { degreeMatrix } = harpstrata
   const [ degreeRow ] = degreeMatrix
 
   return degreeRow.map(function (degree: Degree | undefined, index: number) {
-    return <HoleNumber key={index} xCoord={index} />
+    return <HoleNumber key={index} xCoord={index} theme={theme} />
   })
 }
 
 export function HarpFace(props: HarpFaceProps): ReactElement {
   const classes = useStyles(props)
-  const { harpstrata } = props
-  const { downToBlow, downFromDraw } = generateHoleInteractions(harpstrata)
-  const holeNumbers = generateHoleNumbers(harpstrata)
+  const { downToBlow, downFromDraw } = generateHoleInteractions(props)
+  const holeNumbers = generateHoleNumbers(props)
   return (
     <div className={classes.harpFaceClass}>
       { downToBlow }

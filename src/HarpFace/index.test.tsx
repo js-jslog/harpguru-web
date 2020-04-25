@@ -3,6 +3,8 @@ import type { HarpStrata } from 'harpstrata'
 import { ApparatusIds, DegreeIds, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
+import { getTheme } from '../index'
+
 import { HarpFace } from './index'
 
 const apparatus = {
@@ -20,12 +22,13 @@ const harpstrata: HarpStrata = {
     [undefined             , { id: DegreeIds.Third }],
   ]
 }
+const theme = getTheme({seedSize: 1})
 
 test('HarpFace renders a dom element with the required grid styles when a two column strata matrices are provided', () => {
   const expectedStyle = `
     display: grid;
     grid-template-columns: auto auto;
   `
-  const { container } = render(<HarpFace harpstrata={ harpstrata }/>)
+  const { container } = render(<HarpFace harpstrata={ harpstrata } theme={theme} />)
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })

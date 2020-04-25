@@ -3,9 +3,15 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
+import { getTheme } from '../index'
+import type { Theme } from '../index'
 import { HarpFace } from '../HarpFace'
 
-export function HarpUI(): ReactElement {
+type HarpUIProps = {
+  readonly theme: Theme;
+}
+
+export function HarpUI(props: HarpUIProps): ReactElement {
   const harpIds = getApparatusIds()
   const availablePozitionIds = getPozitionIds()
   const [ aHarpId ] = harpIds
@@ -23,13 +29,14 @@ export function HarpUI(): ReactElement {
     setActivePozitionId(pozitionId)
     setHarpStrata(getHarpStrata(activeHarpId, pozitionId))
   }
+  const { theme } = props
   return (
     <div>
       <label htmlFor='apparatus'>Apparatus: </label>
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace harpstrata={activeHarpStrata}/>
+      <HarpFace harpstrata={activeHarpStrata} theme={theme} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>

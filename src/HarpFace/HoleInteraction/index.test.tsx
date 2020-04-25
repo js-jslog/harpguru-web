@@ -4,6 +4,8 @@ import type { HarpStrata } from 'harpstrata'
 import { DegreeIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
+import { getTheme } from '../../index'
+
 import { HoleInteraction } from './index'
 
 const apparatus = {
@@ -21,9 +23,10 @@ const harpstrata: HarpStrata = {
     [undefined             , { id: DegreeIds.Third }],
   ]
 }
+const theme = getTheme({seedSize: 1})
 
 test('HoleInteraction renders a dom element with the expected value included', () => {
-  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,1] } />)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={[0,1]} theme={theme} />)
   expect(getByText(DegreeIds.Second)).toBeInTheDocument()
 })
 
@@ -31,11 +34,11 @@ test('HoleInteraction renders an invisible dom element if it is undefined', () =
   const expectedStyle = `
     visibility: hidden;
   `
-  const { container } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [1,0] } />)
+  const { container } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [1,0] } theme={theme} />)
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
 
 test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
-  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,0] } />)
+  const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={ [0,0] } theme={theme} />)
   expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-0-0/)
 })

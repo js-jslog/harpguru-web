@@ -2,11 +2,15 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
-import { HarpUI } from './HarpUI'
+
+import { HarpUI } from './index'
+import { getTheme } from './index'
+
+const theme = getTheme({seedSize: 1})
 
 ReactDOM.render(
   <React.StrictMode>
-    <HarpUI />
+    <HarpUI theme={theme} />
   </React.StrictMode>,
   document.getElementById('root')
 )

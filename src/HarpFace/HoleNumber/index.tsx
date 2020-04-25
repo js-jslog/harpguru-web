@@ -5,10 +5,10 @@ import { useStyles } from './useStyles'
 import type { HoleNumberProps } from './types'
 
 export function HoleNumber(props: HoleNumberProps): ReactElement {
-  const { xCoord } = props
+  const { xCoord, theme } = props
   const holeNumber = xCoord + 1
 
-  const classes = useStyles()
+  const classes = useStyles(theme)
 
   return (
     <div className={`${classes.holeInteractionClass}`}>
