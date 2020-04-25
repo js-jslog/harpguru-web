@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
-import type { Theme } from '../index'
+import type { Theme } from '../Theme'
 import { HarpFace } from '../HarpFace'
 
 type HarpUIProps = {

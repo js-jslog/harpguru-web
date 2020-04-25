@@ -2,9 +2,8 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
-
-import { HarpUI } from './index'
-import { getTheme } from './index'
+import { getTheme } from './Theme'
+import { HarpUI } from './HarpUI'
 
 const theme = getTheme({seedSize: 1})
 
