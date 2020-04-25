@@ -3,7 +3,6 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
-import { getTheme } from '../index'
 import type { Theme } from '../index'
 import { HarpFace } from '../HarpFace'
 
