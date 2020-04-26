@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-import { useStyles } from '../index'
+import { useStyles } from '../useStyles'
 import type { HoleNumberProps } from '../index'
 
 export function HoleNumber(props: HoleNumberProps): ReactElement {
