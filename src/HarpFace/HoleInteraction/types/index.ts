@@ -1,10 +1,5 @@
-import type { HarpStrata } from 'harpstrata'
+import type { HarpFaceProps, YXCoord } from '../../index'
 
-import type { YXCoord } from '../../index'
-import type { Theme } from '../../../Theme'
-
-export type HoleInteractionProps = {
-  readonly harpstrata: HarpStrata;
+export type HoleInteractionProps = HarpFaceProps & {
   readonly yxCoord: YXCoord;
-  readonly theme: Theme;
 }
