@@ -2,8 +2,8 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { Degree, DegreeRow } from 'harpstrata'
 
-import { HoleInteraction } from '../index'
-import type { HarpFaceProps, YXCoord } from '../../types'
+import type { HarpFaceProps, YXCoord } from '../types'
+import { HoleInteraction } from '../HoleInteraction'
 
 import { getBlowDrawBoundaryIndex } from './getBlowDrawBoundaryIndex'
 
@@ -12,7 +12,7 @@ type TwoHalfHoleInteractions = {
   readonly downFromDraw: ReactElement[];
 }
 
-export const generateHoleInteractions = (props: HarpFaceProps): TwoHalfHoleInteractions => {
+export const HoleInteractionRows = (props: HarpFaceProps): TwoHalfHoleInteractions => {
   const { harpstrata, theme } = props
   const { degreeMatrix, apparatus: {interactionMatrix} } = harpstrata
   const mapped = degreeMatrix.map(function (degreeRow: DegreeRow, indexy) {

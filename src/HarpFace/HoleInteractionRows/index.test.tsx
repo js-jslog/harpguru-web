@@ -2,10 +2,10 @@ import React from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import type { HarpFaceProps } from '../../types'
-import { getTheme } from '../../../Theme'
+import type { HarpFaceProps } from '../types'
+import { getTheme } from '../../Theme'
 
-import { generateHoleInteractions } from './index'
+import { HoleInteractionRows } from './index'
 
 
 const harpStrata = getHarpStrata(getApparatusIds()[0], getPozitionIds()[0])
@@ -15,8 +15,8 @@ const harpFaceProps: HarpFaceProps = {
   theme,
 }
 
-test('generateHoleInteractions returns two HoleInteraction arrays, the end of the first is a Blow and the start of the next is a Draw', () => {
-  const { downToBlow, downFromDraw } = generateHoleInteractions(harpFaceProps)
+test('HoleInteractionRows returns two HoleInteraction arrays, the end of the first is a Blow and the start of the next is a Draw', () => {
+  const { downToBlow, downFromDraw } = HoleInteractionRows(harpFaceProps)
   const lastBlowHole = downToBlow.slice(-1)
   const [ firstDrawHole ] = downFromDraw
   const { getByText: getByTextLastBlowHole } = render(<div>{lastBlowHole}</div>)
