@@ -2,7 +2,7 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { DegreeRow, Degree } from 'harpstrata'
 
-import type { HarpFaceProps, YXCoord } from '../../types'
+import type { HarpFaceProps, YXCoord } from '../../index'
 import { HoleInteraction } from '../../HoleInteraction'
 
 export const mapToFlatComponentArray = (props: HarpFaceProps): ReactElement[] => {
