@@ -4,7 +4,7 @@ import type { HarpStrata } from 'harpstrata'
 import { DegreeIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import { getTheme } from '../../Theme'
+import { getTheme } from '../Theme'
 
 import { HoleInteraction } from './index'
 

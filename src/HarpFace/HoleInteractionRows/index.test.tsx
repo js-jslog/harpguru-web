@@ -3,7 +3,7 @@ import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionMatrix, Inte
 import { render } from '@testing-library/react'
 
 import type { HarpFaceProps } from '../types'
-import { getTheme } from '../../Theme'
+import { getTheme } from '../Theme'
 
 import { HoleInteractionRowsTop } from './HoleInteractionRowsTop'
 import { HoleInteractionRowsBottom } from './HoleInteractionRowsBottom'
