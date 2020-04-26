@@ -1,7 +1,7 @@
 import { ApparatusIds, PozitionIds, getHarpStrata } from 'harpstrata'
 
 import type { HarpFaceProps } from '../index'
-import { getTheme } from '../Theme'
+import { getTheme } from '../index'
 
 
 const harpStrata = getHarpStrata(ApparatusIds.MajorDiatonic, PozitionIds.First)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { getTheme } from '../HarpFace/Theme'
+import { getTheme } from '../HarpFace'
 
 import { HarpUI } from './index'
 

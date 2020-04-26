@@ -1,4 +1,4 @@
-import { Theme } from '../../Theme'
+import type { Theme } from '../../index'
 
 export type HoleNumberProps = {
   readonly xCoord: number;

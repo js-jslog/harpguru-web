@@ -1,6 +1,6 @@
 import type { HarpStrata } from 'harpstrata'
 
-import type { Theme } from '../Theme'
+import type { Theme } from '../index'
 
 export type HarpFaceProps = {
   harpstrata: HarpStrata;
