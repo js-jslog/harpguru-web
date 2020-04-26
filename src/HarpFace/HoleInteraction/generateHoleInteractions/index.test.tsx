@@ -2,8 +2,8 @@ import React from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import type { HarpFaceProps } from '../types'
-import { getTheme } from '../../Theme'
+import type { HarpFaceProps } from '../../types'
+import { getTheme } from '../../../Theme'
 
 import { generateHoleInteractions } from './index'
 

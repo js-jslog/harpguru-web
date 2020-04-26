@@ -2,8 +2,8 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { Degree, DegreeRow } from 'harpstrata'
 
-import type { HarpFaceProps, YXCoord } from '../types'
-import { HoleInteraction } from '../HoleInteraction'
+import { HoleInteraction } from '../index'
+import type { HarpFaceProps, YXCoord } from '../../types'
 
 import { getBlowDrawBoundaryIndex } from './getBlowDrawBoundaryIndex'
 
