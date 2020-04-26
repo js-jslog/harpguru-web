@@ -4,14 +4,16 @@ import type { ReactElement } from 'react'
 import { useStyles } from '../useStyles'
 import type { HoleInteractionProps } from '../types'
 import { analysePosition } from '../analysePosition'
+import type { PositionFacts } from '../analysePosition'
 
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { harpstrata, yxCoord } = props
-  const positionFacts = analysePosition(harpstrata, yxCoord)
+  const positionFacts: PositionFacts = analysePosition(harpstrata, yxCoord)
   const { thisDegree } = positionFacts
 
-  const classes = useStyles(positionFacts)
+  const useStyleProps = { ...props, positionFacts}
+  const classes = useStyles(useStyleProps)
   const [ yCoord, xCoord ] = yxCoord
 
   return (
