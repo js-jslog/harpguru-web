@@ -4,17 +4,27 @@ import type { UseStylesProps } from '../types'
 
 type Styles = {
   readonly borderRadius: string;
+  readonly fontSize: string;
+  readonly height: string;
+  readonly marginTop: string;
+  readonly marginBottom: string;
   readonly visibility: string;
+  readonly width: string;
 }
 
 const determineStyles = (props: UseStylesProps): Styles  => {
   const { theme: { sizesMap }} = props
   const { positionFacts: { thisDegree }} = props
 
-  const borderRadius = `${sizesMap[3]}px`
+  const borderRadius = `${sizesMap[4]}px`
+  const fontSize = `${sizesMap[5]}px`
+  const height = `${sizesMap[6]}px`
+  const marginTop = `${sizesMap[4]}px`
+  const marginBottom = `${sizesMap[4]}px`
   const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
+  const width = `${sizesMap[6]}px`
 
-  return { borderRadius, visibility }
+  return { borderRadius, fontSize, height, marginTop, marginBottom, visibility, width }
 }
 
 export const useStyles = createUseStyles({
@@ -23,13 +33,14 @@ export const useStyles = createUseStyles({
     'border-width': '0px',
     'background-color': 'black',
     color: 'white',
-    'font-size': '20px',
-    height: '25px',
+    'font-size': (props: UseStylesProps): string => determineStyles(props).fontSize,
+    height: (props: UseStylesProps): string => determineStyles(props).height,
     margin: 'auto',
-    'margin-top': '5px',
-    'margin-bottom': '5px',
+    'margin-top': (props: UseStylesProps): string => determineStyles(props).marginTop,
+    'margin-bottom': (props: UseStylesProps): string => determineStyles(props).marginBottom,
     'text-align': 'center',
     visibility: (props: UseStylesProps): string => determineStyles(props).visibility,
-    width: '25px',
+    width: (props: UseStylesProps): string => determineStyles(props).width,
+
   }
 })
