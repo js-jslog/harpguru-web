@@ -11,6 +11,8 @@ export const HoleNumberRow = (harpFaceProps: HarpFaceProps): ReactElement[] => {
   const [ degreeRow ] = degreeMatrix
 
   return degreeRow.map(function (degree: Degree | undefined, index: number) {
-    return <HoleNumber key={index} xCoord={index} theme={theme} />
+    const xCoord = index
+    const holeNumberProps = { xCoord, theme }
+    return <HoleNumber key={index} { ...holeNumberProps } />
   })
 }
