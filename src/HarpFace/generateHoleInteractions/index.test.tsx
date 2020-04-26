@@ -23,21 +23,24 @@ test('generateHoleInteractions returns two HoleInteraction arrays, the end of th
   const { getByText: getByTextFirstDrawHole } = render(<div>{firstDrawHole}</div>)
 
   const { harpstrata: { apparatus: { interactionMatrix }, degreeMatrix}} = harpFaceProps
+  // This reducer assumes that there is a Blow row somewhere in the matrix
+  // If there isn't then this isn't going to function
   const blowRow = interactionMatrix.reduce((blowRow, thisRow) => {
-    //const [ {id: interactionId} ] = thisRow
     const [ interaction ] = thisRow
-    const { id: interactionId } = interaction || {}
-    if (blowRow === undefined && interactionId === InteractionIds.Blow) return thisRow
-    return blowRow
-  }, undefined)
-  const blowRowIndex = interactionMatrix.indexOf(blowRow)
-  const blowDegreeRow = degreeMatrix[blowRowIndex]
-  const lastBlow = blowDegreeRow.slice(-1)[0]
-  const { id: lastBlowId } = lastBlow || {}
+    if (interaction === undefined) return blowRow
 
-  const drawDegreeRow = degreeMatrix[blowRowIndex +1]
-  const firstDraw = drawDegreeRow[0]
-  const { id: firstDrawId } = firstDraw || {}
+    const { id: interactionId } = interaction
+    if (interactionId === InteractionIds.Blow) return thisRow
+    return blowRow
+  })
+  const blowRowIndex = interactionMatrix.indexOf(blowRow)
+  const { [blowRowIndex]: blowDegreeRow } = degreeMatrix
+  const [ lastBlow ] = blowDegreeRow.slice(-1)
+  const { id: lastBlowId } = lastBlow || {id: 'fail'}
+
+  const { [blowRowIndex +1]: drawDegreeRow } = degreeMatrix
+  const [ firstDraw ] = drawDegreeRow
+  const { id: firstDrawId } = firstDraw || {id: 'fail'}
 
   expect(getByTextLastBlowHole(lastBlowId)).toBeInTheDocument()
   expect(getByTextFirstDrawHole(firstDrawId)).toBeInTheDocument()
