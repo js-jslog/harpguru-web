@@ -2,10 +2,10 @@ import React from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import type { HarpFaceProps } from '../../types'
-import { getTheme } from '../../../Theme'
+import type { HarpFaceProps } from '../types'
+import { getTheme } from '../../Theme'
 
-import { generateHoleNumbers } from './index'
+import { HoleNumberRow } from './index'
 
 
 const harpStrata = getHarpStrata(getApparatusIds()[0], getPozitionIds()[0])
@@ -15,17 +15,17 @@ const harpFaceProps: HarpFaceProps = {
   theme,
 }
 
-test('generateHoleNumbers returns an array of HoleNumber components which is the width of the harmonica', () => {
+test('HoleNumberRow returns an array of HoleNumber components which is the width of the harmonica', () => {
   const { degreeMatrix } = harpStrata
   const [ { length: columnCount } ] = degreeMatrix
-  const holeNumbers = generateHoleNumbers(harpFaceProps)
+  const holeNumbers = HoleNumberRow(harpFaceProps)
   expect(holeNumbers.length).toBe(columnCount)
 })
 
-test('generateHoleNumbers returns holes numbered 1 and the top, whatever the top might be', () => {
+test('HoleNumberRow returns holes numbered 1 and the top, whatever the top might be', () => {
   const { degreeMatrix } = harpStrata
   const [ { length: columnCount } ] = degreeMatrix
-  const holeNumbers = generateHoleNumbers(harpFaceProps)
+  const holeNumbers = HoleNumberRow(harpFaceProps)
   const { getByText } = render(<div>{ holeNumbers }</div>)
   expect(getByText('1')).toBeInTheDocument()
   expect(getByText(String(columnCount))).toBeInTheDocument()

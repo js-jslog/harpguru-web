@@ -2,10 +2,10 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { Degree } from 'harpstrata'
 
-import { HoleNumber } from '../index'
-import type { HarpFaceProps } from '../../types'
+import type { HarpFaceProps } from '../types'
+import { HoleNumber } from '../HoleNumber'
 
-export const generateHoleNumbers = (harpFaceProps: HarpFaceProps): ReactElement[] => {
+export const HoleNumberRow = (harpFaceProps: HarpFaceProps): ReactElement[] => {
   const { harpstrata, theme } = harpFaceProps
   const { degreeMatrix } = harpstrata
   const [ degreeRow ] = degreeMatrix
