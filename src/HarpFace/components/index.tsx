@@ -4,19 +4,21 @@ import type { ReactElement } from 'react'
 import { useStyles } from '../useStyles'
 import type { HarpFaceProps } from '../types'
 import { HoleNumberRow } from '../HoleNumberRow'
-import { HoleInteractionRows } from '../HoleInteractionRows'
+import { HoleInteractionRowsTop } from '../HoleInteractionRows'
+import { HoleInteractionRowsBottom } from '../HoleInteractionRows'
 
 
 export function HarpFace(props: HarpFaceProps): ReactElement {
   const classes = useStyles(props)
-  const { downToBlow, downFromDraw } = HoleInteractionRows(props)
+  const holeInteractionRowsTop = HoleInteractionRowsTop(props)
+  const holeInteractionRowsBottom = HoleInteractionRowsBottom(props)
   const holeNumbers = HoleNumberRow(props)
 
   return (
     <div className={classes.harpFaceClass}>
-      { downToBlow }
+      { holeInteractionRowsTop }
       { holeNumbers }
-      { downFromDraw }
+      { holeInteractionRowsBottom }
     </div>
   )
 }
