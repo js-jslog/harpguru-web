@@ -3,8 +3,8 @@ import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
 import type { HarpFaceProps } from '../types'
-import { generateHoleNumbers } from '../generateHoleNumbers'
 import { generateHoleInteractions } from '../generateHoleInteractions'
+import { generateHoleNumbers } from '../HoleNumber'
 
 
 export function HarpFace(props: HarpFaceProps): ReactElement {

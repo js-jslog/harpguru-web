@@ -2,8 +2,8 @@ import React from 'react'
 import type { ReactElement } from 'react'
 import type { Degree } from 'harpstrata'
 
-import type { HarpFaceProps } from '../types'
-import { HoleNumber } from '../HoleNumber'
+import { HoleNumber } from '../index'
+import type { HarpFaceProps } from '../../types'
 
 export const generateHoleNumbers = (harpFaceProps: HarpFaceProps): ReactElement[] => {
   const { harpstrata, theme } = harpFaceProps
