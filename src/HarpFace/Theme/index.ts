@@ -7,11 +7,11 @@ const getSizesMap = (themeProps: ThemeProps): SizesMap => {
   return {
     1: seedSize *1,
     2: seedSize *2,
-    3: seedSize *3,
-    4: seedSize *4,
-    5: seedSize *5,
-    6: seedSize *6,
-    7: seedSize *7,
+    3: seedSize *4,
+    4: seedSize *8,
+    5: seedSize *16,
+    6: seedSize *32,
+    7: seedSize *64,
   } as const
 }
 
