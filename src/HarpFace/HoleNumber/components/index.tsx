@@ -1,8 +1,8 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-import { useStyles } from '../useStyles'
-import type { HoleNumberProps } from '../types'
+import { useStyles } from '../index'
+import type { HoleNumberProps } from '../index'
 
 export function HoleNumber(props: HoleNumberProps): ReactElement {
   const { xCoord, theme } = props
