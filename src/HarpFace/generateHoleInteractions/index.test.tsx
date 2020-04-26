@@ -25,7 +25,7 @@ test('generateHoleInteractions returns two HoleInteraction arrays, the end of th
   const { harpstrata: { apparatus: { interactionMatrix }, degreeMatrix}} = harpFaceProps
   // This reducer assumes that there is a Blow row somewhere in the matrix
   // If there isn't then this isn't going to function
-  const blowRow = interactionMatrix.reduce((blowRow, thisRow) => {
+  const blowInteractionRow = interactionMatrix.reduce((blowRow, thisRow) => {
     const [ interaction ] = thisRow
     if (interaction === undefined) return blowRow
 
@@ -33,12 +33,12 @@ test('generateHoleInteractions returns two HoleInteraction arrays, the end of th
     if (interactionId === InteractionIds.Blow) return thisRow
     return blowRow
   })
-  const blowRowIndex = interactionMatrix.indexOf(blowRow)
-  const { [blowRowIndex]: blowDegreeRow } = degreeMatrix
+  const blowInteractionRowIndex = interactionMatrix.indexOf(blowInteractionRow)
+  const { [blowInteractionRowIndex]: blowDegreeRow } = degreeMatrix
   const [ lastBlow ] = blowDegreeRow.slice(-1)
   const { id: lastBlowId } = lastBlow || {id: 'fail'}
 
-  const { [blowRowIndex +1]: drawDegreeRow } = degreeMatrix
+  const { [blowInteractionRowIndex +1]: drawDegreeRow } = degreeMatrix
   const [ firstDraw ] = drawDegreeRow
   const { id: firstDrawId } = firstDraw || {id: 'fail'}
 
