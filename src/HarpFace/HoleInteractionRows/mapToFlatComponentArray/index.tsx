@@ -15,6 +15,5 @@ export const mapToFlatComponentArray = (props: HarpFaceProps): ReactElement[] =>
     })
   })
 
-  const flattened = mapped.flat()
-  return flattened
+  return mapped.flat()
 }
