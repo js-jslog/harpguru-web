@@ -1,10 +1,10 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-import { analysePosition } from './analysePosition'
+import { useStyles } from '../useStyles'
+import type { HoleInteractionProps } from '../types'
+import { analysePosition } from '../analysePosition'
 
-import { useStyles } from './useStyles'
-import type { HoleInteractionProps } from './types'
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { harpstrata, yxCoord } = props
