@@ -1,11 +1,10 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-import { generateHoleNumbers } from './generateHoleNumbers'
-import { generateHoleInteractions } from './generateHoleInteractions'
-
-import { useStyles } from './useStyles'
-import type { HarpFaceProps } from './types'
+import { useStyles } from '../useStyles'
+import type { HarpFaceProps } from '../types'
+import { generateHoleNumbers } from '../generateHoleNumbers'
+import { generateHoleInteractions } from '../generateHoleInteractions'
 
 
 export function HarpFace(props: HarpFaceProps): ReactElement {
@@ -22,4 +21,4 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
   )
 }
 
-export type { HarpFaceProps, YXCoord } from './types'
+export type { HarpFaceProps, YXCoord } from '../types'
