@@ -2,19 +2,24 @@ import { createUseStyles } from 'react-jss'
 
 import type { UseStylesProps } from '../types'
 
-const determineVisibility = (props: UseStylesProps): string => {
-  const { positionFacts: { thisDegree }} = props
-  return (thisDegree === undefined ? 'hidden' : 'visible')
+type Styles = {
+  readonly borderRadius: string;
+  readonly visibility: string;
 }
 
-const determineBorderRadias = (props: UseStylesProps): string => {
+const determineStyles = (props: UseStylesProps): Styles  => {
   const { theme: { sizesMap }} = props
-  return `${sizesMap[3]}px`
+  const { positionFacts: { thisDegree }} = props
+
+  const borderRadius = `${sizesMap[3]}px`
+  const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
+
+  return { borderRadius, visibility }
 }
 
 export const useStyles = createUseStyles({
   holeInteractionClass: {
-    'border-radius': (props: UseStylesProps): string => determineBorderRadias(props),
+    'border-radius': (props: UseStylesProps): string => determineStyles(props).borderRadius,
     'border-width': '0px',
     'background-color': 'black',
     color: 'white',
@@ -24,7 +29,7 @@ export const useStyles = createUseStyles({
     'margin-top': '5px',
     'margin-bottom': '5px',
     'text-align': 'center',
-    visibility: (props: UseStylesProps): string => determineVisibility(props),
+    visibility: (props: UseStylesProps): string => determineStyles(props).visibility,
     width: '25px',
   }
 })
