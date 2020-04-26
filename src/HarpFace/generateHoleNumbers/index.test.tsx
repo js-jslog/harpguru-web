@@ -9,7 +9,7 @@ import { generateHoleNumbers } from './index'
 
 
 const harpStrata = getHarpStrata(getApparatusIds()[0], getPozitionIds()[0])
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 const harpFaceProps: HarpFaceProps = {
   harpstrata: harpStrata,
   theme,

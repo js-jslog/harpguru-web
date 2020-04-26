@@ -22,7 +22,7 @@ const harpstrata: HarpStrata = {
     [undefined             , { id: DegreeIds.Third }],
   ]
 }
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 
 test('HarpFace renders a dom element with the required grid styles when a two column strata matrices are provided', () => {
   const expectedStyle = `

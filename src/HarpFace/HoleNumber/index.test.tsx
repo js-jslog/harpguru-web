@@ -5,7 +5,7 @@ import { getTheme } from '../../Theme'
 
 import { HoleNumber } from './index'
 
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 
 test('HoleNumber renders a dom element with the expected value included', () => {
   const { getByText } = render(<HoleNumber xCoord={0} theme={theme} />)

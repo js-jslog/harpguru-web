@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker'
 import { getTheme } from './Theme'
 import { HarpUI } from './HarpUI'
 
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 
 ReactDOM.render(
   <React.StrictMode>

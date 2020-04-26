@@ -5,7 +5,7 @@ import { getTheme } from '../Theme'
 
 import { HarpUI } from './index'
 
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 
 test('HarpUI renders a HarpFace', () => {
   const { container } = render(<HarpUI theme={theme} />)

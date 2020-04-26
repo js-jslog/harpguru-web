@@ -23,7 +23,7 @@ const harpstrata: HarpStrata = {
     [undefined             , { id: DegreeIds.Third }],
   ]
 }
-const theme = getTheme({seedSize: 1})
+const theme = getTheme()
 
 test('HoleInteraction renders a dom element with the expected value included', () => {
   const { getByText } = render(<HoleInteraction harpstrata={harpstrata} yxCoord={[0,1]} theme={theme} />)
