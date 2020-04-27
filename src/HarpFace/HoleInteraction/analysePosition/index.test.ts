@@ -4,10 +4,8 @@ import type { YXCoord } from '../../HarpFace'
 import { analysePosition } from './index'
 
 const { harpStrata } = exampleHarpFaceProps
-//const ourDegree = { id: DegreeIds.Flat2 }
-//const ourInteraction = { id: InteractionIds.Blow }
-const ourDegree = harpStrata.degreeMatrix[3][3]
-const ourInteraction = harpStrata.apparatus.interactionMatrix[3][3]
+const { degreeMatrix: [,,,[,,,ourDegree]]} = harpStrata
+const { apparatus: { interactionMatrix: [,,,[,,,ourInteraction]]}} = harpStrata
 
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
   const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
