@@ -1,19 +1,12 @@
 import React from 'react'
-import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionMatrix, InteractionIds } from 'harpstrata'
+import { InteractionMatrix, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import type { HarpFaceProps } from '../index'
-import { getTheme } from '../index'
+import { exampleHarpFaceProps } from '../testResources'
 
 import { HoleInteractionRowsTop } from './HoleInteractionRowsTop'
 import { HoleInteractionRowsBottom } from './HoleInteractionRowsBottom'
 
-const harpStrata = getHarpStrata(getApparatusIds()[0], getPozitionIds()[0])
-const theme = getTheme()
-const harpFaceProps: HarpFaceProps = {
-  harpStrata,
-  theme,
-}
 
 const getBlowInteractionRowIndex = (interactionMatrix: InteractionMatrix): number => {
   // This reducer assumes that there is a Blow row somewhere in the matrix
@@ -30,12 +23,12 @@ const getBlowInteractionRowIndex = (interactionMatrix: InteractionMatrix): numbe
   return interactionMatrix.indexOf(blowInteractionRow)
 }
 
-const { harpStrata: { apparatus: { interactionMatrix }, degreeMatrix}} = harpFaceProps
+const { harpStrata: { apparatus: { interactionMatrix }, degreeMatrix}} = exampleHarpFaceProps
 const blowInteractionRowIndex = getBlowInteractionRowIndex(interactionMatrix)
 
 
 test('HoleInteractionRowsTop returns an array, the end of which is a Blow', () => {
-  const downToBlow = HoleInteractionRowsTop(harpFaceProps)
+  const downToBlow = HoleInteractionRowsTop(exampleHarpFaceProps)
   const lastBlowHole = downToBlow.slice(-1)
   const { getByText: getByTextLastBlowHole } = render(<div>{lastBlowHole}</div>)
 
@@ -47,7 +40,7 @@ test('HoleInteractionRowsTop returns an array, the end of which is a Blow', () =
 })
 
 test('HoleInteractionRowsBottom returns an array, the start of which is a Draw', () => {
-  const downFromDraw = HoleInteractionRowsBottom(harpFaceProps)
+  const downFromDraw = HoleInteractionRowsBottom(exampleHarpFaceProps)
   const [ firstDrawHole ] = downFromDraw
   const { getByText: getByTextFirstDrawHole } = render(<div>{firstDrawHole}</div>)
 
