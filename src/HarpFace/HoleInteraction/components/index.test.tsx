@@ -20,6 +20,6 @@ test('HoleInteraction renders an invisible dom element if it is undefined', () =
 })
 
 test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
-  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [0,0] } />)
-  expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-0-0/)
+  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [2,0] } />)
+  expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-2-0/)
 })
