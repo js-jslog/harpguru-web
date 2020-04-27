@@ -12,7 +12,7 @@ type Styles = {
   readonly width: string;
 }
 
-const determineStyles = (props: UseStylesProps): Styles  => {
+const determineStyles = (props: UseStylesProps): Styles => {
   const { theme: { sizesMap }} = props
   const { positionFacts: { thisDegree }} = props
 
