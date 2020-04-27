@@ -1,6 +1,6 @@
 import type { HarpStrata, Degree, Interaction } from 'harpstrata'
 
-import type { YXCoord } from '../../index'
+import type { YXCoord } from '../../HarpFace'
 
 export type PositionFacts = {
   readonly thisDegree: Degree | undefined;

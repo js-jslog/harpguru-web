@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 
 import { mapToFlatComponentArray } from '../mapToFlatComponentArray'
 import { getBlowDrawBoundaryIndex } from '../getBlowDrawBoundaryIndex'
-import type { HarpFaceProps } from '../../types'
+import type { HarpFaceProps } from '../../index'
 
 
 export const HoleInteractionRowsTop = (props: HarpFaceProps): ReactElement[] => {

@@ -1,4 +1,4 @@
-export { HarpFace } from './components'
-export type { HarpFaceProps, YXCoord } from './types'
+export { HarpFace } from './HarpFace'
+export type { HarpFaceProps } from './HarpFace'
 export { getTheme } from './Theme'
 export type { Theme } from './Theme'

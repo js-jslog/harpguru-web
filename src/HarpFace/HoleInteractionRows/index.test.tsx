@@ -2,7 +2,7 @@ import React from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionMatrix, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import type { HarpFaceProps } from '../types'
+import type { HarpFaceProps } from '../index'
 import { getTheme } from '../index'
 
 import { HoleInteractionRowsTop } from './HoleInteractionRowsTop'

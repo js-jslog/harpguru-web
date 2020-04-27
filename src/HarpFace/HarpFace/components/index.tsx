@@ -3,9 +3,9 @@ import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
 import type { HarpFaceProps } from '../types'
-import { HoleNumberRow } from '../HoleNumberRow'
-import { HoleInteractionRowsTop } from '../HoleInteractionRows'
-import { HoleInteractionRowsBottom } from '../HoleInteractionRows'
+import { HoleNumberRow } from '../../HoleNumberRow'
+import { HoleInteractionRowsTop } from '../../HoleInteractionRows'
+import { HoleInteractionRowsBottom } from '../../HoleInteractionRows'
 
 
 export function HarpFace(props: HarpFaceProps): ReactElement {

@@ -1,7 +1,7 @@
 import { ApparatusIds, InteractionIds, DegreeIds } from 'harpstrata'
 import type { HarpStrata } from 'harpstrata'
 
-import type { YXCoord } from '../../index'
+import type { YXCoord } from '../../HarpFace'
 
 import { analysePosition } from './index'
 

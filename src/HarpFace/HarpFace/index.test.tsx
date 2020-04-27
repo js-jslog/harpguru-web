@@ -3,7 +3,9 @@ import type { HarpStrata } from 'harpstrata'
 import { ApparatusIds, DegreeIds, InteractionIds } from 'harpstrata'
 import { render } from '@testing-library/react'
 
-import { HarpFace, getTheme } from './index'
+import { getTheme } from '../index'
+
+import { HarpFace } from './index'
 
 const apparatus = {
   id: ApparatusIds.MajorDiatonic,
