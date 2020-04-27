@@ -6,4 +6,5 @@ export type HoleInteractionProps = HarpFaceProps & {
 }
 export type UseStylesProps = HoleInteractionProps & {
   readonly positionFacts: PositionFacts;
+  readonly holeIsActive: boolean;
 }

@@ -4,6 +4,8 @@ import type { UseStylesProps } from '../types'
 
 type Styles = {
   readonly borderRadius: string;
+  readonly backgroundColor: string;
+  readonly color: string;
   readonly fontSize: string;
   readonly height: string;
   readonly marginTop: string;
@@ -15,8 +17,11 @@ type Styles = {
 const determineStyles = (props: UseStylesProps): Styles => {
   const { theme: { sizesMap }} = props
   const { positionFacts: { thisDegree }} = props
+  const { holeIsActive } = props
 
   const borderRadius = `${sizesMap[4]}px`
+  const backgroundColor = (holeIsActive ? 'black' : 'transparent')
+  const color = (holeIsActive ? 'white' : 'black')
   const fontSize = `${sizesMap[5]}px`
   const height = `${sizesMap[6]}px`
   const marginTop = `${sizesMap[4]}px`
@@ -24,15 +29,15 @@ const determineStyles = (props: UseStylesProps): Styles => {
   const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
   const width = `${sizesMap[6]}px`
 
-  return { borderRadius, fontSize, height, marginTop, marginBottom, visibility, width }
+  return { borderRadius, backgroundColor, color, fontSize, height, marginTop, marginBottom, visibility, width }
 }
 
 export const useStyles = createUseStyles({
   holeInteractionClass: {
     'border-radius': (props: UseStylesProps): string => determineStyles(props).borderRadius,
     'border-width': '0px',
-    'background-color': 'black',
-    color: 'white',
+    'background-color': (props: UseStylesProps): string => determineStyles(props).backgroundColor,
+    color: (props: UseStylesProps): string => determineStyles(props).color,
     'font-size': (props: UseStylesProps): string => determineStyles(props).fontSize,
     height: (props: UseStylesProps): string => determineStyles(props).height,
     margin: 'auto',

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { DegreeIds } from 'harpstrata'
 
 import { useStyles } from '../useStyles'
 import type { HoleInteractionProps } from '../types'
@@ -13,15 +12,16 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const positionFacts: PositionFacts = analysePosition(harpStrata, yxCoord)
   const { thisDegree } = positionFacts
 
-  const useStyleProps = { ...props, positionFacts}
-  const classes = useStyles(useStyleProps)
   const [ yCoord, xCoord ] = yxCoord
 
-  const [ activeDegreeId, setActiveDegreeId ] = useState(thisDegree && thisDegree.id)
+  const [ holeIsActive, setHoleIsActive ] = useState(true)
+
+  const useStyleProps = { ...props, positionFacts, holeIsActive}
+  const classes = useStyles(useStyleProps)
 
   return (
-    <div onClick={(): void => setActiveDegreeId(DegreeIds.Root)} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
-      {activeDegreeId}
+    <div onClick={(): void => setHoleIsActive(!holeIsActive)} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+      {thisDegree && thisDegree.id}
     </div>
   )
 }
