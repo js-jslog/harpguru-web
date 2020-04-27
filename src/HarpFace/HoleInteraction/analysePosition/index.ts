@@ -8,9 +8,9 @@ export type PositionFacts = {
   readonly leftmost: boolean;
 }
 
-export const analysePosition = (harpstrata: HarpStrata, yxCoord: YXCoord): PositionFacts => {
-  const { degreeMatrix } = harpstrata
-  const { apparatus: {interactionMatrix} } = harpstrata
+export const analysePosition = (harpStrata: HarpStrata, yxCoord: YXCoord): PositionFacts => {
+  const { degreeMatrix } = harpStrata
+  const { apparatus: {interactionMatrix} } = harpStrata
   const [ yCoord, xCoord ] = yxCoord
   const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
   const { [yCoord]: {[xCoord]: thisInteraction} } = interactionMatrix

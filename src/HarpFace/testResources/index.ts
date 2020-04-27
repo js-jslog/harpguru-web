@@ -8,6 +8,6 @@ const harpStrata = getHarpStrata(ApparatusIds.MajorDiatonic, PozitionIds.First)
 const theme = getTheme()
 
 export const exampleHarpFaceProps: HarpFaceProps = {
-  harpstrata: harpStrata,
+  harpStrata,
   theme,
 }

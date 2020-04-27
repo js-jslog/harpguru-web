@@ -8,8 +8,8 @@ import type { PositionFacts } from '../analysePosition'
 
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
-  const { harpstrata, yxCoord } = props
-  const positionFacts: PositionFacts = analysePosition(harpstrata, yxCoord)
+  const { harpStrata, yxCoord } = props
+  const positionFacts: PositionFacts = analysePosition(harpStrata, yxCoord)
   const { thisDegree } = positionFacts
 
   const useStyleProps = { ...props, positionFacts}

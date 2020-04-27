@@ -15,7 +15,7 @@ const apparatus = {
     [undefined                , {id: InteractionIds.Draw}],
   ],
 }
-const harpstrata: HarpStrata = {
+const harpStrata: HarpStrata = {
   apparatus,
   degreeMatrix: [
     [{ id: DegreeIds.Root }, { id: DegreeIds.Second }],
@@ -29,6 +29,6 @@ test('HarpFace renders a dom element with the required grid styles when a two co
     display: grid;
     grid-template-columns: auto auto;
   `
-  const { container } = render(<HarpFace harpstrata={ harpstrata } theme={theme} />)
+  const { container } = render(<HarpFace harpStrata={ harpStrata } theme={theme} />)
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })

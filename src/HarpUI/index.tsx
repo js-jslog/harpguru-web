@@ -17,8 +17,8 @@ export function HarpUI(props: HarpUIProps): ReactElement {
   const [ aPozitionId ] = availablePozitionIds
   const [ activeHarpId, setActiveHarpId ] = useState(aHarpId)
   const [ activePozitionId, setActivePozitionId ] = useState(aPozitionId)
-  const harpstrata = getHarpStrata(activeHarpId, activePozitionId)
-  const [ activeHarpStrata, setHarpStrata ] = useState(harpstrata)
+  const harpStrata = getHarpStrata(activeHarpId, activePozitionId)
+  const [ activeHarpStrata, setHarpStrata ] = useState(harpStrata)
 
   const selectHarpId = (harpId: ApparatusIds): void => {
     setActiveHarpId(harpId)
@@ -35,7 +35,7 @@ export function HarpUI(props: HarpUIProps): ReactElement {
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace harpstrata={activeHarpStrata} theme={theme} />
+      <HarpFace harpStrata={activeHarpStrata} theme={theme} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>

@@ -11,7 +11,7 @@ import { HoleInteractionRowsBottom } from './HoleInteractionRowsBottom'
 const harpStrata = getHarpStrata(getApparatusIds()[0], getPozitionIds()[0])
 const theme = getTheme()
 const harpFaceProps: HarpFaceProps = {
-  harpstrata: harpStrata,
+  harpStrata,
   theme,
 }
 
@@ -30,7 +30,7 @@ const getBlowInteractionRowIndex = (interactionMatrix: InteractionMatrix): numbe
   return interactionMatrix.indexOf(blowInteractionRow)
 }
 
-const { harpstrata: { apparatus: { interactionMatrix }, degreeMatrix}} = harpFaceProps
+const { harpStrata: { apparatus: { interactionMatrix }, degreeMatrix}} = harpFaceProps
 const blowInteractionRowIndex = getBlowInteractionRowIndex(interactionMatrix)
 
 

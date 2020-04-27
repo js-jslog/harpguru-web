@@ -3,7 +3,7 @@ import type { HarpStrata } from 'harpstrata'
 import type { Theme } from '../../index'
 
 export type HarpFaceProps = {
-  harpstrata: HarpStrata;
+  harpStrata: HarpStrata;
   theme: Theme;
 }
 

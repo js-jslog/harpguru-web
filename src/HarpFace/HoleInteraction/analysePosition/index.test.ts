@@ -12,7 +12,7 @@ const apparatus = {
   halfstepIndexMatrix: [[ 0, 1]],
   interactionMatrix: [[ {id: InteractionIds.Blow}, ourInteraction ]],
 }
-const harpstrata: HarpStrata = {
+const harpStrata: HarpStrata = {
   apparatus,
   degreeMatrix: [[{ id: DegreeIds.Root }, ourDegree ]]
 }
@@ -20,15 +20,15 @@ const harpstrata: HarpStrata = {
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
   const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
   const yxCoordLeftmostFalse: YXCoord = [ 0, 1 ]
-  const { leftmost: leftmostTrue } = analysePosition(harpstrata, yxCoordLeftmostTrue)
-  const { leftmost: leftmostFalse } = analysePosition(harpstrata, yxCoordLeftmostFalse)
+  const { leftmost: leftmostTrue } = analysePosition(harpStrata, yxCoordLeftmostTrue)
+  const { leftmost: leftmostFalse } = analysePosition(harpStrata, yxCoordLeftmostFalse)
   expect(leftmostTrue).toBeTruthy()
   expect(leftmostFalse).toBeFalsy()
 })
 
 test('thisDegree & thisInteraction provide the degree and interaction at this position', () => {
   const ourDegreeCoord: YXCoord = [ 0, 1 ]
-  const { thisDegree, thisInteraction } = analysePosition(harpstrata, ourDegreeCoord)
+  const { thisDegree, thisInteraction } = analysePosition(harpStrata, ourDegreeCoord)
   expect(thisDegree).toBe(ourDegree)
   expect(thisInteraction).toBe(ourInteraction)
 })
