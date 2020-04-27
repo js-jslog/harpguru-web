@@ -1,21 +1,13 @@
-import { ApparatusIds, InteractionIds, DegreeIds } from 'harpstrata'
-import type { HarpStrata } from 'harpstrata'
-
+import { exampleHarpFaceProps } from '../../testResources'
 import type { YXCoord } from '../../HarpFace'
 
 import { analysePosition } from './index'
 
-const ourDegree = { id: DegreeIds.Flat2 }
-const ourInteraction = { id: InteractionIds.Blow }
-const apparatus = {
-  id: ApparatusIds.MajorDiatonic,
-  halfstepIndexMatrix: [[ 0, 1]],
-  interactionMatrix: [[ {id: InteractionIds.Blow}, ourInteraction ]],
-}
-const harpStrata: HarpStrata = {
-  apparatus,
-  degreeMatrix: [[{ id: DegreeIds.Root }, ourDegree ]]
-}
+const { harpStrata } = exampleHarpFaceProps
+//const ourDegree = { id: DegreeIds.Flat2 }
+//const ourInteraction = { id: InteractionIds.Blow }
+const ourDegree = harpStrata.degreeMatrix[3][3]
+const ourInteraction = harpStrata.apparatus.interactionMatrix[3][3]
 
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
   const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
@@ -27,7 +19,7 @@ test('leftmost is true if the provided coord has is 0 in the x axis and false ot
 })
 
 test('thisDegree & thisInteraction provide the degree and interaction at this position', () => {
-  const ourDegreeCoord: YXCoord = [ 0, 1 ]
+  const ourDegreeCoord: YXCoord = [ 3, 3 ]
   const { thisDegree, thisInteraction } = analysePosition(harpStrata, ourDegreeCoord)
   expect(thisDegree).toBe(ourDegree)
   expect(thisInteraction).toBe(ourInteraction)
