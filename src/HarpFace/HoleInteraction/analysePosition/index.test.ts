@@ -1,37 +1,24 @@
-import { DegreeIds } from 'harpstrata'
-import type { Degree } from 'harpstrata'
+import { exampleHarpFaceProps } from '../../testResources'
+import type { YXCoord } from '../../HarpFace'
 
 import { analysePosition } from './index'
 
-test('occupiedLeft is true if the provided coord has an occupied position to it\'s left', () => {
-  const degreeMatrix = [[
-    {id: DegreeIds.Root}, {id: DegreeIds.Second}
-  ]]
-  const yxCoord: [number, number] = [ 0, 1 ]
-  const { occupiedLeft } = analysePosition(degreeMatrix, yxCoord)
-  expect(occupiedLeft).toBeTruthy()
+const { harpStrata } = exampleHarpFaceProps
+const { degreeMatrix: [,,,[,,,ourDegree]]} = harpStrata
+const { apparatus: { interactionMatrix: [,,,[,,,ourInteraction]]}} = harpStrata
+
+test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
+  const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
+  const yxCoordLeftmostFalse: YXCoord = [ 0, 1 ]
+  const { leftmost: leftmostTrue } = analysePosition(harpStrata, yxCoordLeftmostTrue)
+  const { leftmost: leftmostFalse } = analysePosition(harpStrata, yxCoordLeftmostFalse)
+  expect(leftmostTrue).toBeTruthy()
+  expect(leftmostFalse).toBeFalsy()
 })
 
-test('occupiedLeft is false if the provided coord has an undefined position to it\'s left, or no position at all', () => {
-  const degreeMatrix = [
-    [{id: DegreeIds.Root}, {id: DegreeIds.Second}],
-    [undefined           , {id: DegreeIds.Second}],
-  ]
-  const yxCoordLeftmost: [number, number] = [ 0, 0 ]
-  const yxCoordUndefinedLeft: [number, number] = [ 1, 1 ]
-  const { occupiedLeft: leftmostOccupiedLeft} = analysePosition(degreeMatrix, yxCoordLeftmost)
-  const { occupiedLeft: undefinedLeftOccupiedLeft} = analysePosition(degreeMatrix, yxCoordUndefinedLeft)
-  expect(leftmostOccupiedLeft).toBeFalsy()
-  expect(undefinedLeftOccupiedLeft).toBeFalsy()
-})
-
-test('atHere provides the degree at this position', () => {
-  const ourDegree: Degree = {id: DegreeIds.Second}
-  const degreeMatrix = [
-    [{id: DegreeIds.Root}, ourDegree             ],
-    [undefined           , {id: DegreeIds.Second}],
-  ]
-  const ourDegreeCoords: [number, number] = [ 0, 1 ]
-  const { atHere } = analysePosition(degreeMatrix, ourDegreeCoords)
-  expect(atHere).toBe(ourDegree)
+test('thisDegree & thisInteraction provide the degree and interaction at this position', () => {
+  const ourDegreeCoord: YXCoord = [ 3, 3 ]
+  const { thisDegree, thisInteraction } = analysePosition(harpStrata, ourDegreeCoord)
+  expect(thisDegree).toBe(ourDegree)
+  expect(thisInteraction).toBe(ourInteraction)
 })

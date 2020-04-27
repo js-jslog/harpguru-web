@@ -1,25 +1,46 @@
 import { createUseStyles } from 'react-jss'
 
-import type { PositionFacts } from '../analysePosition'
+import type { UseStylesProps } from '../types'
 
-const determineLeftBorder = (facts: PositionFacts): string => {
-  const { atHere, occupiedLeft } = facts
-  return (atHere === undefined || !occupiedLeft ? '0px' : '1px')
+type Styles = {
+  readonly borderRadius: string;
+  readonly fontSize: string;
+  readonly height: string;
+  readonly marginTop: string;
+  readonly marginBottom: string;
+  readonly visibility: string;
+  readonly width: string;
 }
 
-const determineColor = (facts: PositionFacts): string => {
-  const { atHere } = facts
-  return (atHere === undefined ? 'white' : 'black')
+const determineStyles = (props: UseStylesProps): Styles => {
+  const { theme: { sizesMap }} = props
+  const { positionFacts: { thisDegree }} = props
+
+  const borderRadius = `${sizesMap[4]}px`
+  const fontSize = `${sizesMap[5]}px`
+  const height = `${sizesMap[6]}px`
+  const marginTop = `${sizesMap[4]}px`
+  const marginBottom = `${sizesMap[4]}px`
+  const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
+  const width = `${sizesMap[6]}px`
+
+  return { borderRadius, fontSize, height, marginTop, marginBottom, visibility, width }
 }
 
 export const useStyles = createUseStyles({
   holeInteractionClass: {
-    color: (facts: PositionFacts): string => determineColor(facts),
+    'border-radius': (props: UseStylesProps): string => determineStyles(props).borderRadius,
     'border-width': '0px',
-    'border-color': 'black',
-    'border-style': 'solid',
-    'border-left-width': (facts: PositionFacts): string => determineLeftBorder(facts),
-    'font-size': '30px',
+    'background-color': 'black',
+    color: 'white',
+    'font-size': (props: UseStylesProps): string => determineStyles(props).fontSize,
+    height: (props: UseStylesProps): string => determineStyles(props).height,
+    margin: 'auto',
+    'margin-top': (props: UseStylesProps): string => determineStyles(props).marginTop,
+    'margin-bottom': (props: UseStylesProps): string => determineStyles(props).marginBottom,
     'text-align': 'center',
+    visibility: (props: UseStylesProps): string => determineStyles(props).visibility,
+    width: (props: UseStylesProps): string => determineStyles(props).width,
+
   }
 })

@@ -1,8 +1,9 @@
-import type { DegreeMatrix } from 'harpstrata'
+import type { PositionFacts } from '../analysePosition'
+import type { HarpFaceProps, YXCoord } from '../../HarpFace'
 
-import type { YXCoords } from '../../index'
-
-export type HoleInteractionProps = {
-  readonly degreeMatrix: DegreeMatrix;
-  readonly yxCoord: YXCoords;
+export type HoleInteractionProps = HarpFaceProps & {
+  readonly yxCoord: YXCoord;
+}
+export type UseStylesProps = HoleInteractionProps & {
+  readonly positionFacts: PositionFacts;
 }

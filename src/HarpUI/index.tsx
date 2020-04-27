@@ -3,33 +3,39 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
+import type { Theme } from '../HarpFace'
 import { HarpFace } from '../HarpFace'
 
-export function HarpUI(): ReactElement {
+type HarpUIProps = {
+  readonly theme: Theme;
+}
+
+export function HarpUI(props: HarpUIProps): ReactElement {
   const harpIds = getApparatusIds()
   const availablePozitionIds = getPozitionIds()
   const [ aHarpId ] = harpIds
   const [ aPozitionId ] = availablePozitionIds
   const [ activeHarpId, setActiveHarpId ] = useState(aHarpId)
   const [ activePozitionId, setActivePozitionId ] = useState(aPozitionId)
-  const { degreeMatrix } = getHarpStrata(activeHarpId, activePozitionId)
-  const [ activeDegreeMatrix, setDegreeMatrix ] = useState(degreeMatrix)
+  const harpStrata = getHarpStrata(activeHarpId, activePozitionId)
+  const [ activeHarpStrata, setHarpStrata ] = useState(harpStrata)
 
   const selectHarpId = (harpId: ApparatusIds): void => {
     setActiveHarpId(harpId)
-    setDegreeMatrix(getHarpStrata(harpId, activePozitionId).degreeMatrix)
+    setHarpStrata(getHarpStrata(harpId, activePozitionId))
   }
   const selectPozitionId = (pozitionId: PozitionIds): void => {
     setActivePozitionId(pozitionId)
-    setDegreeMatrix(getHarpStrata(activeHarpId, pozitionId).degreeMatrix)
+    setHarpStrata(getHarpStrata(activeHarpId, pozitionId))
   }
+  const { theme } = props
   return (
     <div>
       <label htmlFor='apparatus'>Apparatus: </label>
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace degreeMatrix={activeDegreeMatrix}/>
+      <HarpFace harpStrata={activeHarpStrata} theme={theme} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>

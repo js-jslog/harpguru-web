@@ -3,10 +3,13 @@ import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
 import { HarpUI } from './HarpUI'
+import { getTheme } from './HarpFace'
+
+const theme = getTheme()
 
 ReactDOM.render(
   <React.StrictMode>
-    <HarpUI />
+    <HarpUI theme={theme} />
   </React.StrictMode>,
   document.getElementById('root')
 )
