@@ -1,6 +1,6 @@
-import type { HarpStrata, Degree, Interaction } from 'harpstrata'
+import type { Degree, Interaction } from 'harpstrata'
 
-import type { YXCoord } from '../../HarpFace'
+import type { HoleInteractionProps } from '../index'
 
 export type PositionFacts = {
   readonly thisDegree: Degree | undefined;
@@ -8,10 +8,10 @@ export type PositionFacts = {
   readonly leftmost: boolean;
 }
 
-export const analysePosition = (harpStrata: HarpStrata, yxCoord: YXCoord): PositionFacts => {
-  const { degreeMatrix } = harpStrata
-  const { apparatus: {interactionMatrix} } = harpStrata
-  const [ yCoord, xCoord ] = yxCoord
+export const analysePosition = (props: HoleInteractionProps): PositionFacts => {
+  const { harpStrata: { degreeMatrix }} = props
+  const { harpStrata: { apparatus: {interactionMatrix}}} = props
+  const { yxCoord: [ yCoord, xCoord ]} = props
   const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
   const { [yCoord]: {[xCoord]: thisInteraction} } = interactionMatrix
   const leftmost = (xCoord === 0)

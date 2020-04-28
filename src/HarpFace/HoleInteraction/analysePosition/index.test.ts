@@ -10,15 +10,15 @@ const { apparatus: { interactionMatrix: [,,,[,,,ourInteraction]]}} = harpStrata
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
   const yxCoordLeftmostTrue: YXCoord = [ 0, 0 ]
   const yxCoordLeftmostFalse: YXCoord = [ 0, 1 ]
-  const { leftmost: leftmostTrue } = analysePosition(harpStrata, yxCoordLeftmostTrue)
-  const { leftmost: leftmostFalse } = analysePosition(harpStrata, yxCoordLeftmostFalse)
+  const { leftmost: leftmostTrue } = analysePosition({ ...exampleHarpFaceProps, yxCoord: yxCoordLeftmostTrue})
+  const { leftmost: leftmostFalse } = analysePosition({ ...exampleHarpFaceProps, yxCoord: yxCoordLeftmostFalse})
   expect(leftmostTrue).toBeTruthy()
   expect(leftmostFalse).toBeFalsy()
 })
 
 test('thisDegree & thisInteraction provide the degree and interaction at this position', () => {
   const ourDegreeCoord: YXCoord = [ 3, 3 ]
-  const { thisDegree, thisInteraction } = analysePosition(harpStrata, ourDegreeCoord)
+  const { thisDegree, thisInteraction } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourDegreeCoord})
   expect(thisDegree).toBe(ourDegree)
   expect(thisInteraction).toBe(ourInteraction)
 })

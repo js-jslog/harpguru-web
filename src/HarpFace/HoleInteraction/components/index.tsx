@@ -8,12 +8,12 @@ import type { PositionFacts } from '../analysePosition'
 
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
-  const { harpStrata, yxCoord } = props
-  const positionFacts: PositionFacts = analysePosition(harpStrata, yxCoord)
+  const positionFacts: PositionFacts = analysePosition(props)
   const { thisDegree, thisInteraction } = positionFacts
   const degreeId: string | undefined = thisDegree && thisDegree.id
   const interactionId = thisInteraction && thisInteraction.id
 
+  const { yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
 
   const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
