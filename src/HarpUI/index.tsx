@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { getApparatusIds, getPozitionIds, getHarpStrata } from 'harpstrata'
-import type { PozitionIds, ApparatusIds, InteractionIds } from 'harpstrata'
+import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
+import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
 import type { Theme } from '../HarpFace'
 import { HarpFace } from '../HarpFace'
@@ -28,7 +28,9 @@ export function HarpUI(props: HarpUIProps): ReactElement {
     setActivePozitionId(pozitionId)
     setHarpStrata(getHarpStrata(activeHarpId, pozitionId))
   }
-  const inactiveInteractions: InteractionIds[] = []
+  const inactiveInteractions: InteractionIds[] = [
+    InteractionIds.OverBlow1, InteractionIds.OverDraw1
+  ]
   const { theme } = props
   return (
     <div>
