@@ -16,12 +16,11 @@ type Styles = {
 
 const determineStyles = (props: UseStylesProps): Styles => {
   const { theme: { sizesMap }} = props
-  const { positionFacts: { thisDegree }} = props
-  const { holeIsActive } = props
+  const { positionFacts: { thisDegree, isActive }} = props
 
   const borderRadius = `${sizesMap[4]}px`
-  const backgroundColor = (holeIsActive ? 'black' : 'transparent')
-  const color = (holeIsActive ? 'white' : 'black')
+  const backgroundColor = (isActive ? 'black' : 'transparent')
+  const color = (isActive ? 'white' : 'black')
   const fontSize = `${sizesMap[5]}px`
   const height = `${sizesMap[6]}px`
   const marginTop = `${sizesMap[4]}px`

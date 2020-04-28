@@ -18,8 +18,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
 
   const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
 
-  const holeIsActive = true
-  const useStyleProps = { ...props, positionFacts, holeIsActive }
+  const useStyleProps = { ...props, positionFacts }
   const classes = useStyles(useStyleProps)
 
   const setNextValueToDisplay = (): void => {
