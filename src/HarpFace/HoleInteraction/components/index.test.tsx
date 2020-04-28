@@ -24,9 +24,11 @@ test('HoleInteraction renders with a class identifying it\'s position in the mat
   expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-2-0/)
 })
 
-test('HoleInteraction renders a degree initially, but an interaction after a user click', () => {
+test('HoleInteraction renders a value toggled between degree and interaction by a click', () => {
   const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={[3,0]} />)
   expect(getByText(DegreeIds.Second)).toBeInTheDocument()
   fireEvent.click(getByText(DegreeIds.Second))
   expect(getByText(InteractionIds.Draw)).toBeInTheDocument()
+  fireEvent.click(getByText(InteractionIds.Draw))
+  expect(getByText(DegreeIds.Second)).toBeInTheDocument()
 })

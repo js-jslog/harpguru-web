@@ -22,8 +22,15 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const useStyleProps = { ...props, positionFacts, holeIsActive }
   const classes = useStyles(useStyleProps)
 
+  const setNextValueToDisplay = (): void => {
+    const orderedValuesToDisplay = [ degreeId, interactionId ]
+    const currentIndex = orderedValuesToDisplay.indexOf(valueToDisplay)
+    const nextValue = orderedValuesToDisplay[currentIndex +1] || orderedValuesToDisplay[0]
+    setValueToDisplay(nextValue)
+  }
+
   return (
-    <div onClick={(): void => setValueToDisplay(interactionId)} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+    <div onClick={(): void => setNextValueToDisplay()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
       {valueToDisplay}
     </div>
   )
