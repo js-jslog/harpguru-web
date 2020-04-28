@@ -10,18 +10,21 @@ import type { PositionFacts } from '../analysePosition'
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { harpStrata, yxCoord } = props
   const positionFacts: PositionFacts = analysePosition(harpStrata, yxCoord)
-  const { thisDegree } = positionFacts
+  const { thisDegree, thisInteraction } = positionFacts
+  const degreeId: string | undefined = thisDegree && thisDegree.id
+  const interactionId = thisInteraction && thisInteraction.id
 
   const [ yCoord, xCoord ] = yxCoord
 
-  const [ holeIsActive, setHoleIsActive ] = useState(true)
+  const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
 
-  const useStyleProps = { ...props, positionFacts, holeIsActive}
+  const holeIsActive = true
+  const useStyleProps = { ...props, positionFacts, holeIsActive }
   const classes = useStyles(useStyleProps)
 
   return (
-    <div onClick={(): void => setHoleIsActive(!holeIsActive)} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
-      {thisDegree && thisDegree.id}
+    <div onClick={(): void => setValueToDisplay(interactionId)} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+      {valueToDisplay}
     </div>
   )
 }

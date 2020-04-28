@@ -1,6 +1,6 @@
 import React from 'react'
-import { DegreeIds } from 'harpstrata'
-import { render } from '@testing-library/react'
+import { DegreeIds, InteractionIds } from 'harpstrata'
+import { render, fireEvent } from '@testing-library/react'
 
 import { exampleHarpFaceProps } from '../../testResources'
 
@@ -22,4 +22,11 @@ test('HoleInteraction renders an invisible dom element if it is undefined', () =
 test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
   const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [2,0] } />)
   expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-2-0/)
+})
+
+test('HoleInteraction renders a degree initially, but an interaction after a user click', () => {
+  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={[3,0]} />)
+  expect(getByText(DegreeIds.Second)).toBeInTheDocument()
+  fireEvent.click(getByText(DegreeIds.Second))
+  expect(getByText(InteractionIds.Draw)).toBeInTheDocument()
 })
