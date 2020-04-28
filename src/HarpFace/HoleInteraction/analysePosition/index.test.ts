@@ -22,3 +22,12 @@ test('thisDegree & thisInteraction provide the degree and interaction at this po
   expect(thisDegree).toBe(ourDegree)
   expect(thisInteraction).toBe(ourInteraction)
 })
+
+test('isActive is set to false if the position is in an inactive group and true otherwise', () => {
+  const inactiveCoord: YXCoord = [ 1, 0 ]
+  const activeCoord: YXCoord = [ 2, 0 ]
+  const { isActive: isActiveInactive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: inactiveCoord})
+  const { isActive: isActiveActive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: activeCoord})
+  expect(isActiveInactive).toBe(false)
+  expect(isActiveActive).toBe(true)
+})
