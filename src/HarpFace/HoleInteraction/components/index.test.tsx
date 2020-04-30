@@ -32,3 +32,11 @@ test('HoleInteraction renders a value toggled between degree and interaction by 
   fireEvent.click(getByText(InteractionIds.Draw))
   expect(getByText(DegreeIds.Second)).toBeInTheDocument()
 })
+
+test('HoleInteraction renders with transparent background if it is part of an inactive interaction group', () => {
+  const expectedStyle = `
+    background-color: transparent;
+  `
+  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [1,0] } />)
+  expect(getByText(DegreeIds.Flat3)).toHaveStyle(expectedStyle)
+})

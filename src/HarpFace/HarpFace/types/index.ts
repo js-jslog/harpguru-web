@@ -1,10 +1,11 @@
-import type { HarpStrata } from 'harpstrata'
+import type { HarpStrata, InteractionIds } from 'harpstrata'
 
 import type { Theme } from '../../index'
 
 export type HarpFaceProps = {
-  harpStrata: HarpStrata;
-  theme: Theme;
+  readonly harpStrata: HarpStrata;
+  readonly inactiveInteractions: InteractionIds[];
+  readonly theme: Theme;
 }
 
 export type YXCoord = [ number, number ]
