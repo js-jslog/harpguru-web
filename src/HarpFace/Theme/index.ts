@@ -1,3 +1,5 @@
+import { InteractionIds } from 'harpstrata'
+
 import type { Theme, ThemeProps, SizesMap } from './types'
 
 const defaultThemeParams = { seedSize: 1 } as const
@@ -22,15 +24,15 @@ const getSizesMap = (themeProps: ThemeProps): SizesMap => {
 export const getTheme = (themeProps: ThemeProps = defaultThemeParams): Theme => ({
   sizesMap: getSizesMap(themeProps),
   backgroundColors: {
-    BLOW: BLOW_COLOR_PRIMARY,
-    DRAW: DRAW_COLOR_PRIMARY,
-    BEND1: DRAW_COLOR_SECONDARY,
-    BEND2: DRAW_COLOR_SECONDARY,
-    BEND3: DRAW_COLOR_SECONDARY,
-    BLOWBEND1: BLOW_COLOR_SECONDARY,
-    BLOWBEND2: BLOW_COLOR_SECONDARY,
-    OVERDRAW1: DRAW_COLOR_SECONDARY,
-    OVERBLOW1: BLOW_COLOR_SECONDARY,
+    [ InteractionIds.Blow ]: BLOW_COLOR_PRIMARY,
+    [ InteractionIds.Draw ]: DRAW_COLOR_PRIMARY,
+    [ InteractionIds.Bend1 ]: DRAW_COLOR_SECONDARY,
+    [ InteractionIds.Bend2 ]: DRAW_COLOR_SECONDARY,
+    [ InteractionIds.Bend3 ]: DRAW_COLOR_SECONDARY,
+    [ InteractionIds.BlowBend1 ]: BLOW_COLOR_SECONDARY,
+    [ InteractionIds.BlowBend2 ]: BLOW_COLOR_SECONDARY,
+    [ InteractionIds.OverDraw1 ]: DRAW_COLOR_SECONDARY,
+    [ InteractionIds.OverBlow1 ]: BLOW_COLOR_SECONDARY,
   }
 })
 export type { Theme } from './types'
