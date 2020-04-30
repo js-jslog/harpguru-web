@@ -17,8 +17,7 @@ type Styles = {
 const determineStyles = (props: UseStylesProps): Styles => {
   const { theme: { sizesMap, backgroundColors }} = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
-  let themedBackgroundColor = 'transparent'
-  if (thisInteraction) themedBackgroundColor = backgroundColors[thisInteraction.id]
+  const themedBackgroundColor = (thisInteraction ? backgroundColors[thisInteraction.id] : 'transparent')
 
   const borderRadius = `${sizesMap[4]}px`
   const backgroundColor = (isActive ? themedBackgroundColor : 'transparent')
