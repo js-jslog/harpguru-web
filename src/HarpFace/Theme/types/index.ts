@@ -12,7 +12,7 @@ export type SizesMap = {
   readonly 7: number;
 }
 
-type BackgroundColor = {
+type ColorCollection = {
   readonly BLOW: string;
   readonly DRAW: string;
   readonly BEND1: string;
@@ -26,5 +26,6 @@ type BackgroundColor = {
 
 export type Theme = {
   readonly sizesMap: SizesMap;
-  readonly backgroundColors: BackgroundColor;
+  readonly backgroundColors: ColorCollection;
+  readonly colors: ColorCollection;
 }

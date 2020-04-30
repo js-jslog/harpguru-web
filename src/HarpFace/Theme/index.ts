@@ -7,6 +7,8 @@ const BLOW_COLOR_PRIMARY = '#FFEFE5' as const
 const BLOW_COLOR_SECONDARY = '#FFCB7C' as const
 const DRAW_COLOR_PRIMARY = '#D5E1F2' as const
 const DRAW_COLOR_SECONDARY = '#3C67A7' as const
+const COLOR_PRIMARY = 'black' as const
+const COLOR_SECONDARY = 'white' as const
 
 const getSizesMap = (themeProps: ThemeProps): SizesMap => {
   const { seedSize } = themeProps
@@ -33,6 +35,17 @@ export const getTheme = (themeProps: ThemeProps = defaultThemeParams): Theme => 
     [ InteractionIds.BlowBend2 ]: BLOW_COLOR_SECONDARY,
     [ InteractionIds.OverDraw1 ]: DRAW_COLOR_SECONDARY,
     [ InteractionIds.OverBlow1 ]: BLOW_COLOR_SECONDARY,
-  }
+  },
+  colors: {
+    [ InteractionIds.Blow ]: COLOR_PRIMARY,
+    [ InteractionIds.Draw ]: COLOR_PRIMARY,
+    [ InteractionIds.Bend1 ]: COLOR_SECONDARY,
+    [ InteractionIds.Bend2 ]: COLOR_SECONDARY,
+    [ InteractionIds.Bend3 ]: COLOR_SECONDARY,
+    [ InteractionIds.BlowBend1 ]: COLOR_SECONDARY,
+    [ InteractionIds.BlowBend2 ]: COLOR_SECONDARY,
+    [ InteractionIds.OverDraw1 ]: COLOR_SECONDARY,
+    [ InteractionIds.OverBlow1 ]: COLOR_SECONDARY,
+  },
 })
 export type { Theme } from './types'
