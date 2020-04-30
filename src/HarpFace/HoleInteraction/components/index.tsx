@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
@@ -17,6 +17,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const [ yCoord, xCoord ] = yxCoord
 
   const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
+  useEffect(() => { setValueToDisplay(degreeId)}, [degreeId])
 
   const useStyleProps = { ...props, positionFacts }
   const classes = useStyles(useStyleProps)
