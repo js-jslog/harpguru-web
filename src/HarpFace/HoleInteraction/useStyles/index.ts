@@ -15,11 +15,13 @@ type Styles = {
 }
 
 const determineStyles = (props: UseStylesProps): Styles => {
-  const { theme: { sizesMap }} = props
-  const { positionFacts: { thisDegree, isActive }} = props
+  const { theme: { sizesMap, backgroundColors }} = props
+  const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
+  let themedBackgroundColor = 'transparent'
+  if (thisInteraction) themedBackgroundColor = backgroundColors[thisInteraction.id]
 
   const borderRadius = `${sizesMap[4]}px`
-  const backgroundColor = (isActive ? 'black' : 'transparent')
+  const backgroundColor = (isActive ? themedBackgroundColor : 'transparent')
   const color = (isActive ? 'white' : 'black')
   const fontSize = `${sizesMap[5]}px`
   const height = `${sizesMap[6]}px`

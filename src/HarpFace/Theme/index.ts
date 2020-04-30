@@ -1,6 +1,10 @@
 import type { Theme, ThemeProps, SizesMap } from './types'
 
-const defaultTheme = { seedSize: 1 }
+const defaultThemeParams = { seedSize: 1 } as const
+const BLOW_COLOR_PRIMARY = '#FFEFE5' as const
+const BLOW_COLOR_SECONDARY = '#FFCB7C' as const
+const DRAW_COLOR_PRIMARY = '#D5E1F2' as const
+const DRAW_COLOR_SECONDARY = '#3C67A7' as const
 
 const getSizesMap = (themeProps: ThemeProps): SizesMap => {
   const { seedSize } = themeProps
@@ -15,7 +19,18 @@ const getSizesMap = (themeProps: ThemeProps): SizesMap => {
   } as const
 }
 
-export const getTheme = (themeProps: ThemeProps = defaultTheme): Theme => ({
+export const getTheme = (themeProps: ThemeProps = defaultThemeParams): Theme => ({
   sizesMap: getSizesMap(themeProps),
+  backgroundColors: {
+    BLOW: BLOW_COLOR_PRIMARY,
+    DRAW: DRAW_COLOR_PRIMARY,
+    BEND1: DRAW_COLOR_SECONDARY,
+    BEND2: DRAW_COLOR_SECONDARY,
+    BEND3: DRAW_COLOR_SECONDARY,
+    BLOWBEND1: BLOW_COLOR_SECONDARY,
+    BLOWBEND2: BLOW_COLOR_SECONDARY,
+    OVERDRAW1: DRAW_COLOR_SECONDARY,
+    OVERBLOW1: BLOW_COLOR_SECONDARY,
+  }
 })
 export type { Theme } from './types'
