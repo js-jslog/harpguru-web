@@ -16,10 +16,11 @@ type Styles = {
 }
 
 const determineStyles = (props: UseStylesProps): Styles => {
-  const { theme: { sizesMap, colors, backgroundColors }} = props
+  const { theme: { sizesMap, holeInteractionThemes }} = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
-  const themedColor = (thisInteraction ? colors[thisInteraction.id] : 'transparent')
-  const themedBackgroundColor = (thisInteraction ? backgroundColors[thisInteraction.id] : 'transparent')
+
+  const themedColor = (thisInteraction ? holeInteractionThemes[thisInteraction.id].color : 'transparent')
+  const themedBackgroundColor = (thisInteraction ? holeInteractionThemes[thisInteraction.id].backgroundColor : 'transparent')
 
   const borderRadius = `${sizesMap[4]}px`
   const backgroundColor = (isActive ? themedBackgroundColor : 'transparent')

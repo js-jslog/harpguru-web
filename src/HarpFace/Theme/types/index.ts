@@ -12,20 +12,23 @@ export type SizesMap = {
   readonly 7: number;
 }
 
-type ColorCollection = {
-  readonly BLOW: string;
-  readonly DRAW: string;
-  readonly BEND1: string;
-  readonly BEND2: string;
-  readonly BEND3: string;
-  readonly BLOWBEND1: string;
-  readonly BLOWBEND2: string;
-  readonly OVERDRAW1: string;
-  readonly OVERBLOW1: string;
+type HoleInteractionTheme = {
+  readonly color: string;
+  readonly backgroundColor: string;
+}
+type HoleInteractionThemes = {
+  readonly BLOW: HoleInteractionTheme;
+  readonly DRAW: HoleInteractionTheme;
+  readonly BEND1: HoleInteractionTheme;
+  readonly BEND2: HoleInteractionTheme;
+  readonly BEND3: HoleInteractionTheme;
+  readonly BLOWBEND1: HoleInteractionTheme;
+  readonly BLOWBEND2: HoleInteractionTheme;
+  readonly OVERDRAW1: HoleInteractionTheme;
+  readonly OVERBLOW1: HoleInteractionTheme;
 }
 
 export type Theme = {
   readonly sizesMap: SizesMap;
-  readonly backgroundColors: ColorCollection;
-  readonly colors: ColorCollection;
+  readonly holeInteractionThemes: HoleInteractionThemes;
 }
