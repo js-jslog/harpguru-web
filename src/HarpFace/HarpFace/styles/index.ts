@@ -6,10 +6,10 @@ import type { HarpFaceStyles } from './types'
 
 
 export const generateHarpFaceStyles = (theme: Theme): HarpFaceStyles => {
-  const { sizesMap } = theme
+  const { sizes } = theme
   const holeInteractionStyles = generateHoleInteractionStyles(theme)
   const holeNumberStyle = generateHoleNumberStyle(theme)
-  const { 7: columnWidths } = sizesMap
+  const { 7: columnWidths } = sizes
 
   return {holeInteractionStyles, holeNumberStyle, columnWidths}
 }

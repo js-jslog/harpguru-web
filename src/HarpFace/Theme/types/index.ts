@@ -1,9 +1,9 @@
-import type { SizesMap } from '../SizesMap'
+import type { ThemeSizes } from '../ThemeSizes'
 
 export type ThemePrimer = {
   readonly seedSize: number;
 }
 
 export type Theme = {
-  readonly sizesMap: SizesMap;
+  readonly sizes: ThemeSizes;
 }
