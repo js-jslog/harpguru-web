@@ -1,6 +1,6 @@
 import type { SizesMap } from '../SizesMap'
 
-export type ThemeProps = {
+export type ThemePrimer = {
   readonly seedSize: number;
 }
 
