@@ -38,6 +38,5 @@ export const useStyles = createUseStyles({
     'text-align': 'center',
     visibility: (props: UseStylesProps): string => determineStyles(props).visibility,
     width: (props: UseStylesProps): string => determineStyles(props).width,
-
   }
 })
