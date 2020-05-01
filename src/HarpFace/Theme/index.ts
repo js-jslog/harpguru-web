@@ -1,10 +1,10 @@
 import { getThemeSizes } from './ThemeSizes'
+import { getThemeColors } from './ThemeColors'
 
 import type { Theme, ThemePrimer } from './types'
 
-const defaultThemeParams = { seedSize: 1 } as const
-
-export const getTheme = (themePrimer: ThemePrimer = defaultThemeParams): Theme => ({
+export const getTheme = (themePrimer: ThemePrimer = {}): Theme => ({
   sizes: getThemeSizes(themePrimer),
+  colors: getThemeColors(themePrimer),
 })
 export type { Theme } from './types'
