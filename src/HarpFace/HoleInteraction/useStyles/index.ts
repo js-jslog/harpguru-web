@@ -4,10 +4,10 @@ import type { UseStylesProps } from '../types'
 import type { HoleInteractionStyles } from '../styles'
 
 const determineStyles = (props: UseStylesProps): HoleInteractionStyles => {
-  const { styles: { holeInteractionStyles } } = props
+  const { styles: { holeInteractionStylesMap } } = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
 
-  const styles = (thisInteraction ? holeInteractionStyles[thisInteraction.id] : {borderRadius: '0', color: 'transparent', backgroundColor: 'transparent', boxShadow: '0', fontSize: '0', height: '0', marginTop: '0', marginBottom: '0', width: '0'})
+  const styles = (thisInteraction ? holeInteractionStylesMap[thisInteraction.id] : holeInteractionStylesMap['undefined'])
 
   const { borderRadius } = styles
   const backgroundColor = (isActive ? styles.backgroundColor : 'transparent')

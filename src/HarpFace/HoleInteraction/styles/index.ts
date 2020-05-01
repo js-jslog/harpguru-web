@@ -46,6 +46,7 @@ export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionS
     [ InteractionIds.BlowBend2 ]: { ...BASE_STYLE, color: 'white', backgroundColor: BLOW_COLOR_SECONDARY },
     [ InteractionIds.OverDraw1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: DRAW_COLOR_SECONDARY },
     [ InteractionIds.OverBlow1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: BLOW_COLOR_SECONDARY },
+    'undefined': BASE_STYLE,
   } as const
 
   return HOLE_INTERACTION_STYLES

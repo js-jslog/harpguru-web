@@ -21,4 +21,5 @@ export type HoleInteractionStylesMap = {
   readonly BLOWBEND2: HoleInteractionStyles;
   readonly OVERDRAW1: HoleInteractionStyles;
   readonly OVERBLOW1: HoleInteractionStyles;
+  readonly undefined: HoleInteractionStyles;
 }
