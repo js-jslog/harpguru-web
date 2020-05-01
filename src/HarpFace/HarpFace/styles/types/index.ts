@@ -4,4 +4,5 @@ import type { HoleInteractionStyles } from '../../../HoleInteraction'
 export type HarpFaceStyles = {
   readonly holeInteractionStyles: HoleInteractionStyles;
   readonly holeNumberStyle: HoleNumberStyle;
+  readonly columnWidths: number;
 }
