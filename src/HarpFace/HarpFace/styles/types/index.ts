@@ -1,4 +1,4 @@
-import type { HoleInteractionStyles } from '../../HoleInteraction'
+import type { HoleInteractionStyles } from '../../../HoleInteraction'
 
 export type HarpFaceStyles = {
   readonly holeInteractionStyles: HoleInteractionStyles;
