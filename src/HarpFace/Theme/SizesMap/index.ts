@@ -1,4 +1,6 @@
-import type { ThemeProps, SizesMap } from '../types'
+import type { ThemeProps } from '../types'
+
+import type { SizesMap } from './types'
 
 export const getSizesMap = (themeProps: ThemeProps): SizesMap => {
   const { seedSize } = themeProps
@@ -12,3 +14,4 @@ export const getSizesMap = (themeProps: ThemeProps): SizesMap => {
     7: seedSize *64,
   } as const
 }
+export type { SizesMap } from './types'
