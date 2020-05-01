@@ -4,7 +4,7 @@ import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from '
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
 import type { Theme } from '../HarpFace'
-import { HarpFace } from '../HarpFace'
+import { HarpFace, generateHarpFaceStyles } from '../HarpFace'
 
 type HarpUIProps = {
   readonly theme: Theme;
@@ -32,13 +32,14 @@ export function HarpUI(props: HarpUIProps): ReactElement {
     InteractionIds.OverBlow1, InteractionIds.OverDraw1
   ]
   const { theme } = props
+  const styles = generateHarpFaceStyles()
   return (
     <div>
       <label htmlFor='apparatus'>Apparatus: </label>
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace harpStrata={activeHarpStrata} inactiveInteractions={inactiveInteractions} theme={theme} />
+      <HarpFace harpStrata={activeHarpStrata} inactiveInteractions={inactiveInteractions} theme={theme} styles={styles} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>
