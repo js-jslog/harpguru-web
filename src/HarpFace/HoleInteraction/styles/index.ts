@@ -7,16 +7,16 @@ import type { HoleInteractionStyles, HoleInteractionStylesMap } from './types'
 export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionStylesMap => {
   const { sizes, colors } = theme
 
-  const borderRadius = `${sizes[4]}px`
+  const borderRadius = `${sizes[6]}px`
   const backgroundColor = 'transparent'
-  const boxShadow = `0 ${sizes[3]}px ${sizes[3]}px #ddd`
+  const boxShadow = `0 ${sizes[4]}px ${sizes[4]}px #ddd`
   const color = 'transparent'
-  const fontSize = `${sizes[5]}px`
-  const height = `${sizes[6]}px`
-  const marginTop = `${sizes[4]}px`
-  const marginBottom = `${sizes[4]}px`
+  const fontSize = `${sizes[8]}px`
+  const height = `${sizes[9]}px`
+  const marginTop = `${sizes[6]}px`
+  const marginBottom = `${sizes[6]}px`
   const visibility = 'visible'
-  const width = `${sizes[6]}px`
+  const width = `${sizes[9]}px`
 
   const BASE_STYLE: HoleInteractionStyles = {
     borderRadius,

@@ -6,4 +6,7 @@ export type ThemeSizes = {
   readonly 5: number;
   readonly 6: number;
   readonly 7: number;
+  readonly 8: number;
+  readonly 9: number;
+  readonly 10: number;
 }

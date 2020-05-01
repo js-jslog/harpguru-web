@@ -8,7 +8,7 @@ export const generateHarpFaceStyles = (theme: Theme): HarpFaceStyles => {
   const holeInteractionStylesMap = generateHoleInteractionStylesMap(theme)
   const holeNumberStyles = generateHoleNumberStyles(theme)
   const { sizes } = theme
-  const { 7: columnWidths } = sizes
+  const { 10: columnWidths } = sizes
 
   return {holeInteractionStylesMap, holeNumberStyles, columnWidths}
 }
