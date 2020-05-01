@@ -1,4 +1,4 @@
 export { HoleInteraction } from './components'
 export type { HoleInteractionProps } from './types'
-export { generateHoleInteractionStyles } from './styles'
-export type { HoleInteractionStyles } from './styles'
+export { generateHoleInteractionStylesMap } from './styles'
+export type { HoleInteractionStylesMap } from './styles'

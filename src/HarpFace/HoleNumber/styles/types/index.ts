@@ -1,4 +1,4 @@
-export type HoleNumberStyle = {
+export type HoleNumberStyles = {
   readonly fontSize: string;
   readonly height: string;
   readonly marginTop: string;

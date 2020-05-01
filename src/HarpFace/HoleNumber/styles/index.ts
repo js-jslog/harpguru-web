@@ -1,11 +1,11 @@
 import type { Theme } from '../../Theme'
 
-import type { HoleNumberStyle } from './types'
+import type { HoleNumberStyles } from './types'
 
 
-export type { HoleNumberStyle } from './types'
+export type { HoleNumberStyles } from './types'
 
-export const generateHoleNumberStyle = (theme: Theme): HoleNumberStyle => {
+export const generateHoleNumberStyles = (theme: Theme): HoleNumberStyles => {
   const { sizes } = theme
 
   const fontSize = `${sizes[4]}px`

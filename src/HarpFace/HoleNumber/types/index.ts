@@ -1,6 +1,6 @@
-import type { HoleNumberStyle } from '../styles'
+import type { HoleNumberStyles } from '../styles'
 
 export type HoleNumberProps = {
   readonly xCoord: number;
-  readonly styles: HoleNumberStyle;
+  readonly styles: HoleNumberStyles;
 }

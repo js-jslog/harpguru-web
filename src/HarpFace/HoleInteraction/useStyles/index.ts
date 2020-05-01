@@ -1,9 +1,9 @@
 import { createUseStyles } from 'react-jss'
 
 import type { UseStylesProps } from '../types'
-import type { HoleInteractionStyle } from '../styles'
+import type { HoleInteractionStyles } from '../styles'
 
-const determineStyles = (props: UseStylesProps): HoleInteractionStyle => {
+const determineStyles = (props: UseStylesProps): HoleInteractionStyles => {
   const { styles: { holeInteractionStyles } } = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
 

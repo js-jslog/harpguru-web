@@ -2,9 +2,9 @@ import { InteractionIds } from 'harpstrata'
 
 import type { Theme } from '../../Theme'
 
-import type { HoleInteractionStyle, HoleInteractionStyles } from './types'
+import type { HoleInteractionStyles, HoleInteractionStylesMap } from './types'
 
-export const generateHoleInteractionStyles = (theme: Theme): HoleInteractionStyles => {
+export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionStylesMap => {
   const BLOW_COLOR_PRIMARY = '#FFEFE5' as const
   const BLOW_COLOR_SECONDARY = '#FFCB7C' as const
   const DRAW_COLOR_PRIMARY = '#D5E1F2' as const
@@ -23,7 +23,7 @@ export const generateHoleInteractionStyles = (theme: Theme): HoleInteractionStyl
   const visibility = 'visible'
   const width = `${sizes[6]}px`
 
-  const BASE_STYLE: HoleInteractionStyle = {
+  const BASE_STYLE: HoleInteractionStyles = {
     borderRadius,
     backgroundColor,
     boxShadow,
@@ -51,4 +51,4 @@ export const generateHoleInteractionStyles = (theme: Theme): HoleInteractionStyl
   return HOLE_INTERACTION_STYLES
 }
 
-export type { HoleInteractionStyle, HoleInteractionStyles } from './types'
+export type { HoleInteractionStyles, HoleInteractionStylesMap } from './types'

@@ -17,4 +17,4 @@ export function HoleNumber(props: HoleNumberProps): ReactElement {
   )
 }
 
-export type { HoleNumberStyle } from '../styles'
+export type { HoleNumberStyles } from '../styles'

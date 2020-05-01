@@ -1,4 +1,4 @@
-export type HoleInteractionStyle = {
+export type HoleInteractionStyles = {
   readonly borderRadius: string;
   readonly backgroundColor: string;
   readonly boxShadow: string;
@@ -11,14 +11,14 @@ export type HoleInteractionStyle = {
   readonly width: string;
 }
 
-export type HoleInteractionStyles = {
-  readonly BLOW: HoleInteractionStyle;
-  readonly DRAW: HoleInteractionStyle;
-  readonly BEND1: HoleInteractionStyle;
-  readonly BEND2: HoleInteractionStyle;
-  readonly BEND3: HoleInteractionStyle;
-  readonly BLOWBEND1: HoleInteractionStyle;
-  readonly BLOWBEND2: HoleInteractionStyle;
-  readonly OVERDRAW1: HoleInteractionStyle;
-  readonly OVERBLOW1: HoleInteractionStyle;
+export type HoleInteractionStylesMap = {
+  readonly BLOW: HoleInteractionStyles;
+  readonly DRAW: HoleInteractionStyles;
+  readonly BEND1: HoleInteractionStyles;
+  readonly BEND2: HoleInteractionStyles;
+  readonly BEND3: HoleInteractionStyles;
+  readonly BLOWBEND1: HoleInteractionStyles;
+  readonly BLOWBEND2: HoleInteractionStyles;
+  readonly OVERDRAW1: HoleInteractionStyles;
+  readonly OVERBLOW1: HoleInteractionStyles;
 }
