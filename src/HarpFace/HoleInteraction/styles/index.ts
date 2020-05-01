@@ -5,12 +5,7 @@ import type { Theme } from '../../Theme'
 import type { HoleInteractionStyles, HoleInteractionStylesMap } from './types'
 
 export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionStylesMap => {
-  const BLOW_COLOR_PRIMARY = '#FFEFE5' as const
-  const BLOW_COLOR_SECONDARY = '#FFCB7C' as const
-  const DRAW_COLOR_PRIMARY = '#D5E1F2' as const
-  const DRAW_COLOR_SECONDARY = '#3C67A7' as const
-
-  const { sizes } = theme
+  const { sizes, colors } = theme
 
   const borderRadius = `${sizes[4]}px`
   const backgroundColor = 'transparent'
@@ -37,15 +32,15 @@ export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionS
   }
 
   const HOLE_INTERACTION_STYLES = {
-    [ InteractionIds.Blow ]: { ...BASE_STYLE, color: 'black', backgroundColor: BLOW_COLOR_PRIMARY },
-    [ InteractionIds.Draw ]: { ...BASE_STYLE, color: 'black', backgroundColor: DRAW_COLOR_PRIMARY },
-    [ InteractionIds.Bend1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: DRAW_COLOR_SECONDARY },
-    [ InteractionIds.Bend2 ]: { ...BASE_STYLE, color: 'white', backgroundColor: DRAW_COLOR_SECONDARY },
-    [ InteractionIds.Bend3 ]: { ...BASE_STYLE, color: 'white', backgroundColor: DRAW_COLOR_SECONDARY },
-    [ InteractionIds.BlowBend1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: BLOW_COLOR_SECONDARY },
-    [ InteractionIds.BlowBend2 ]: { ...BASE_STYLE, color: 'white', backgroundColor: BLOW_COLOR_SECONDARY },
-    [ InteractionIds.OverDraw1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: DRAW_COLOR_SECONDARY },
-    [ InteractionIds.OverBlow1 ]: { ...BASE_STYLE, color: 'white', backgroundColor: BLOW_COLOR_SECONDARY },
+    [ InteractionIds.Blow ]: { ...BASE_STYLE, color: colors.blowHoleColor1 , backgroundColor: colors.blowHoleBackgroundColor1 },
+    [ InteractionIds.Draw ]: { ...BASE_STYLE, color: colors.drawHoleColor1 , backgroundColor: colors.drawHoleBackgroundColor1 },
+    [ InteractionIds.Bend1 ]: { ...BASE_STYLE, color: colors.drawHoleColor2 , backgroundColor: colors.drawHoleBackgroundColor2 },
+    [ InteractionIds.Bend2 ]: { ...BASE_STYLE, color: colors.drawHoleColor2 , backgroundColor: colors.drawHoleBackgroundColor2 },
+    [ InteractionIds.Bend3 ]: { ...BASE_STYLE, color: colors.drawHoleColor2 , backgroundColor: colors.drawHoleBackgroundColor2 },
+    [ InteractionIds.BlowBend1 ]: { ...BASE_STYLE, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 },
+    [ InteractionIds.BlowBend2 ]: { ...BASE_STYLE, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 },
+    [ InteractionIds.OverDraw1 ]: { ...BASE_STYLE, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 },
+    [ InteractionIds.OverBlow1 ]: { ...BASE_STYLE, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 },
     'undefined': BASE_STYLE,
   } as const
 

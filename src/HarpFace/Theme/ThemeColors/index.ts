@@ -7,10 +7,10 @@ const BLOWHOLE_BACKGROUNDCOLOR_2 = '#FFCB7C' as const
 const DRAWHOLE_BACKGROUNDCOLOR_1 = '#D5E1F2' as const
 const DRAWHOLE_BACKGROUNDCOLOR_2 = '#3C67A7' as const
 
-const BLOWHOLE_COLOR_1 = '#FFEFE5' as const
-const BLOWHOLE_COLOR_2 = '#FFCB7C' as const
-const DRAWHOLE_COLOR_1 = '#D5E1F2' as const
-const DRAWHOLE_COLOR_2 = '#3C67A7' as const
+const BLOWHOLE_COLOR_1 = '#333' as const
+const BLOWHOLE_COLOR_2 = '#FFF' as const
+const DRAWHOLE_COLOR_1 = '#333' as const
+const DRAWHOLE_COLOR_2 = '#FFF' as const
 
 const HOLE_SHADOW_COLOR = '#DDD' as const
 
