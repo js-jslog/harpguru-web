@@ -3,6 +3,7 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
+import { TROPICAL } from '../HarpFace/Theme/colorSchemes'
 import { getTheme } from '../HarpFace/Theme'
 import type { ThemePrimer } from '../HarpFace/Theme'
 import { HarpFace, generateHarpFaceStyles } from '../HarpFace'
@@ -29,6 +30,7 @@ export function HarpUI(): ReactElement {
     InteractionIds.OverBlow1, InteractionIds.OverDraw1
   ]
   const themePrimer: ThemePrimer = {
+    colors: TROPICAL,
   }
   const styles = generateHarpFaceStyles(getTheme(themePrimer))
   return (
