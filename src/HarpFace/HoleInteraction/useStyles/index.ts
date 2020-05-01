@@ -16,16 +16,17 @@ type Styles = {
 }
 
 const determineStyles = (props: UseStylesProps): Styles => {
-  const { theme: { sizesMap, holeInteractionThemes }} = props
+  const { theme: { sizesMap }, styles: { holeInteractionStyles } } = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
 
-  const themedColor = (thisInteraction ? holeInteractionThemes[thisInteraction.id].color : 'transparent')
-  const themedBackgroundColor = (thisInteraction ? holeInteractionThemes[thisInteraction.id].backgroundColor : 'transparent')
+  const styles = (thisInteraction ? holeInteractionStyles[thisInteraction.id] : {color: 'transparent', backgroundColor: 'transparent'})
+  const { backgroundColor: stylesBackgroundColor } = styles
+  const { color: stylesColor } = styles
 
   const borderRadius = `${sizesMap[4]}px`
-  const backgroundColor = (isActive ? themedBackgroundColor : 'transparent')
+  const backgroundColor = (isActive ? stylesBackgroundColor : 'transparent')
   const boxShadow = (isActive ? `0 ${sizesMap[3]}px ${sizesMap[3]}px #ddd` : '0')
-  const color = (isActive ? themedColor : 'black')
+  const color = (isActive ? stylesColor : 'black')
   const fontSize = `${sizesMap[5]}px`
   const height = `${sizesMap[6]}px`
   const marginTop = `${sizesMap[4]}px`
