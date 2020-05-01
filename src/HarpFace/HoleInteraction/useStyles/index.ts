@@ -1,38 +1,24 @@
 import { createUseStyles } from 'react-jss'
 
 import type { UseStylesProps } from '../types'
+import type { HoleInteractionStyle } from '../styles'
 
-type Styles = {
-  readonly borderRadius: string;
-  readonly backgroundColor: string;
-  readonly boxShadow: string;
-  readonly color: string;
-  readonly fontSize: string;
-  readonly height: string;
-  readonly marginTop: string;
-  readonly marginBottom: string;
-  readonly visibility: string;
-  readonly width: string;
-}
-
-const determineStyles = (props: UseStylesProps): Styles => {
-  const { theme: { sizesMap }, styles: { holeInteractionStyles } } = props
+const determineStyles = (props: UseStylesProps): HoleInteractionStyle => {
+  const { styles: { holeInteractionStyles } } = props
   const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
 
-  const styles = (thisInteraction ? holeInteractionStyles[thisInteraction.id] : {color: 'transparent', backgroundColor: 'transparent'})
-  const { backgroundColor: stylesBackgroundColor } = styles
-  const { color: stylesColor } = styles
+  const styles = (thisInteraction ? holeInteractionStyles[thisInteraction.id] : {borderRadius: '0', color: 'transparent', backgroundColor: 'transparent', boxShadow: '0', fontSize: '0', height: '0', marginTop: '0', marginBottom: '0', width: '0'})
 
-  const borderRadius = `${sizesMap[4]}px`
-  const backgroundColor = (isActive ? stylesBackgroundColor : 'transparent')
-  const boxShadow = (isActive ? `0 ${sizesMap[3]}px ${sizesMap[3]}px #ddd` : '0')
-  const color = (isActive ? stylesColor : 'black')
-  const fontSize = `${sizesMap[5]}px`
-  const height = `${sizesMap[6]}px`
-  const marginTop = `${sizesMap[4]}px`
-  const marginBottom = `${sizesMap[4]}px`
+  const { borderRadius } = styles
+  const backgroundColor = (isActive ? styles.backgroundColor : 'transparent')
+  const boxShadow = (isActive ? styles.boxShadow : '0')
+  const color = (isActive ? styles.color : 'black')
+  const { fontSize } = styles
+  const { height } = styles
+  const { marginTop } = styles
+  const { marginBottom } = styles
   const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
-  const width = `${sizesMap[6]}px`
+  const { width } = styles
 
   return { borderRadius, backgroundColor, boxShadow, color, fontSize, height, marginTop, marginBottom, visibility, width }
 }
