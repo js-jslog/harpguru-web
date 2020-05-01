@@ -8,3 +8,4 @@ export const getTheme = (themePrimer: ThemePrimer = {}): Theme => ({
   colors: getThemeColors(themePrimer),
 })
 export type { Theme, ThemePrimer } from './types'
+export type { ThemeColors } from './ThemeColors'
