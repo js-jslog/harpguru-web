@@ -17,7 +17,7 @@ const determineStyles = (props: UseStylesProps): HoleInteractionStyles => {
   const { height } = styles
   const { marginTop } = styles
   const { marginBottom } = styles
-  const visibility = (thisDegree === undefined ? 'hidden' : 'visible')
+  const visibility = (thisDegree === undefined ? styles.visibility : 'visible')
   const { width } = styles
 
   return { borderRadius, backgroundColor, boxShadow, color, fontSize, height, marginTop, marginBottom, visibility, width }
