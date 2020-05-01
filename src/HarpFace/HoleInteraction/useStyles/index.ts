@@ -11,8 +11,8 @@ const determineStyles = (props: UseStylesProps): HoleInteractionStyles => {
 
   const { borderRadius } = styles
   const backgroundColor = (isActive ? styles.backgroundColor : 'transparent')
-  const boxShadow = (isActive ? styles.boxShadow : '0')
-  const color = (isActive ? styles.color : 'black')
+  const boxShadow = (isActive ? styles.boxShadow : 'none')
+  const color = (isActive ? styles.color : '#ddd')
   const { fontSize } = styles
   const { height } = styles
   const { marginTop } = styles
