@@ -1,4 +1,4 @@
-import type { ThemeColors } from '../../index'
+import type { ThemeColors } from '../../ThemeColors'
 
 export enum ColorSchemeIds {
   Tropical = 'TROPICAL',
