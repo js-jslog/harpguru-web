@@ -12,3 +12,4 @@ export const getTheme = (themePrimer: ThemePrimer = defaultThemePrimer): Theme =
 })
 export type { Theme, ThemePrimer } from './types'
 export type { ThemeColors } from './ThemeColors'
+export { getActiveColorSchemeIds } from './ColorScheme'

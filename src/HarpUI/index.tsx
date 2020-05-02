@@ -3,10 +3,8 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
-import { getActiveColorSchemeIds } from '../HarpFace/Theme/ColorScheme'
-import { getTheme } from '../HarpFace/Theme'
-import type { ThemePrimer } from '../HarpFace/Theme'
-import { HarpFace, generateHarpFaceStyles } from '../HarpFace'
+import type { ThemePrimer } from '../HarpFace'
+import { HarpFace, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../HarpFace'
 
 export function HarpUI(): ReactElement {
   const harpIds = getApparatusIds()
