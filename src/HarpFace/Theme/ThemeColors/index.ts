@@ -1,4 +1,5 @@
 import type { ThemePrimer } from '../types'
+import { getColorScheme } from '../colorSchemes'
 
 import type { ThemeColors } from './types'
 
@@ -27,7 +28,8 @@ export const getThemeColors = (themeProps: ThemePrimer): ThemeColors => {
     holeShadowColor: HOLE_SHADOW_COLOR,
   } as const
 
-  const { colors } = themeProps
+  const { colorSchemeId } = themeProps
+  const colors = (colorSchemeId ? getColorScheme(colorSchemeId) : {})
 
   return { ...DEFAULT_THEMECOLORS, ...colors }
 }
