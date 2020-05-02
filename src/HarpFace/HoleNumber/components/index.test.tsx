@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { generateHoleNumberStyles } from '../index'
+import { generateHoleNumberStyles } from '../styles'
 import { getTheme } from '../../Theme'
 
 import { HoleNumber } from './index'
