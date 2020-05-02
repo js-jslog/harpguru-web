@@ -2,8 +2,8 @@ import type { ThemePrimer } from '../types'
 
 import type { ThemeSizes } from './types'
 
-export const getThemeSizes = (themeProps: ThemePrimer): ThemeSizes => {
-  const { seedSize } = themeProps
+export const getThemeSizes = (themePrimer: ThemePrimer): ThemeSizes => {
+  const { seedSize } = themePrimer
   return {
     1: seedSize *1,
     2: seedSize *1.618,
