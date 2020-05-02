@@ -2,7 +2,7 @@ import React from 'react'
 import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
-import type { HoleNumberProps } from '../index'
+import type { HoleNumberProps } from '../types'
 
 export function HoleNumber(props: HoleNumberProps): ReactElement {
   const { xCoord, styles } = props
