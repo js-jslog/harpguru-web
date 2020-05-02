@@ -38,7 +38,7 @@ export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionS
   const overDrawStyles = { ...baseStyles, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 }
   const overBlowStyles = { ...baseStyles, color: colors.blowHoleColor2 , backgroundColor: colors.blowHoleBackgroundColor2 }
 
-  const HOLE_INTERACTION_STYLES = {
+  const holeInteractionStyles = {
     [ InteractionIds.Blow ]: blowStyles,
     [ InteractionIds.Draw ]: drawStyles,
     [ InteractionIds.Bend1 ]: bendStyles,
@@ -51,7 +51,7 @@ export const generateHoleInteractionStylesMap = (theme: Theme): HoleInteractionS
     'undefined': baseStyles,
   } as const
 
-  return HOLE_INTERACTION_STYLES
+  return holeInteractionStyles
 }
 
 export type { HoleInteractionStyles, HoleInteractionStylesMap } from './types'
