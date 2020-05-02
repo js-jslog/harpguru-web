@@ -30,6 +30,7 @@ export function HarpUI(): ReactElement {
     InteractionIds.OverBlow1, InteractionIds.OverDraw1
   ]
   const themePrimer: ThemePrimer = {
+    seedSize: 0.8,
     colorSchemeId: getActiveColorSchemeIds()[0],
   }
   const styles = generateHarpFaceStyles(getTheme(themePrimer))
