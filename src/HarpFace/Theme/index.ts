@@ -1,6 +1,6 @@
-import { getActiveColorSchemeIds } from './colorSchemes'
 import { getThemeSizes } from './ThemeSizes'
 import { getThemeColors } from './ThemeColors'
+import { getActiveColorSchemeIds } from './ColorScheme'
 
 import type { Theme, ThemePrimer } from './types'
 

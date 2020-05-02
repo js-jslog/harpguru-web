@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getHarpStrata, InteractionIds } from 'harpstrata'
 import type { PozitionIds, ApparatusIds } from 'harpstrata'
 
-import { getActiveColorSchemeIds } from '../HarpFace/Theme/colorSchemes'
+import { getActiveColorSchemeIds } from '../HarpFace/Theme/ColorScheme'
 import { getTheme } from '../HarpFace/Theme'
 import type { ThemePrimer } from '../HarpFace/Theme'
 import { HarpFace, generateHarpFaceStyles } from '../HarpFace'

@@ -1,5 +1,5 @@
 import type { ThemePrimer } from '../types'
-import { getColorScheme } from '../colorSchemes'
+import { getColorScheme } from '../ColorScheme'
 
 import type { ThemeColors } from './types'
 

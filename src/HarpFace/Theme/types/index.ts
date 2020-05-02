@@ -1,6 +1,6 @@
-import type { ColorSchemeIds } from '../colorSchemes'
 import type { ThemeSizes } from '../ThemeSizes'
 import type { ThemeColors } from '../ThemeColors'
+import type { ColorSchemeIds } from '../ColorScheme'
 
 export type ThemePrimer = {
   readonly seedSize: number;
