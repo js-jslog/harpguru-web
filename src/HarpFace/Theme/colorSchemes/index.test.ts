@@ -1,6 +1,6 @@
 import { ColorSchemeIds, getActiveColorSchemeIds, getColorScheme } from './index'
 
-test('getActiveApparatusIds function returns an array of the available apparatus Ids', () => {
+test('getActiveColorSchemeIds function returns an array of the available ColorScheme Ids', () => {
   const colorSchemeIds = getActiveColorSchemeIds()
   expect(colorSchemeIds.includes(ColorSchemeIds.Tropical)).toBeTruthy()
 })
