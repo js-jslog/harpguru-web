@@ -3,8 +3,6 @@ import type { Theme } from '../../Theme'
 import type { HoleNumberStyles } from './types'
 
 
-export type { HoleNumberStyles } from './types'
-
 export const generateHoleNumberStyles = (theme: Theme): HoleNumberStyles => {
   const { sizes } = theme
 
@@ -16,3 +14,5 @@ export const generateHoleNumberStyles = (theme: Theme): HoleNumberStyles => {
 
   return { fontSize, height, marginTop, marginBottom, width }
 }
+
+export type { HoleNumberStyles } from './types'
