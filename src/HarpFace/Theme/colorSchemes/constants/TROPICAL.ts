@@ -1,17 +1,24 @@
 import type { ColorScheme } from '../types'
 import { ColorSchemeIds } from '../types'
 
-const BLOWHOLE_BACKGROUNDCOLOR_1 = '#264653' as const
-const BLOWHOLE_BACKGROUNDCOLOR_2 = '#f4a261' as const
-const DRAWHOLE_BACKGROUNDCOLOR_1 = '#2a9d8f' as const
-const DRAWHOLE_BACKGROUNDCOLOR_2 = '#e76f51' as const
+const DEEP_SEA_BLUE = '#264653' as const
+const PEACH = '#f4a261' as const
+const TEAL = '#2a9d8f' as const
+const ORANGE = '#e76f51' as const
+const WHITE = '#ffffff' as const
+const BASIC_GREY = '#dddddd' as const
 
-const BLOWHOLE_COLOR_1 = '#fff' as const
-const BLOWHOLE_COLOR_2 = '#264653' as const
-const DRAWHOLE_COLOR_1 = '#fff' as const
-const DRAWHOLE_COLOR_2 = '#264653' as const
+const BLOWHOLE_BACKGROUNDCOLOR_1 = DEEP_SEA_BLUE
+const BLOWHOLE_BACKGROUNDCOLOR_2 = PEACH
+const DRAWHOLE_BACKGROUNDCOLOR_1 = TEAL
+const DRAWHOLE_BACKGROUNDCOLOR_2 = ORANGE
 
-const HOLE_SHADOW_COLOR = '#DDD' as const
+const BLOWHOLE_COLOR_1 = WHITE
+const BLOWHOLE_COLOR_2 = DEEP_SEA_BLUE
+const DRAWHOLE_COLOR_1 = WHITE
+const DRAWHOLE_COLOR_2 = DEEP_SEA_BLUE
+
+const HOLE_SHADOW_COLOR = BASIC_GREY
 
 export const TROPICAL: ColorScheme = {
   id: ColorSchemeIds.Tropical,

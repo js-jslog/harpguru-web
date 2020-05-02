@@ -1,17 +1,24 @@
 import type { ColorScheme } from '../types'
 import { ColorSchemeIds } from '../types'
 
-const BLOWHOLE_BACKGROUNDCOLOR_1 = '#3d405b' as const
-const BLOWHOLE_BACKGROUNDCOLOR_2 = '#f2cc8f' as const
-const DRAWHOLE_BACKGROUNDCOLOR_1 = '#81b29a' as const
-const DRAWHOLE_BACKGROUNDCOLOR_2 = '#e07a5f' as const
+const GRANITE_BLUE = '#3d405b' as const
+const SAND = '#f2cc8f' as const
+const MOSS = '#81b29a' as const
+const ORANGE = '#e07a5f' as const
+const PALE_YELLOW = '#f4f1de' as const
+const BASIC_GREY = '#dddddd' as const
 
-const BLOWHOLE_COLOR_1 = '#f4f1de' as const
-const BLOWHOLE_COLOR_2 = '#3d405b' as const
-const DRAWHOLE_COLOR_1 = '#f4f1de' as const
-const DRAWHOLE_COLOR_2 = '#f4f1de' as const
+const BLOWHOLE_BACKGROUNDCOLOR_1 = GRANITE_BLUE
+const BLOWHOLE_BACKGROUNDCOLOR_2 = SAND
+const DRAWHOLE_BACKGROUNDCOLOR_1 = MOSS
+const DRAWHOLE_BACKGROUNDCOLOR_2 = ORANGE
 
-const HOLE_SHADOW_COLOR = '#DDD' as const
+const BLOWHOLE_COLOR_1 = PALE_YELLOW
+const BLOWHOLE_COLOR_2 = GRANITE_BLUE
+const DRAWHOLE_COLOR_1 = PALE_YELLOW
+const DRAWHOLE_COLOR_2 = PALE_YELLOW
+
+const HOLE_SHADOW_COLOR = BASIC_GREY
 
 export const SIXTIES: ColorScheme = {
   id: ColorSchemeIds.Sixties,
