@@ -1,21 +1,15 @@
-import type { Theme, ThemeProps, SizesMap } from './types'
+import { getThemeSizes } from './ThemeSizes'
+import { getThemeColors } from './ThemeColors'
+import { getActiveColorSchemeIds } from './ColorScheme'
 
-const defaultTheme = { seedSize: 1 }
+import type { Theme, ThemePrimer } from './types'
 
-const getSizesMap = (themeProps: ThemeProps): SizesMap => {
-  const { seedSize } = themeProps
-  return {
-    1: seedSize *1,
-    2: seedSize *2,
-    3: seedSize *4,
-    4: seedSize *8,
-    5: seedSize *16,
-    6: seedSize *32,
-    7: seedSize *64,
-  } as const
-}
-
-export const getTheme = (themeProps: ThemeProps = defaultTheme): Theme => ({
-  sizesMap: getSizesMap(themeProps),
+const [ defaultColorSchemeId ] = getActiveColorSchemeIds()
+const defaultThemePrimer = { seedSize: 1, colorSchemeId: defaultColorSchemeId }
+export const getTheme = (themePrimer: ThemePrimer = defaultThemePrimer): Theme => ({
+  sizes: getThemeSizes(themePrimer),
+  colors: getThemeColors(themePrimer),
 })
-export type { Theme } from './types'
+export type { Theme, ThemePrimer } from './types'
+export type { ThemeColors } from './ThemeColors'
+export { getActiveColorSchemeIds } from './ColorScheme'

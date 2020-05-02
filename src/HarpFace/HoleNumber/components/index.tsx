@@ -2,13 +2,13 @@ import React from 'react'
 import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
-import type { HoleNumberProps } from '../index'
+import type { HoleNumberProps } from '../types'
 
 export function HoleNumber(props: HoleNumberProps): ReactElement {
-  const { xCoord, theme } = props
+  const { xCoord, styles } = props
   const holeNumber = xCoord + 1
 
-  const classes = useStyles(theme)
+  const classes = useStyles(styles)
 
   return (
     <div className={`${classes.holeInteractionClass}`}>
@@ -16,3 +16,5 @@ export function HoleNumber(props: HoleNumberProps): ReactElement {
     </div>
   )
 }
+
+export type { HoleNumberStyles } from '../styles'

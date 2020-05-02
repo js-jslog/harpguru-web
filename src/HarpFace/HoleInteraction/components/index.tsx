@@ -19,8 +19,8 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
   useEffect(() => { setValueToDisplay(degreeId)}, [degreeId])
 
-  const useStyleProps = { ...props, positionFacts }
-  const classes = useStyles(useStyleProps)
+  const useStylesProps = { ...props, positionFacts }
+  const classes = useStyles(useStylesProps)
 
   const setNextValueToDisplay = (): void => {
     const orderedValuesToDisplay = [ degreeId, interactionId ]

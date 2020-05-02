@@ -3,10 +3,11 @@ import { createUseStyles } from 'react-jss'
 import type { HarpFaceProps } from '../index'
 
 const determineHarpFaceWidth = (props: HarpFaceProps): string => {
-  const { harpStrata: { degreeMatrix }, theme: { sizesMap }} = props
+  const { harpStrata: { degreeMatrix } } = props
   const [ degreeRow ] = degreeMatrix
   const { length: columnNumber } = degreeRow
-  return `${(sizesMap[7] * columnNumber)}px`
+  const { styles: { columnWidths } } = props
+  return `${(columnWidths * columnNumber)}px`
 }
 
 const constructColumnStyle = (props: HarpFaceProps): string => {

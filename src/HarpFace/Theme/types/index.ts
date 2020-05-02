@@ -1,17 +1,13 @@
-export type ThemeProps = {
-  readonly seedSize: number;
-}
+import type { ThemeSizes } from '../ThemeSizes'
+import type { ThemeColors } from '../ThemeColors'
+import type { ColorSchemeIds } from '../ColorScheme'
 
-export type SizesMap = {
-  readonly 1: number;
-  readonly 2: number;
-  readonly 3: number;
-  readonly 4: number;
-  readonly 5: number;
-  readonly 6: number;
-  readonly 7: number;
+export type ThemePrimer = {
+  readonly seedSize: number;
+  readonly colorSchemeId: ColorSchemeIds;
 }
 
 export type Theme = {
-  readonly sizesMap: SizesMap;
+  readonly sizes: ThemeSizes;
+  readonly colors: ThemeColors;
 }

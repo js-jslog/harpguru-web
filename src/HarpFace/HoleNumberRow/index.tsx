@@ -7,13 +7,13 @@ import type { HoleNumberProps } from '../HoleNumber'
 import { HoleNumber } from '../HoleNumber'
 
 export const HoleNumberRow = (harpFaceProps: HarpFaceProps): ReactElement[] => {
-  const { harpStrata, theme } = harpFaceProps
+  const { harpStrata, styles: {holeNumberStyles} } = harpFaceProps
   const { degreeMatrix } = harpStrata
   const [ degreeRow ] = degreeMatrix
 
   return degreeRow.map(function (degree: Degree | undefined, index: number) {
     const xCoord = index
-    const holeNumberProps: HoleNumberProps = { xCoord, theme }
+    const holeNumberProps: HoleNumberProps = { xCoord, styles: {...holeNumberStyles} }
     return <HoleNumber key={index} { ...holeNumberProps } />
   })
 }
