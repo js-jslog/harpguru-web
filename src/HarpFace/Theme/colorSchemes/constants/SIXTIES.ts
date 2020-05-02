@@ -8,27 +8,35 @@ const ORANGE = '#e07a5f' as const
 const PALE_YELLOW = '#f4f1de' as const
 const BASIC_GREY = '#dddddd' as const
 
-const BLOWHOLE_BACKGROUNDCOLOR_1 = GRANITE_BLUE
-const BLOWHOLE_BACKGROUNDCOLOR_2 = SAND
-const DRAWHOLE_BACKGROUNDCOLOR_1 = MOSS
-const DRAWHOLE_BACKGROUNDCOLOR_2 = ORANGE
+const blowBackgroundColor = GRANITE_BLUE
+const blowBendBackgroundColor = SAND
+const overBlowBackgroundColor = SAND
+const drawBackgroundColor = MOSS
+const bendBackgroundColor = ORANGE
+const overDrawBackgroundColor = ORANGE
 
-const BLOWHOLE_COLOR_1 = PALE_YELLOW
-const BLOWHOLE_COLOR_2 = GRANITE_BLUE
-const DRAWHOLE_COLOR_1 = PALE_YELLOW
-const DRAWHOLE_COLOR_2 = PALE_YELLOW
+const blowColor = PALE_YELLOW
+const blowBendColor = GRANITE_BLUE
+const overBlowColor = GRANITE_BLUE
+const drawColor = PALE_YELLOW
+const bendColor = PALE_YELLOW
+const overDrawColor = PALE_YELLOW
 
-const HOLE_SHADOW_COLOR = BASIC_GREY
+const holeShadowColor = BASIC_GREY
 
 export const SIXTIES: ColorScheme = {
   id: ColorSchemeIds.Sixties,
-  blowHoleBackgroundColor1: BLOWHOLE_BACKGROUNDCOLOR_1,
-  blowHoleBackgroundColor2: BLOWHOLE_BACKGROUNDCOLOR_2,
-  drawHoleBackgroundColor1: DRAWHOLE_BACKGROUNDCOLOR_1,
-  drawHoleBackgroundColor2: DRAWHOLE_BACKGROUNDCOLOR_2,
-  blowHoleColor1: BLOWHOLE_COLOR_1,
-  blowHoleColor2: BLOWHOLE_COLOR_2,
-  drawHoleColor1: DRAWHOLE_COLOR_1,
-  drawHoleColor2: DRAWHOLE_COLOR_2,
-  holeShadowColor: HOLE_SHADOW_COLOR,
+  blowBackgroundColor,
+  blowBendBackgroundColor,
+  overBlowBackgroundColor,
+  drawBackgroundColor,
+  bendBackgroundColor,
+  overDrawBackgroundColor,
+  blowColor,
+  blowBendColor,
+  overBlowColor,
+  drawColor,
+  bendColor,
+  overDrawColor,
+  holeShadowColor,
 } as const
