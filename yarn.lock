@@ -5246,10 +5246,10 @@ harmony-reflect@^1.4.6:
   resolved "https://registry.yarnpkg.com/harmony-reflect/-/harmony-reflect-1.6.1.tgz#c108d4f2bb451efef7a37861fdbdae72c9bdefa9"
   integrity sha512-WJTeyp0JzGtHcuMsi7rw2VwtkvLa+JyfEKJCFyfcS0+CDkjQ5lHPu7zEhFZP+PDSRrEgXa5Ah0l1MbgbE41XjA==
 
-harpstrata@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/harpstrata/-/harpstrata-2.0.0.tgz#ef96e59fc915aa40b8b04fd4c6a252e8506c8b39"
-  integrity sha512-j4EFDwaKvTG3lydgrdL+n+YIKEHUrmd/CHWdtfJ+krKze7NBiZi/s45exwmrQAvS6qE/hmikK9qMAy1BoMPCrw==
+harpstrata@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/harpstrata/-/harpstrata-3.0.1.tgz#a7a8281ac3fb8c356131326b2fc0d7709e433052"
+  integrity sha512-6u3R1727iuIn+7hUhk0WzNGUrs7crwkjgW4Y4+FMLvkhE5QlJpCMM2P0ZC8kwDO7Dlt8yyO2MQ4iZLDt/2oSpw==
 
 has-ansi@^2.0.0:
   version "2.0.0"
