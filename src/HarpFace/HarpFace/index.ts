@@ -1,4 +1,5 @@
 export { HarpFace } from './components'
+export { PresentationModes } from './types'
 export type { HarpFaceProps, YXCoord } from './types'
 export { generateHarpFaceStyles } from './styles'
 export type { HarpFaceStyles } from './styles'
