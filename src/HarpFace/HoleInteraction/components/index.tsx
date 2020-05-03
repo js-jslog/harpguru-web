@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
@@ -19,22 +19,12 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
 
   const presentationValue = (presentationMode === PresentationModes.Degree ? degreeId : pitchId)
 
-  const [ valueToDisplay, setValueToDisplay ] = useState(presentationValue)
-  useEffect(() => { setValueToDisplay(presentationValue)}, [presentationValue])
-
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)
 
-  const setNextValueToDisplay = (): void => {
-    const orderedValuesToDisplay = [ degreeId, pitchId ]
-    const currentIndex = orderedValuesToDisplay.indexOf(valueToDisplay)
-    const nextValue = orderedValuesToDisplay[currentIndex +1] || orderedValuesToDisplay[0]
-    setValueToDisplay(nextValue)
-  }
-
   return (
-    <div onClick={(): void => setNextValueToDisplay()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
-      {valueToDisplay}
+    <div className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+      {presentationValue}
     </div>
   )
 }
