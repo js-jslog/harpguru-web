@@ -9,9 +9,9 @@ import type { PositionFacts } from '../analysePosition'
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const positionFacts: PositionFacts = analysePosition(props)
-  const { thisDegree, thisInteraction } = positionFacts
+  const { thisDegree, thisPitch } = positionFacts
   const degreeId: string | undefined = thisDegree && thisDegree.id
-  const interactionId = thisInteraction && thisInteraction.id
+  const pitchId = thisPitch && thisPitch.id
 
   const { yxCoord } = props
   const [ yCoord, xCoord ] = yxCoord
@@ -23,7 +23,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const classes = useStyles(useStylesProps)
 
   const setNextValueToDisplay = (): void => {
-    const orderedValuesToDisplay = [ degreeId, interactionId ]
+    const orderedValuesToDisplay = [ degreeId, pitchId ]
     const currentIndex = orderedValuesToDisplay.indexOf(valueToDisplay)
     const nextValue = orderedValuesToDisplay[currentIndex +1] || orderedValuesToDisplay[0]
     setValueToDisplay(nextValue)
