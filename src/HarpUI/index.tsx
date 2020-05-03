@@ -4,7 +4,7 @@ import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata, Interactio
 import type { PozitionIds, ApparatusIds, PitchIds } from 'harpstrata'
 
 import type { ThemePrimer } from '../HarpFace'
-import { HarpFace, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../HarpFace'
+import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../HarpFace'
 
 export function HarpUI(): ReactElement {
   const harpIds = getApparatusIds()
@@ -18,6 +18,7 @@ export function HarpUI(): ReactElement {
   const [ activeHarpKeyPitchId, setActiveHarpKeyPitchId ] = useState(aHarpKeyPitchId)
   const harpStrata = getHarpStrata(activeHarpId, activePozitionId, activeHarpKeyPitchId)
   const [ activeHarpStrata, setHarpStrata ] = useState(harpStrata)
+  const [ activePresentationMode, setActivePresentationMode ] = useState(PresentationModes.Degree)
 
   const selectHarpId = (harpId: ApparatusIds): void => {
     setActiveHarpId(harpId)
@@ -25,10 +26,12 @@ export function HarpUI(): ReactElement {
   }
   const selectPozitionId = (pozitionId: PozitionIds): void => {
     setActivePozitionId(pozitionId)
+    setActivePresentationMode(PresentationModes.Degree)
     setHarpStrata(getHarpStrata(activeHarpId, pozitionId, activeHarpKeyPitchId))
   }
   const selectHarpKeyPitchId = (harpKeyPitch: PitchIds): void => {
     setActiveHarpKeyPitchId(harpKeyPitch)
+    setActivePresentationMode(PresentationModes.Pitch)
     setHarpStrata(getHarpStrata(activeHarpId, activePozitionId, harpKeyPitch))
   }
   const inactiveInteractions: InteractionIds[] = [
@@ -45,7 +48,7 @@ export function HarpUI(): ReactElement {
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace harpStrata={activeHarpStrata} inactiveInteractions={inactiveInteractions} styles={styles} />
+      <HarpFace harpStrata={activeHarpStrata} inactiveInteractions={inactiveInteractions} presentationMode={activePresentationMode} styles={styles} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>

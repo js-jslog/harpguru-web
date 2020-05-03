@@ -5,19 +5,22 @@ import { useStyles } from '../useStyles'
 import type { HoleInteractionProps } from '../types'
 import { analysePosition } from '../analysePosition'
 import type { PositionFacts } from '../analysePosition'
+import { PresentationModes } from '../../HarpFace'
 
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const positionFacts: PositionFacts = analysePosition(props)
   const { thisDegree, thisPitch } = positionFacts
   const degreeId: string | undefined = thisDegree && thisDegree.id
-  const pitchId = thisPitch && thisPitch.id
+  const pitchId: string | undefined = thisPitch && thisPitch.id
 
-  const { yxCoord } = props
+  const { yxCoord, presentationMode } = props
   const [ yCoord, xCoord ] = yxCoord
 
-  const [ valueToDisplay, setValueToDisplay ] = useState(degreeId)
-  useEffect(() => { setValueToDisplay(degreeId)}, [degreeId])
+  const presentationValue = (presentationMode === PresentationModes.Degree ? degreeId : pitchId)
+
+  const [ valueToDisplay, setValueToDisplay ] = useState(presentationValue)
+  useEffect(() => { setValueToDisplay(presentationValue)}, [presentationValue])
 
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)
