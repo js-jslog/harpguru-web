@@ -5,7 +5,13 @@ import type { HarpFaceProps } from '../HarpFace'
 import { PresentationModes, generateHarpFaceStyles } from '../HarpFace'
 
 
-const harpStrata = getHarpStrata(ApparatusIds.MajorDiatonic, PozitionIds.First, PitchIds.C)
+const harpStrataProps = {
+  apparatusId: ApparatusIds.MajorDiatonic,
+  pozitionId: PozitionIds.First,
+  keyPitchId: PitchIds.C,
+  activeIds: [],
+}
+const harpStrata = getHarpStrata(harpStrataProps)
 const inactiveInteractions: InteractionIds[] = [InteractionIds.OverBlow1]
 const { Degree: presentationMode } = PresentationModes
 const styles = generateHarpFaceStyles(getTheme())
