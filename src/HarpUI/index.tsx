@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata, InteractionIds } from 'harpstrata'
+import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata } from 'harpstrata'
 import type { HarpStrataProps, PozitionIds, ApparatusIds, PitchIds } from 'harpstrata'
 
 import type { ThemePrimer } from '../HarpFace'
@@ -50,9 +50,6 @@ export function HarpUI(): ReactElement {
     setActivePresentationMode(PresentationModes.Pitch)
     setHarpStrata(getHarpStrata(harpStrataProps))
   }
-  const inactiveInteractions: InteractionIds[] = [
-    InteractionIds.OverBlow1, InteractionIds.OverDraw1
-  ]
   const themePrimer: ThemePrimer = {
     seedSize: 0.8,
     colorSchemeId: getActiveColorSchemeIds()[0],
@@ -64,7 +61,7 @@ export function HarpUI(): ReactElement {
       <span id='apparatus'>{activeHarpId}</span>
       <label htmlFor='pozition'>Position: </label>
       <span id='pozition'>{activePozitionId}</span>
-      <HarpFace harpStrata={activeHarpStrata} inactiveInteractions={inactiveInteractions} presentationMode={activePresentationMode} styles={styles} />
+      <HarpFace harpStrata={activeHarpStrata} presentationMode={activePresentationMode} styles={styles} />
       <button onClick={(): void => selectPozitionId(availablePozitionIds[0])}>
         { availablePozitionIds[0] }
       </button>
