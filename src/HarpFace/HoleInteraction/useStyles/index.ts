@@ -1,11 +1,13 @@
 import { createUseStyles } from 'react-jss'
+import { IsActiveIds } from 'harpstrata'
 
 import type { UseStylesProps } from '../types'
 import type { HoleInteractionStyles } from '../styles'
 
 const determineStyles = (props: UseStylesProps): HoleInteractionStyles => {
   const { styles: { holeInteractionStylesMap } } = props
-  const { positionFacts: { thisDegree, thisInteraction, isActive }} = props
+  const { positionFacts: { thisDegree, thisInteraction, thisIsActive }} = props
+  const isActive = thisIsActive === IsActiveIds.Active
 
   const styles = (thisInteraction ? holeInteractionStylesMap[thisInteraction.id] : holeInteractionStylesMap['undefined'])
 
