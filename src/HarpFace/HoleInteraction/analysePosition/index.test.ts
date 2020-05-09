@@ -17,19 +17,11 @@ test('leftmost is true if the provided coord has is 0 in the x axis and false ot
   expect(leftmostFalse).toBeFalsy()
 })
 
-test('thisDegree, thisPitch & thisInteraction provide the degree, pitch and interaction at this position', () => {
+test('thisDegree, thisPitch, thisInteraction & thisIsActive provide the degree, pitch, interaction and isActive status at this position', () => {
   const ourCoord: YXCoord = [ 3, 3 ]
-  const { thisDegree, thisPitch, thisInteraction } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourCoord})
+  const { thisDegree, thisPitch, thisInteraction, thisIsActive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourCoord})
   expect(thisDegree).toBe(ourDegree)
   expect(thisPitch).toBe(ourPitch)
   expect(thisInteraction).toBe(ourInteraction)
-})
-
-test('isActive is set to false if the position is in an inactive group and true otherwise', () => {
-  const inactiveCoord: YXCoord = [ 1, 0 ]
-  const activeCoord: YXCoord = [ 2, 0 ]
-  const { isActive: isActiveInactive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: inactiveCoord})
-  const { isActive: isActiveActive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: activeCoord})
-  expect(isActiveInactive).toBe(false)
-  expect(isActiveActive).toBe(true)
+  expect(thisIsActive).toBe(thisIsActive)
 })
