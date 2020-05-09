@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata } from 'harpstrata'
-import type { HarpStrataProps, PozitionIds, ApparatusIds, PitchIds } from 'harpstrata'
+import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata, PitchIds, DegreeIds } from 'harpstrata'
+import type { HarpStrataProps, PozitionIds, ApparatusIds } from 'harpstrata'
 
 import type { ThemePrimer } from '../HarpFace'
 import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../HarpFace'
@@ -10,6 +10,8 @@ export function HarpUI(): ReactElement {
   const harpIds = getApparatusIds()
   const availablePozitionIds = getPozitionIds()
   const availablePitchIds = getPitchIds()
+  const activeDegreeIds = [ DegreeIds.Root ]
+  const activePitchIds = [ PitchIds.C ]
   const [ aHarpId ] = harpIds
   const [ aPozitionId ] = availablePozitionIds
   const [ aHarpKeyPitchId ] = availablePitchIds
@@ -18,7 +20,7 @@ export function HarpUI(): ReactElement {
   const [ activeHarpKeyPitchId, setActiveHarpKeyPitchId ] = useState(aHarpKeyPitchId)
   const harpStrataProps: HarpStrataProps = {
     apparatusId: activeHarpId, pozitionId: activePozitionId,
-    keyPitchId: activeHarpKeyPitchId, activeIds: []
+    keyPitchId: activeHarpKeyPitchId, activeIds: activeDegreeIds,
   }
   const harpStrata = getHarpStrata(harpStrataProps)
   const [ activeHarpStrata, setHarpStrata ] = useState(harpStrata)
@@ -27,7 +29,7 @@ export function HarpUI(): ReactElement {
   const selectHarpId = (harpId: ApparatusIds): void => {
     const harpStrataProps: HarpStrataProps = {
       apparatusId: harpId, pozitionId: activePozitionId,
-      keyPitchId: activeHarpKeyPitchId, activeIds: []
+      keyPitchId: activeHarpKeyPitchId, activeIds: activeDegreeIds,
     }
     setActiveHarpId(harpId)
     setHarpStrata(getHarpStrata(harpStrataProps))
@@ -35,7 +37,7 @@ export function HarpUI(): ReactElement {
   const selectPozitionId = (pozitionId: PozitionIds): void => {
     const harpStrataProps: HarpStrataProps = {
       apparatusId: activeHarpId, pozitionId: pozitionId,
-      keyPitchId: activeHarpKeyPitchId, activeIds: []
+      keyPitchId: activeHarpKeyPitchId, activeIds: activeDegreeIds,
     }
     setActivePozitionId(pozitionId)
     setActivePresentationMode(PresentationModes.Degree)
@@ -44,7 +46,7 @@ export function HarpUI(): ReactElement {
   const selectHarpKeyPitchId = (harpKeyPitch: PitchIds): void => {
     const harpStrataProps: HarpStrataProps = {
       apparatusId: activeHarpId, pozitionId: activePozitionId,
-      keyPitchId: harpKeyPitch, activeIds: []
+      keyPitchId: harpKeyPitch, activeIds: activePitchIds,
     }
     setActiveHarpKeyPitchId(harpKeyPitch)
     setActivePresentationMode(PresentationModes.Pitch)
