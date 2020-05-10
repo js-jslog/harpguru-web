@@ -1,11 +1,14 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 
-export function DisplayModeToggler(): ReactElement {
+import { DisplayModeTogglerProps } from '../types'
+
+export function DisplayModeToggler(props: DisplayModeTogglerProps): ReactElement {
+  const { setDisplayMode } = props
   return (
     <div>
-      <input type='button' value='Degree' />
-      <input type='button' value='Pitch' />
+      <input type='button' value='Degree' onClick={(): void => setDisplayMode()} />
+      <input type='button' value='Pitch' onClick={(): void => setDisplayMode()} />
     </div>
   )
 }
