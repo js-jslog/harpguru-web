@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { ReactElement } from 'react'
 import { getApparatusIds, getPozitionIds, getPitchIds, getHarpStrata } from 'harpstrata'
 import type { InteractionIds } from 'harpstrata'
@@ -9,8 +9,6 @@ import { DisplayModeToggler } from '../../ControlPanel/DisplayModeToggler'
 import type { DisplayModeTogglerProps } from '../../ControlPanel/DisplayModeToggler'
 import { ControlPanel } from '../../ControlPanel'
 
-const setDisplayMode = (): void => {return}
-const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
 
 const [ apparatusId ] = getApparatusIds()
 const [ pozitionId ] = getPozitionIds()
@@ -23,12 +21,14 @@ const themePrimer: ThemePrimer = {
 
 const harpStrata = getHarpStrata(apparatusId, pozitionId, pitchId)
 const inactiveInteractions: InteractionIds[] = []
-const { Degree: presentationMode } = PresentationModes
 const styles = generateHarpFaceStyles(getTheme(themePrimer))
 
-const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
 
 export function HarpGuru(): ReactElement {
+  const [ activeDisplayMode, setDisplayMode ] = useState(PresentationModes.Degree)
+  const presentationMode = activeDisplayMode
+  const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
+  const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>
       <ControlPanel />
