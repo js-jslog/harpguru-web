@@ -7,3 +7,8 @@ test('HarpGuru renders a dom element with a \'Harp Position\' label for the cont
   const { getByText } = render(<HarpGuru />)
   expect(getByText('Harp Position')).toBeInTheDocument()
 })
+
+test('HarpGuru renders a dom element with a HarpFace with a b7 hole in it', () => {
+  const { getAllByText } = render(<HarpGuru />)
+  expect(getAllByText('b7')[0]).toBeInTheDocument()
+})
