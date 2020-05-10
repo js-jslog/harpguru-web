@@ -5,7 +5,7 @@ import type { PozitionButtonProps } from '../types'
 
 export function PozitionButton(props: PozitionButtonProps): ReactElement {
   return (
-    <div onClick={(): void => props.onClickFunction()}>
+    <div onClick={props.onClickFunction()}>
       {props.label}
     </div>
   )
