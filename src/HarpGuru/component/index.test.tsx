@@ -12,3 +12,9 @@ test('HarpGuru renders a dom element with a HarpFace with a b7 hole in it', () =
   const { getAllByText } = render(<HarpGuru />)
   expect(getAllByText('b7')[0]).toBeInTheDocument()
 })
+
+test('HarpGuru renders a dom element with a DisplayModeToggler in it', () => {
+  const { getByText } = render(<HarpGuru />)
+  expect(getByText('Degree')).toBeInTheDocument()
+  expect(getByText('Pitch')).toBeInTheDocument()
+})
