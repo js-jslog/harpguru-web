@@ -9,7 +9,6 @@ import { PozitionButton } from '../../ControlPanel/PozitionButtons/PozitionButto
 import type { PozitionButtonProps } from '../../ControlPanel/PozitionButtons/PozitionButton'
 import { DisplayModeToggler } from '../../ControlPanel/DisplayModeToggler'
 import type { DisplayModeTogglerProps } from '../../ControlPanel/DisplayModeToggler'
-import { ControlPanel } from '../../ControlPanel'
 
 
 const [ apparatusId ] = getApparatusIds()
