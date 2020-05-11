@@ -7,9 +7,8 @@ import { PozitionButton } from '../../PozitionButton'
 
 export function PozitionButtons(props: PozitionButtonsProps): ReactElement {
   const { First: id } = PozitionIds
-  const label = 'First'
   const { setPozitionId } = props
-  const firstPozitionButtonProps = { id, label, setPozitionId }
+  const firstPozitionButtonProps = { id, setPozitionId }
 
   return (
     <div>
