@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import { getApparatusIds, getPozitionIds, PozitionIds, getPitchIds, getHarpStrata } from 'harpstrata'
+import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, getHarpStrata } from 'harpstrata'
 import type { HarpStrata, InteractionIds } from 'harpstrata'
 
 import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
@@ -27,6 +27,9 @@ export function HarpGuru(): ReactElement {
   const [ activeHarpStrata, setHarpStrata ] = useState(initialHarpStrata)
   const [ activeDisplayMode, setDisplayMode ] = useState(PresentationModes.Degree)
 
+  const setApparatusId = (apparatusId: ApparatusIds): void => {
+    setHarpStrata(getHarpStrata(apparatusId, pozitionId, pitchId))
+  }
   const setPozitionId = (pozitionId: PozitionIds): void => {
     setHarpStrata(getHarpStrata(apparatusId, pozitionId, pitchId))
   }
@@ -34,7 +37,7 @@ export function HarpGuru(): ReactElement {
   const harpStrata = activeHarpStrata
   const presentationMode = activeDisplayMode
 
-  const controlPanelProps: ControlPanelProps = { setPozitionId, setDisplayMode }
+  const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setDisplayMode }
   const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>
