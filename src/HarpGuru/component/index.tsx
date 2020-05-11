@@ -5,10 +5,10 @@ import type { HarpStrata, InteractionIds } from 'harpstrata'
 
 import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../HarpFace'
-import { PozitionButton } from '../../ControlPanel/PozitionButtons/PozitionButton'
-import type { PozitionButtonProps } from '../../ControlPanel/PozitionButtons/PozitionButton'
 import { DisplayModeToggler } from '../../ControlPanel/DisplayModeToggler'
 import type { DisplayModeTogglerProps } from '../../ControlPanel/DisplayModeToggler'
+import { ControlPanel } from '../../ControlPanel'
+import type { ControlPanelProps } from '../../ControlPanel'
 
 
 const [ apparatusId ] = getApparatusIds()
@@ -37,13 +37,11 @@ export function HarpGuru(): ReactElement {
   const presentationMode = activeDisplayMode
 
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
-  const firstPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.First, setPozitionId }
-  const secondPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.Second, setPozitionId }
+  const controlPanelProps: ControlPanelProps = { setPozitionId }
   const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>
-      <PozitionButton {...firstPozitionButtonProps} />
-      <PozitionButton {...secondPozitionButtonProps} />
+      <ControlPanel {...controlPanelProps} />
       <DisplayModeToggler {...displayModeTogglerProps} />
       <HarpFace {...harpFaceProps} />
     </div>
