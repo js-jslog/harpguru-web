@@ -43,7 +43,6 @@ export function HarpGuru(): ReactElement {
   const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>
-      <ControlPanel />
       <PozitionButton {...firstPozitionButtonProps} />
       <PozitionButton {...secondPozitionButtonProps} />
       <DisplayModeToggler {...displayModeTogglerProps} />
