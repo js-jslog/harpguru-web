@@ -2,6 +2,8 @@ import React from 'react'
 import { PozitionIds } from 'harpstrata'
 import { render, screen, fireEvent, getByText } from '@testing-library/react'
 
+import { PresentationModes } from '../../HarpFace'
+
 import { HarpGuru } from './index'
 
 
@@ -12,19 +14,19 @@ test('HarpGuru renders a dom element with a HarpFace with a b7 hole in it', () =
 
 test('HarpGuru renders a dom element with a DisplayModeToggler in it', () => {
   const { getByText } = render(<HarpGuru />)
-  expect(getByText('Degree')).toBeInTheDocument()
-  expect(getByText('Pitch')).toBeInTheDocument()
+  expect(getByText(PresentationModes.Degree)).toBeInTheDocument()
+  expect(getByText(PresentationModes.Pitch)).toBeInTheDocument()
 })
 
 test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeToggle option is selected', () => {
   const { queryByText, getByText, getAllByText } = render(<HarpGuru />)
-  fireEvent.click(getByText('Degree'))
+  fireEvent.click(getByText(PresentationModes.Degree))
   expect(getAllByText('b7')[0]).toBeInTheDocument()
   expect(queryByText('Ab')).toBeNull()
-  fireEvent.click(getByText('Pitch'))
+  fireEvent.click(getByText(PresentationModes.Pitch))
   expect(getAllByText('Ab')[0]).toBeInTheDocument()
   expect(queryByText('b7')).toBeNull()
-  fireEvent.click(getByText('Degree'))
+  fireEvent.click(getByText(PresentationModes.Degree))
   expect(getAllByText('b7')[0]).toBeInTheDocument()
   expect(queryByText('Ab')).toBeNull()
 })

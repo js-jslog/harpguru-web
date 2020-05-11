@@ -8,8 +8,8 @@ export function DisplayModeToggler(props: DisplayModeTogglerProps): ReactElement
   const { setDisplayMode } = props
   return (
     <div>
-      <input type='button' value='Degree' onClick={(): void => setDisplayMode(PresentationModes.Degree)} />
-      <input type='button' value='Pitch' onClick={(): void => setDisplayMode(PresentationModes.Pitch)} />
+      <input type='button' value={PresentationModes.Degree} onClick={(): void => setDisplayMode(PresentationModes.Degree)} />
+      <input type='button' value={PresentationModes.Pitch} onClick={(): void => setDisplayMode(PresentationModes.Pitch)} />
     </div>
   )
 }
