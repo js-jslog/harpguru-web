@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, getByText } from '@testing-library/react'
 
 import { HarpGuru } from './index'
 
@@ -30,4 +30,16 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
   fireEvent.click(getByText('Degree'))
   expect(getAllByText('b7')[0]).toBeInTheDocument()
   expect(queryByText('Ab')).toBeNull()
+})
+
+test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
+  render(<HarpGuru />)
+  fireEvent.click(screen.getByText('First'))
+  const [ rootHoleContainer ] = screen.getAllByText('1')
+  fireEvent.click(screen.getByText('Second'))
+  const changedHole = getByText(rootHoleContainer, '4')
+  expect(changedHole).toBeInTheDocument()
+  fireEvent.click(screen.getByText('First'))
+  const changedBackHole = getByText(rootHoleContainer, '1')
+  expect(changedBackHole).toBeInTheDocument()
 })
