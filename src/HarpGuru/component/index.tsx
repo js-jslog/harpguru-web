@@ -37,8 +37,8 @@ export function HarpGuru(): ReactElement {
   const presentationMode = activeDisplayMode
 
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
-  const firstPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.First, label: 'First', setPozitionId }
-  const secondPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.Second, label: 'Second', setPozitionId }
+  const firstPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.First, setPozitionId }
+  const secondPozitionButtonProps: PozitionButtonProps = { id: PozitionIds.Second, setPozitionId }
   const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>

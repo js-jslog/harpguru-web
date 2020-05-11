@@ -1,4 +1,5 @@
 import React from 'react'
+import { PozitionIds } from 'harpstrata'
 import { render, fireEvent } from '@testing-library/react'
 
 import type { PozitionButtonsProps } from '../types'
@@ -19,7 +20,7 @@ test('PozitionButtons renders a first position button which calls the passed fun
 
   const { getByText } = render(<PozitionButtons {...pozitionButtonsProps } />)
 
-  expect(getByText('First')).toBeInTheDocument()
-  fireEvent.click(getByText('First'))
+  expect(getByText(PozitionIds.First)).toBeInTheDocument()
+  fireEvent.click(getByText(PozitionIds.First))
   expect(setPozitionId.mock.calls.length).toBe(1)
 })

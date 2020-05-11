@@ -8,19 +8,17 @@ import { PozitionButton } from './index'
 
 test('PozitionButton renders a component with the parameter label on it', () => {
   const { First: id } = PozitionIds
-  const label = 'First'
   const setPozitionId = jest.fn()
-  const pozitionButtonProps: PozitionButtonProps = { id, label, setPozitionId }
+  const pozitionButtonProps: PozitionButtonProps = { id, setPozitionId }
   const { getByText } = render(<PozitionButton {...pozitionButtonProps} />)
-  expect(getByText(label)).toBeInTheDocument()
+  expect(getByText(id)).toBeInTheDocument()
 })
 
 test('PozitionButton renders a component which calls a paramaterised function when clicked', () => {
   const { First: id } = PozitionIds
-  const label = 'First'
   const setPozitionId = jest.fn()
-  const pozitionButtonProps: PozitionButtonProps = { id, label, setPozitionId }
+  const pozitionButtonProps: PozitionButtonProps = { id, setPozitionId }
   const { getByText } = render(<PozitionButton {...pozitionButtonProps} />)
-  fireEvent.click(getByText(label))
+  fireEvent.click(getByText(id))
   expect(setPozitionId.mock.calls.length).toBe(1)
 })

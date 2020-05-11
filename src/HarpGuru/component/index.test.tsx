@@ -1,4 +1,5 @@
 import React from 'react'
+import { PozitionIds } from 'harpstrata'
 import { render, screen, fireEvent, getByText } from '@testing-library/react'
 
 import { HarpGuru } from './index'
@@ -30,12 +31,12 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
 
 test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
   render(<HarpGuru />)
-  fireEvent.click(screen.getByText('First'))
+  fireEvent.click(screen.getByText(PozitionIds.First))
   const [ rootHoleContainer ] = screen.getAllByText('1')
-  fireEvent.click(screen.getByText('Second'))
+  fireEvent.click(screen.getByText(PozitionIds.Second))
   const changedHole = getByText(rootHoleContainer, '4')
   expect(changedHole).toBeInTheDocument()
-  fireEvent.click(screen.getByText('First'))
+  fireEvent.click(screen.getByText(PozitionIds.First))
   const changedBackHole = getByText(rootHoleContainer, '1')
   expect(changedBackHole).toBeInTheDocument()
 })
