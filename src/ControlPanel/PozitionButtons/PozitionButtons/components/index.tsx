@@ -4,16 +4,19 @@ import { PozitionIds } from 'harpstrata'
 
 import type { PozitionButtonsProps } from '../types'
 import { PozitionButton } from '../../PozitionButton'
+import type { PozitionButtonProps } from '../../PozitionButton'
 
 export function PozitionButtons(props: PozitionButtonsProps): ReactElement {
-  const { First: id } = PozitionIds
+  const { First, Second } = PozitionIds
   const { setPozitionId } = props
-  const firstPozitionButtonProps = { id, setPozitionId }
+  const firstPozitionButtonProps: PozitionButtonProps = { id: First, setPozitionId }
+  const secondPozitionButtonProps: PozitionButtonProps = { id: Second, setPozitionId }
 
   return (
     <div>
       <div>Harp Position</div>
       <PozitionButton {...firstPozitionButtonProps} />
+      <PozitionButton {...secondPozitionButtonProps} />
     </div>
   )
 }
