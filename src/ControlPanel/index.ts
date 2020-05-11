@@ -1,2 +1,2 @@
-export { ControlPanel } from './components'
-export type { ControlPanelProps } from './types'
+export { ControlPanel } from './ControlPanel'
+export type { ControlPanelProps } from './ControlPanel'
