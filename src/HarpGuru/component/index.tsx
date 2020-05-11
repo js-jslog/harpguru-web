@@ -5,8 +5,6 @@ import type { HarpStrata, InteractionIds } from 'harpstrata'
 
 import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../HarpFace'
-import { DisplayModeToggler } from '../../ControlPanel/DisplayModeToggler'
-import type { DisplayModeTogglerProps } from '../../ControlPanel/DisplayModeToggler'
 import { ControlPanel } from '../../ControlPanel'
 import type { ControlPanelProps } from '../../ControlPanel'
 
@@ -36,13 +34,11 @@ export function HarpGuru(): ReactElement {
   const harpStrata = activeHarpStrata
   const presentationMode = activeDisplayMode
 
-  const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
-  const controlPanelProps: ControlPanelProps = { setPozitionId }
+  const controlPanelProps: ControlPanelProps = { setPozitionId, setDisplayMode }
   const harpFaceProps: HarpFaceProps = { harpStrata, inactiveInteractions, presentationMode, styles }
   return (
     <div>
       <ControlPanel {...controlPanelProps} />
-      <DisplayModeToggler {...displayModeTogglerProps} />
       <HarpFace {...harpFaceProps} />
     </div>
   )
