@@ -1,5 +1,5 @@
 import React from 'react'
-import { PozitionIds, PitchIds } from 'harpstrata'
+import { DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
 import { render, screen, fireEvent, getAllByText, getByText } from '@testing-library/react'
 
 import { PresentationModes } from '../../HarpFace'
@@ -63,4 +63,26 @@ test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are s
   fireEvent.click(screen.getByText(PozitionIds.First))
   const changedBackHole = getByText(rootHoleContainer, '1')
   expect(changedBackHole).toBeInTheDocument()
+})
+
+test('The Pozition state of the HarpFace persists even after the Pitch has been shifted', () => {
+  render(<HarpGuru />)
+  const controlPanel = screen.getByText('Control Panel')
+  const harpFace = screen.getByText('Harp Face')
+
+  fireEvent.click(getByText(controlPanel, PresentationModes.Degree))
+
+  const [ rootHole ] = getAllByText(harpFace, DegreeIds.Root)
+  expect(rootHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PozitionIds.Second))
+
+  const fourthHole = getByText(rootHole, DegreeIds.Fourth)
+  expect(fourthHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+  fireEvent.click(getByText(controlPanel, PitchIds.Db))
+
+  const stillFourthHole = getByText(rootHole, DegreeIds.Fourth)
+  expect(stillFourthHole).toBeInTheDocument()
 })
