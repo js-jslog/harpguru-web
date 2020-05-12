@@ -14,7 +14,7 @@ export function ApparatusButtons(props: ApparatusButtonsProps): ReactElement {
 
   return (
     <div>
-      <div>Harp Position</div>
+      <div>Harp Apparatus</div>
       <ApparatusButton {...majorDiatonicApparatusButtonProps} />
       <ApparatusButton {...countryTunedApparatusButtonProps} />
     </div>

@@ -6,6 +6,13 @@ import { PresentationModes } from '../../../HarpFace'
 
 import { DisplayModeToggler } from './index'
 
+test('DisplayModeToggler renders a component with both \'Display Mode\' title', () => {
+  const setDisplayMode = jest.fn()
+  const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
+  const { getByText } = render(<DisplayModeToggler {...displayModeTogglerProps} />)
+  expect(getByText('Display Mode')).toBeInTheDocument()
+})
+
 test('DisplayModeToggler renders a component with both \'Degree\' and \'Pitch\' buttons', () => {
   const setDisplayMode = jest.fn()
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }

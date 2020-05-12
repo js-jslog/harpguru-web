@@ -31,6 +31,7 @@ export function HarpGuru(): ReactElement {
     setHarpStrata(getHarpStrata(apparatusId, pozitionId, pitchId))
   }
   const setPozitionId = (pozitionId: PozitionIds): void => {
+    //const { apparatus: { id: apparatusId }, pitchId } = activeHarpStrata
     setHarpStrata(getHarpStrata(apparatusId, pozitionId, pitchId))
   }
   const setPitchId = (pitchId: PitchIds): void => {

@@ -14,7 +14,7 @@ export function PitchButtons(props: PitchButtonsProps): ReactElement {
 
   return (
     <div>
-      <div>Harp Position</div>
+      <div>Harp Key Pitch</div>
       <PitchButton {...pitchAPitchButtonProps} />
       <PitchButton {...pitchBbPitchButtonProps} />
     </div>
