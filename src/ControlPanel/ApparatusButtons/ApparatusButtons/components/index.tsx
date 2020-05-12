@@ -13,7 +13,7 @@ export function ApparatusButtons(props: ApparatusButtonsProps): ReactElement {
   const countryTunedApparatusButtonProps: ApparatusButtonProps = { id: CountryTuned, setApparatusId }
 
   return (
-    <div>
+    <div role='menu' aria-label='apparatusControls'>
       <div>Harp Apparatus</div>
       <ApparatusButton {...majorDiatonicApparatusButtonProps} />
       <ApparatusButton {...countryTunedApparatusButtonProps} />
