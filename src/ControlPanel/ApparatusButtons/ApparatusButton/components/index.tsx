@@ -5,8 +5,8 @@ import type { ApparatusButtonProps } from '../types'
 
 export function ApparatusButton(props: ApparatusButtonProps): ReactElement {
   return (
-    <div onClick={(): void => props.setApparatusId(props.id)}>
+    <button role='menuitem' onClick={(): void => props.setApparatusId(props.id)}>
       {props.id}
-    </div>
+    </button>
   )
 }

@@ -18,11 +18,11 @@ export function ControlPanel(props: ControlPanelProps): ReactElement {
   const pitchButtonsProps: PitchButtonsProps = { setPitchId }
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
   return (
-    <menu role='menubar'>
+    <nav role='menubar'>
       <ApparatusButtons {...apparatusButtonsProps} />
       <PozitionButtons {...pozitionButtonsProps} />
       <PitchButtons {...pitchButtonsProps} />
       <DisplayModeToggler {...displayModeTogglerProps} />
-    </menu>
+    </nav>
   )
 }
