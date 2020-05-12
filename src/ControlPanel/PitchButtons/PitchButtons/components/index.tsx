@@ -7,16 +7,16 @@ import { PitchButton } from '../../PitchButton'
 import type { PitchButtonProps } from '../../PitchButton'
 
 export function PitchButtons(props: PitchButtonsProps): ReactElement {
-  const { A, Bb } = PitchIds
+  const { C, Db } = PitchIds
   const { setPitchId } = props
-  const pitchAPitchButtonProps: PitchButtonProps = { id: A, setPitchId }
-  const pitchBbPitchButtonProps: PitchButtonProps = { id: Bb, setPitchId }
+  const pitchCPitchButtonProps: PitchButtonProps = { id: C, setPitchId }
+  const pitchDbPitchButtonProps: PitchButtonProps = { id: Db, setPitchId }
 
   return (
     <div>
       <div>Harp Key Pitch</div>
-      <PitchButton {...pitchAPitchButtonProps} />
-      <PitchButton {...pitchBbPitchButtonProps} />
+      <PitchButton {...pitchCPitchButtonProps} />
+      <PitchButton {...pitchDbPitchButtonProps} />
     </div>
   )
 }

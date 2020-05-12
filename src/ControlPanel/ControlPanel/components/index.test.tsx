@@ -34,7 +34,7 @@ test('ControlPanel has a Major Diatonic Apparatus control which calls it\'s para
   expect(setApparatusId.mock.calls.length).toBe(1)
 })
 
-test('ControlPanel has an A Pitch control which calls it\'s parameterised function when clicked', () => {
+test('ControlPanel has an C Pitch control which calls it\'s parameterised function when clicked', () => {
   const setApparatusId = jest.fn()
   const setPozitionId = jest.fn()
   const setPitchId = jest.fn()
@@ -42,8 +42,8 @@ test('ControlPanel has an A Pitch control which calls it\'s parameterised functi
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
   const { getByText } = render(<ControlPanel {...controlPanelProps} />)
 
-  expect(getByText(PitchIds.A)).toBeInTheDocument()
-  fireEvent.click(getByText(PitchIds.A))
+  expect(getByText(PitchIds.C)).toBeInTheDocument()
+  fireEvent.click(getByText(PitchIds.C))
   expect(setPitchId.mock.calls.length).toBe(1)
 })
 

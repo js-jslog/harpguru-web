@@ -16,6 +16,7 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
 
   return (
     <div className={classes.harpFaceClass}>
+      Harp Face
       { holeInteractionRowsTop }
       { holeNumbers }
       { holeInteractionRowsBottom }

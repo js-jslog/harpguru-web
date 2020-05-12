@@ -19,6 +19,7 @@ export function ControlPanel(props: ControlPanelProps): ReactElement {
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
   return (
     <div>
+      Control Panel
       <ApparatusButtons {...apparatusButtonsProps} />
       <PozitionButtons {...pozitionButtonsProps} />
       <PitchButtons {...pitchButtonsProps} />

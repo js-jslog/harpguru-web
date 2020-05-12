@@ -1,6 +1,6 @@
 import React from 'react'
-import { PozitionIds } from 'harpstrata'
-import { render, screen, fireEvent, getByText } from '@testing-library/react'
+import { PozitionIds, PitchIds } from 'harpstrata'
+import { render, screen, fireEvent, getAllByText, getByText } from '@testing-library/react'
 
 import { PresentationModes } from '../../HarpFace'
 
@@ -29,6 +29,28 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
   fireEvent.click(getByText(PresentationModes.Degree))
   expect(getAllByText('b7')[0]).toBeInTheDocument()
   expect(queryByText('Ab')).toBeNull()
+})
+
+test('The HarpFace presents shifting Pitches when the relevant Key Pitches are selected', () => {
+  render(<HarpGuru />)
+  const controlPanel = screen.getByText('Control Panel')
+  const harpFace = screen.getByText('Harp Face')
+
+  fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
+
+  const [ cHole ] = getAllByText(harpFace, PitchIds.C)
+  expect(cHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PitchIds.Db))
+
+  const DbHole = getByText(cHole, PitchIds.Db)
+  expect(DbHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+
+
+  const cHoleAgain = getByText(DbHole, PitchIds.C)
+  expect(cHoleAgain).toBeInTheDocument()
 })
 
 test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
