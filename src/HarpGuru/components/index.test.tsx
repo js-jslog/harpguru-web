@@ -7,28 +7,20 @@ import { PresentationModes } from '../../HarpFace'
 import { HarpGuru } from './index'
 
 
-test('HarpGuru renders a dom element with a HarpFace with a b7 hole in it', () => {
-  const { getAllByText } = render(<HarpGuru />)
-  expect(getAllByText('b7')[0]).toBeInTheDocument()
-})
-
-test('HarpGuru renders a dom element with a DisplayModeToggler in it', () => {
-  const { getByText } = render(<HarpGuru />)
-  expect(getByText(PresentationModes.Degree)).toBeInTheDocument()
-  expect(getByText(PresentationModes.Pitch)).toBeInTheDocument()
-})
-
 test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeToggle option is selected', () => {
   const { queryByText, getByText, getAllByText } = render(<HarpGuru />)
+
   fireEvent.click(getByText(PresentationModes.Degree))
-  expect(getAllByText('b7')[0]).toBeInTheDocument()
-  expect(queryByText('Ab')).toBeNull()
+  expect(getAllByText(DegreeIds.Flat7)[0]).toBeInTheDocument()
+  expect(queryByText(PitchIds.Ab)).toBeNull()
+
   fireEvent.click(getByText(PresentationModes.Pitch))
-  expect(getAllByText('Ab')[0]).toBeInTheDocument()
-  expect(queryByText('b7')).toBeNull()
+  expect(getAllByText(PitchIds.Ab)[0]).toBeInTheDocument()
+  expect(queryByText(DegreeIds.Flat7)).toBeNull()
+
   fireEvent.click(getByText(PresentationModes.Degree))
-  expect(getAllByText('b7')[0]).toBeInTheDocument()
-  expect(queryByText('Ab')).toBeNull()
+  expect(getAllByText(DegreeIds.Flat7)[0]).toBeInTheDocument()
+  expect(queryByText(PitchIds.Ab)).toBeNull()
 })
 
 test('The HarpFace presents shifting Pitches when the relevant Key Pitches are selected', () => {
@@ -36,6 +28,9 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
   const controlPanel = screen.getByRole('menubar')
   const harpFace = screen.getByRole('application')
 
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
   const [ cHole ] = getAllByText(harpFace, PitchIds.C)
@@ -58,6 +53,9 @@ test('The HarpFace presents shifting Pitches when the relevant Apparatus are sel
   const controlPanel = screen.getByRole('menubar')
   const harpFace = screen.getByRole('application')
 
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
   const [ fHole ] = getAllByText(harpFace, PitchIds.F)
@@ -76,14 +74,24 @@ test('The HarpFace presents shifting Pitches when the relevant Apparatus are sel
 
 test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
   render(<HarpGuru />)
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+  fireEvent.click(getByText(controlPanel, PresentationModes.Degree))
+
   fireEvent.click(screen.getByText(PozitionIds.First))
-  const [ rootHoleContainer ] = screen.getAllByText('1')
-  fireEvent.click(screen.getByText(PozitionIds.Second))
-  const changedHole = getByText(rootHoleContainer, '4')
-  expect(changedHole).toBeInTheDocument()
-  fireEvent.click(screen.getByText(PozitionIds.First))
-  const changedBackHole = getByText(rootHoleContainer, '1')
-  expect(changedBackHole).toBeInTheDocument()
+  const [ rootHole ] = getAllByText(harpFace, DegreeIds.Root)
+
+  fireEvent.click(getByText(controlPanel, PozitionIds.Second))
+  const fourthHole = getByText(rootHole, DegreeIds.Fourth)
+  expect(fourthHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  const rootHoleAgain = getByText(fourthHole, DegreeIds.Root)
+  expect(rootHoleAgain).toBeInTheDocument()
 })
 
 test('The Apparatus state of the HarpFace persists even after the Pitch has been shifted', () => {
@@ -91,9 +99,10 @@ test('The Apparatus state of the HarpFace persists even after the Pitch has been
   const controlPanel = screen.getByRole('menubar')
   const harpFace = screen.getByRole('application')
 
-  fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
   fireEvent.click(getByText(controlPanel, PitchIds.C))
+  fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
   const [ fHole ] = getAllByText(harpFace, PitchIds.F)
   expect(fHole).toBeInTheDocument()
@@ -115,6 +124,9 @@ test('The Pozition state of the HarpFace persists even after the Pitch has been 
   const controlPanel = screen.getByRole('menubar')
   const harpFace = screen.getByRole('application')
 
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, PresentationModes.Degree))
 
   const [ rootHole ] = getAllByText(harpFace, DegreeIds.Root)
@@ -137,6 +149,9 @@ test('The Pitch state of the HarpFace persists even after the Apparatus has been
   const controlPanel = screen.getByRole('menubar')
   const harpFace = screen.getByRole('application')
 
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
   const [ cHole ] = getAllByText(harpFace, PitchIds.C)
