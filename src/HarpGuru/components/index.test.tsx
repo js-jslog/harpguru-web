@@ -146,7 +146,6 @@ test('The Pozition state of the HarpFace persists even after the Pitch has been 
   const fourthHole = getByText(rootHole, DegreeIds.Fourth)
   expect(fourthHole).toBeInTheDocument()
 
-  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, PitchIds.Db))
 
   const stillFourthHole = getByText(rootHole, DegreeIds.Fourth)
@@ -171,7 +170,6 @@ test('The Pitch state of the HarpFace persists even after the Apparatus has been
   const DbHole = getByText(cHole, PitchIds.Db)
   expect(DbHole).toBeInTheDocument()
 
-  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
 
   const stillDbHole = getByText(DbHole, PitchIds.Db)
