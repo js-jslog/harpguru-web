@@ -33,8 +33,8 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
 
 test('The HarpFace presents shifting Pitches when the relevant Key Pitches are selected', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByText('Control Panel')
-  const harpFace = screen.getByText('Harp Face')
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
 
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
@@ -55,8 +55,8 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
 
 test('The HarpFace presents shifting Pitches when the relevant Apparatus are selected', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByText('Control Panel')
-  const harpFace = screen.getByText('Harp Face')
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
 
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
@@ -88,8 +88,8 @@ test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are s
 
 test('The Apparatus state of the HarpFace persists even after the Pitch has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByText('Control Panel')
-  const harpFace = screen.getByText('Harp Face')
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
 
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
@@ -112,8 +112,8 @@ test('The Apparatus state of the HarpFace persists even after the Pitch has been
 
 test('The Pozition state of the HarpFace persists even after the Pitch has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByText('Control Panel')
-  const harpFace = screen.getByText('Harp Face')
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
 
   fireEvent.click(getByText(controlPanel, PresentationModes.Degree))
 
@@ -134,8 +134,8 @@ test('The Pozition state of the HarpFace persists even after the Pitch has been 
 
 test('The Pitch state of the HarpFace persists even after the Apparatus has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByText('Control Panel')
-  const harpFace = screen.getByText('Harp Face')
+  const controlPanel = screen.getByRole('menubar')
+  const harpFace = screen.getByRole('application')
 
   fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
 
