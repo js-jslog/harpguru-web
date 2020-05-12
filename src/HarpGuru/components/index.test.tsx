@@ -1,11 +1,20 @@
 import React from 'react'
 import { ApparatusIds, DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
 import { render, screen, fireEvent, getAllByText, getByText } from '@testing-library/react'
+import type { Screen } from '@testing-library/react'
 
 import { PresentationModes } from '../../HarpFace'
 
 import { HarpGuru } from './index'
 
+
+const getControlPanel = (screen: Screen): HTMLElement => {
+  return screen.getByRole('menubar')
+}
+
+const getHarpFace = (screen: Screen): HTMLElement => {
+  return screen.getByRole('application')
+}
 
 test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeToggle option is selected', () => {
   const { queryByText, getByText, getAllByText } = render(<HarpGuru />)
@@ -25,8 +34,8 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
 
 test('The HarpFace presents shifting Pitches when the relevant Key Pitches are selected', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
@@ -50,8 +59,8 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
 
 test('The HarpFace presents shifting Pitches when the relevant Apparatus are selected', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
@@ -74,8 +83,8 @@ test('The HarpFace presents shifting Pitches when the relevant Apparatus are sel
 
 test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
@@ -96,8 +105,8 @@ test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are s
 
 test('The Apparatus state of the HarpFace persists even after the Pitch has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
@@ -121,8 +130,8 @@ test('The Apparatus state of the HarpFace persists even after the Pitch has been
 
 test('The Pozition state of the HarpFace persists even after the Pitch has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
@@ -146,8 +155,8 @@ test('The Pozition state of the HarpFace persists even after the Pitch has been 
 
 test('The Pitch state of the HarpFace persists even after the Apparatus has been shifted', () => {
   render(<HarpGuru />)
-  const controlPanel = screen.getByRole('menubar')
-  const harpFace = screen.getByRole('application')
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
