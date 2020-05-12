@@ -1,5 +1,5 @@
 import React from 'react'
-import { DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
+import { ApparatusIds, DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
 import { render, screen, fireEvent, getAllByText, getByText } from '@testing-library/react'
 
 import { PresentationModes } from '../../HarpFace'
@@ -51,6 +51,27 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
 
   const cHoleAgain = getByText(DbHole, PitchIds.C)
   expect(cHoleAgain).toBeInTheDocument()
+})
+
+test('The HarpFace presents shifting Pitches when the relevant Apparatus are selected', () => {
+  render(<HarpGuru />)
+  const controlPanel = screen.getByText('Control Panel')
+  const harpFace = screen.getByText('Harp Face')
+
+  fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
+
+  const [ fHole ] = getAllByText(harpFace, PitchIds.F)
+  expect(fHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
+
+  const GbHole = getByText(fHole, PitchIds.Gb)
+  expect(GbHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+
+  const fHoleAgain = getByText(GbHole, PitchIds.F)
+  expect(fHoleAgain).toBeInTheDocument()
 })
 
 test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are selected', () => {
