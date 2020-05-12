@@ -25,20 +25,22 @@ const styles = generateHarpFaceStyles(getTheme(themePrimer))
 
 export function HarpGuru(): ReactElement {
   const [ activeHarpStrata, setHarpStrata ] = useState(initialHarpStrata)
+  const [ activeApparatusId, setActiveApparatusId ] = useState(apparatusId)
   const [ activePozitionId, setActivePozitionId ] = useState(pozitionId)
   const [ activePitchId, setActivePitchId ] = useState(pitchId)
   const [ activeDisplayMode, setDisplayMode ] = useState(PresentationModes.Degree)
 
   const setApparatusId = (apparatusId: ApparatusIds): void => {
+    setActiveApparatusId(apparatusId)
     setHarpStrata(getHarpStrata(apparatusId, activePozitionId, activePitchId))
   }
   const setPozitionId = (pozitionId: PozitionIds): void => {
     setActivePozitionId(pozitionId)
-    setHarpStrata(getHarpStrata(apparatusId, pozitionId, activePitchId))
+    setHarpStrata(getHarpStrata(activeApparatusId, pozitionId, activePitchId))
   }
   const setPitchId = (pitchId: PitchIds): void => {
     setActivePitchId(pitchId)
-    setHarpStrata(getHarpStrata(apparatusId, activePozitionId, pitchId))
+    setHarpStrata(getHarpStrata(activeApparatusId, activePozitionId, pitchId))
   }
 
   const harpStrata = activeHarpStrata

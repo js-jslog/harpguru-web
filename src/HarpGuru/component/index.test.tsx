@@ -86,6 +86,30 @@ test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are s
   expect(changedBackHole).toBeInTheDocument()
 })
 
+test('The Apparatus state of the HarpFace persists even after the Pitch has been shifted', () => {
+  render(<HarpGuru />)
+  const controlPanel = screen.getByText('Control Panel')
+  const harpFace = screen.getByText('Harp Face')
+
+  fireEvent.click(getByText(controlPanel, PresentationModes.Pitch))
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+
+  const [ fHole ] = getAllByText(harpFace, PitchIds.F)
+  expect(fHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
+
+  const GbHole = getByText(fHole, PitchIds.Gb)
+  expect(GbHole).toBeInTheDocument()
+
+  fireEvent.click(getByText(controlPanel, PitchIds.Db))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+
+  const stillGbHole = getByText(fHole, PitchIds.Gb)
+  expect(stillGbHole).toBeInTheDocument()
+})
+
 test('The Pozition state of the HarpFace persists even after the Pitch has been shifted', () => {
   render(<HarpGuru />)
   const controlPanel = screen.getByText('Control Panel')
