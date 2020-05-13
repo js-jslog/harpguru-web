@@ -1,3 +1,5 @@
+import type { DisplayModes } from '../../../HarpFace'
+
 export type DisplayModeTogglerProps = {
-  readonly setDisplayMode: Function;
+  readonly setDisplayMode: (displayMode: DisplayModes) => void;
 }
