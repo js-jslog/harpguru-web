@@ -19,7 +19,6 @@ const themePrimer: ThemePrimer = {
 }
 
 const initialHarpStrata: HarpStrata = getHarpStrata(apparatusId, pozitionId, pitchId)
-const styles = generateHarpFaceStyles(getTheme(themePrimer))
 
 
 export function HarpGuru(): ReactElement {
@@ -44,6 +43,7 @@ export function HarpGuru(): ReactElement {
 
   const harpStrata = activeHarpStrata
   const displayMode = activeDisplayMode
+  const styles = generateHarpFaceStyles(getTheme(themePrimer))
 
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
   const harpFaceProps: HarpFaceProps = { harpStrata, displayMode, styles }
