@@ -10,9 +10,9 @@ const BASIC_GREY = '#dddddd' as const
 
 const blowBackgroundColor = DEEP_SEA_BLUE
 const blowBendBackgroundColor = PEACH
-const overBlowBackgroundColor = PEACH
+const overBlowBackgroundColor = ORANGE
 const drawBackgroundColor = TEAL
-const bendBackgroundColor = ORANGE
+const bendBackgroundColor = PEACH
 const overDrawBackgroundColor = ORANGE
 
 const blowColor = WHITE
