@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
 import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, PitchIds, getHarpStrata } from 'harpstrata'
-import type { HarpStrata } from 'harpstrata'
+import type { HarpStrata, HarpStrataProps, ActiveIds } from 'harpstrata'
 
 import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../HarpFace'
@@ -12,33 +12,46 @@ import type { ControlPanelProps } from '../../ControlPanel'
 const [ apparatusId ] = getApparatusIds()
 const [ pozitionId ] = getPozitionIds()
 const [ pitchId ] = getPitchIds()
+const harpStrataProps: HarpStrataProps = {
+  apparatusId, pozitionId, keyPitchId: pitchId, activeIds: []
+}
 
 const themePrimer: ThemePrimer = {
   seedSize: 0.8,
   colorSchemeId: getActiveColorSchemeIds()[0],
 }
 
-const initialHarpStrata: HarpStrata = getHarpStrata(apparatusId, pozitionId, pitchId)
+const initialHarpStrata: HarpStrata = getHarpStrata(harpStrataProps)
 
 
 export function HarpGuru(): ReactElement {
   const [ activeHarpStrata, setHarpStrata ] = useState(initialHarpStrata)
-  const [ activeApparatusId, setActiveApparatusId ] = useState(apparatusId)
   const [ activePozitionId, setActivePozitionId ] = useState(pozitionId)
   const [ activePitchId, setActivePitchId ] = useState(pitchId)
   const [ activeDisplayMode, setDisplayMode ] = useState(DisplayModes.Degree)
 
+  const getBaseHarpStrataProps = (): HarpStrataProps => {
+    const { apparatus: { id: apparatusId }} = activeHarpStrata
+    const pozitionId = activePozitionId
+    const keyPitchId = activePitchId
+    const activeIds: ActiveIds = []
+
+    return { apparatusId, pozitionId, keyPitchId, activeIds }
+  }
+
   const setApparatusId = (apparatusId: ApparatusIds): void => {
-    setActiveApparatusId(apparatusId)
-    setHarpStrata(getHarpStrata(apparatusId, activePozitionId, activePitchId))
+    const harpStrataProps: HarpStrataProps = { ...getBaseHarpStrataProps(), apparatusId }
+    setHarpStrata(getHarpStrata(harpStrataProps))
   }
   const setPozitionId = (pozitionId: PozitionIds): void => {
+    const harpStrataProps: HarpStrataProps = { ...getBaseHarpStrataProps(), pozitionId }
     setActivePozitionId(pozitionId)
-    setHarpStrata(getHarpStrata(activeApparatusId, pozitionId, activePitchId))
+    setHarpStrata(getHarpStrata(harpStrataProps))
   }
   const setPitchId = (pitchId: PitchIds): void => {
+    const harpStrataProps: HarpStrataProps = { ...getBaseHarpStrataProps(), keyPitchId: pitchId }
     setActivePitchId(pitchId)
-    setHarpStrata(getHarpStrata(activeApparatusId, activePozitionId, pitchId))
+    setHarpStrata(getHarpStrata(harpStrataProps))
   }
 
   const harpStrata = activeHarpStrata
