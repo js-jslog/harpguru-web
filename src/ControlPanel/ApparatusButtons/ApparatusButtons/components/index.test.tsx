@@ -8,17 +8,17 @@ import { ApparatusButtons } from './index'
 
 test('ApparatusButtons renders a dom element with a \'Harp Apparatus\' label', () => {
   const setApparatusId = jest.fn()
-  const pozitionButtonsProps: ApparatusButtonsProps = { setApparatusId }
+  const apparatusButtonsProps: ApparatusButtonsProps = { setApparatusId }
 
-  const { getByText } = render(<ApparatusButtons {...pozitionButtonsProps } />)
+  const { getByText } = render(<ApparatusButtons {...apparatusButtonsProps } />)
   expect(getByText('Harp Apparatus')).toBeInTheDocument()
 })
 
 test('ApparatusButtons renders a first position button which calls the passed function parameter when clicked', () => {
   const setApparatusId = jest.fn()
-  const pozitionButtonsProps: ApparatusButtonsProps = { setApparatusId }
+  const apparatusButtonsProps: ApparatusButtonsProps = { setApparatusId }
 
-  const { getByText } = render(<ApparatusButtons {...pozitionButtonsProps } />)
+  const { getByText } = render(<ApparatusButtons {...apparatusButtonsProps } />)
 
   expect(getByText(ApparatusIds.MajorDiatonic)).toBeInTheDocument()
   fireEvent.click(getByText(ApparatusIds.MajorDiatonic))
