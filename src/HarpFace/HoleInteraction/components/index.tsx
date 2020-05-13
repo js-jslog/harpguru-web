@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import type { ReactElement } from 'react'
 
 import { useStyles } from '../useStyles'
@@ -19,9 +19,6 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
 
   const displayModeValue = (displayMode === DisplayModes.Degree ? degreeId : pitchId)
 
-  const [ valueToDisplay, setValueToDisplay ] = useState(displayModeValue)
-  useEffect(() => { setValueToDisplay(displayModeValue)}, [displayModeValue])
-
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)
 
@@ -32,7 +29,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
 
   return (
     <div onClick={(): void => toggleActiveDegreeIfHoleExists()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
-      {valueToDisplay}
+      {displayModeValue}
     </div>
   )
 }
