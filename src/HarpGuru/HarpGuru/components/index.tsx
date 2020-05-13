@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
 import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, PitchIds, getHarpStrata } from 'harpstrata'
-import type { HarpStrata, HarpStrataProps, ActiveIds } from 'harpstrata'
+import type { HarpStrata, HarpStrataProps, ActiveIds, DegreeIds } from 'harpstrata'
 
+import { toggleActiveDegreeIds } from '../../toggleActiveIds'
 import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../../HarpFace'
 import { ControlPanel } from '../../../ControlPanel'
@@ -39,6 +40,10 @@ export function HarpGuru(): ReactElement {
     return { apparatusId, pozitionId, keyPitchId, activeIds }
   }
 
+  const setActiveIds = (activeIds: ActiveIds): void => {
+    const harpStrataProps: HarpStrataProps = { ...getBaseHarpStrataProps(), activeIds }
+    setHarpStrata(getHarpStrata(harpStrataProps))
+  }
   const setApparatusId = (apparatusId: ApparatusIds): void => {
     const harpStrataProps: HarpStrataProps = { ...getBaseHarpStrataProps(), apparatusId }
     setHarpStrata(getHarpStrata(harpStrataProps))
@@ -57,7 +62,11 @@ export function HarpGuru(): ReactElement {
   const harpStrata = activeHarpStrata
   const displayMode = activeDisplayMode
   const styles = generateHarpFaceStyles(getTheme(themePrimer))
-  const toggleActiveDegreeId = (): void => {}
+  const toggleActiveDegreeId = (degreeId: DegreeIds): void => {
+    const { isActiveComplex: { activeDegreeIds }} = activeHarpStrata
+    const newActiveDegreeIds = toggleActiveDegreeIds(degreeId, activeDegreeIds)
+    setActiveIds(newActiveDegreeIds)
+  }
 
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
   const harpFaceProps: HarpFaceProps = { harpStrata, displayMode, styles, toggleActiveDegreeId }

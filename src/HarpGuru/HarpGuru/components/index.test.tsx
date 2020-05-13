@@ -191,3 +191,26 @@ test('The Pitch state of the HarpFace persists even after the Apparatus has been
   const holeDbStill = getByText(holeDb, PitchIds.Db)
   expect(holeDbStill).toBeInTheDocument()
 })
+
+test('The holes activity is toggled on click', () => {
+  render(<HarpGuru />)
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
+
+  const expectedInactiveStyle = `
+    color: #ddd;
+  `
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+  fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
+
+  const [ holeC ] = getAllByText(harpFace, PitchIds.C)
+  expect(holeC).toBeInTheDocument()
+
+  expect(holeC).toHaveStyle(expectedInactiveStyle)
+
+  fireEvent.click(holeC)
+  expect(holeC).not.toHaveStyle(expectedInactiveStyle)
+})

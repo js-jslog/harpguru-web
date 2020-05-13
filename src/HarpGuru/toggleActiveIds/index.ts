@@ -1,11 +1,11 @@
 import type { DegreeIds, ActiveDegreeIds } from 'harpstrata'
 
-export const toggleActiveDegreeIds = (degreeId: DegreeIds, activeDegreeIds: ActiveDegreeIds, setActiveDegreeIds: (activeDegreeIds: ActiveDegreeIds) => void): void => {
+export const toggleActiveDegreeIds = (degreeId: DegreeIds, activeDegreeIds: ActiveDegreeIds): ActiveDegreeIds => {
   if (activeDegreeIds.includes(degreeId)) {
     const arrayHead = activeDegreeIds.slice(0, activeDegreeIds.indexOf(degreeId))
     const arrayTail = activeDegreeIds.slice(activeDegreeIds.indexOf(degreeId) +1)
-    setActiveDegreeIds([ ...arrayHead, ...arrayTail ])
+    return [ ...arrayHead, ...arrayTail ]
   } else {
-    setActiveDegreeIds([ ...activeDegreeIds, degreeId ])
+    return [ ...activeDegreeIds, degreeId ]
   }
 }
