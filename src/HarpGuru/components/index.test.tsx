@@ -1,6 +1,6 @@
 import React from 'react'
 import { ApparatusIds, DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
-import { render, screen, fireEvent, getAllByText, getByText } from '@testing-library/react'
+import { render, screen, fireEvent, getAllByText, getByText, queryByText } from '@testing-library/react'
 import type { Screen } from '@testing-library/react'
 
 import { DisplayModes } from '../../HarpFace'
@@ -17,19 +17,33 @@ const getHarpFace = (screen: Screen): HTMLElement => {
 }
 
 test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeToggle option is selected', () => {
-  const { queryByText, getByText, getAllByText } = render(<HarpGuru />)
+  render(<HarpGuru />)
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
 
-  fireEvent.click(getByText(DisplayModes.Degree))
-  expect(getAllByText(DegreeIds.Flat7)[0]).toBeInTheDocument()
-  expect(queryByText(PitchIds.Ab)).toBeNull()
+  fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
 
-  fireEvent.click(getByText(DisplayModes.Pitch))
-  expect(getAllByText(PitchIds.Ab)[0]).toBeInTheDocument()
-  expect(queryByText(DegreeIds.Flat7)).toBeNull()
+  const [ hole7b ] = getAllByText(harpFace, DegreeIds.Flat7)
+  const holeAbAbsent = queryByText(harpFace, PitchIds.Ab)
 
-  fireEvent.click(getByText(DisplayModes.Degree))
-  expect(getAllByText(DegreeIds.Flat7)[0]).toBeInTheDocument()
-  expect(queryByText(PitchIds.Ab)).toBeNull()
+  expect(hole7b).toBeInTheDocument()
+  expect(holeAbAbsent).toBeNull()
+
+  fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
+
+  const [ holeAb ] = getAllByText(harpFace, PitchIds.Ab)
+  const hole7bAbsent = queryByText(harpFace, DegreeIds.Flat7)
+
+  expect(holeAb).toBeInTheDocument()
+  expect(hole7bAbsent).toBeNull()
+
+  fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
+
+  const [ hole7bAgain ] = getAllByText(harpFace, DegreeIds.Flat7)
+  const holeAbAbsentAgain = queryByText(harpFace, PitchIds.Ab)
+
+  expect(hole7bAgain).toBeInTheDocument()
+  expect(holeAbAbsentAgain).toBeNull()
 })
 
 test('The HarpFace presents shifting Pitches when the relevant Key Pitches are selected', () => {
