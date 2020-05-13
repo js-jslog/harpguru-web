@@ -14,12 +14,11 @@ export const analysePosition = (props: HoleInteractionProps): PositionFacts => {
   const { harpStrata: { degreeMatrix, pitchMatrix }} = props
   const { harpStrata: { apparatus: {interactionMatrix}}} = props
   const { yxCoord: [ yCoord, xCoord ]} = props
-  const { inactiveInteractions } = props
   const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
   const { [yCoord]: {[xCoord]: thisPitch} } = pitchMatrix
   const { [yCoord]: {[xCoord]: thisInteraction} } = interactionMatrix
   const leftmost = (xCoord === 0)
-  const isActive = !(thisInteraction && inactiveInteractions.includes(thisInteraction.id))
+  const isActive = true
   return {
     thisDegree,
     thisPitch,
