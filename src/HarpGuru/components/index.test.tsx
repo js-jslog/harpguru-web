@@ -21,6 +21,9 @@ test('The HarpFace presents Degrees and Pitches when the relevant DisplayModeTog
   const controlPanel = getControlPanel(screen)
   const harpFace = getHarpFace(screen)
 
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
 
   const [ hole7b ] = getAllByText(harpFace, DegreeIds.Flat7)
