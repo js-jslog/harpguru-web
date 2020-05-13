@@ -3,7 +3,7 @@ import { ApparatusIds, DegreeIds, PozitionIds, PitchIds } from 'harpstrata'
 import { render, screen, fireEvent, getAllByText, getByText, queryByText } from '@testing-library/react'
 import type { Screen } from '@testing-library/react'
 
-import { DisplayModes } from '../../HarpFace'
+import { DisplayModes } from '../../../HarpFace'
 
 import { HarpGuru } from './index'
 

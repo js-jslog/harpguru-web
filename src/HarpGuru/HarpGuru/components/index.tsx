@@ -3,10 +3,10 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, PitchIds, getHarpStrata } from 'harpstrata'
 import type { HarpStrata, HarpStrataProps, ActiveIds } from 'harpstrata'
 
-import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
-import type { HarpFaceProps, ThemePrimer } from '../../HarpFace'
-import { ControlPanel } from '../../ControlPanel'
-import type { ControlPanelProps } from '../../ControlPanel'
+import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../../HarpFace'
+import type { HarpFaceProps, ThemePrimer } from '../../../HarpFace'
+import { ControlPanel } from '../../../ControlPanel'
+import type { ControlPanelProps } from '../../../ControlPanel'
 
 
 const [ apparatusId ] = getApparatusIds()
