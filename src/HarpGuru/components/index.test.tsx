@@ -59,19 +59,19 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
   fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
 
-  const [ cHole ] = getAllByText(harpFace, PitchIds.C)
-  expect(cHole).toBeInTheDocument()
+  const [ holeC ] = getAllByText(harpFace, PitchIds.C)
+  expect(holeC).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PitchIds.Db))
 
-  const DbHole = getByText(cHole, PitchIds.Db)
-  expect(DbHole).toBeInTheDocument()
+  const holeDb = getByText(holeC, PitchIds.Db)
+  expect(holeDb).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PitchIds.C))
 
 
-  const cHoleAgain = getByText(DbHole, PitchIds.C)
-  expect(cHoleAgain).toBeInTheDocument()
+  const holeCAgain = getByText(holeDb, PitchIds.C)
+  expect(holeCAgain).toBeInTheDocument()
 })
 
 test('The HarpFace presents shifting Pitches when the relevant Apparatus are selected', () => {
@@ -109,15 +109,15 @@ test('The HarpFace presents shifting DegreeIds when the relevant Pozitions are s
   fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
 
   fireEvent.click(screen.getByText(PozitionIds.First))
-  const [ rootHole ] = getAllByText(harpFace, DegreeIds.Root)
+  const [ hole1st ] = getAllByText(harpFace, DegreeIds.Root)
 
   fireEvent.click(getByText(controlPanel, PozitionIds.Second))
-  const fourthHole = getByText(rootHole, DegreeIds.Fourth)
-  expect(fourthHole).toBeInTheDocument()
+  const hole4th = getByText(hole1st, DegreeIds.Fourth)
+  expect(hole4th).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PozitionIds.First))
-  const rootHoleAgain = getByText(fourthHole, DegreeIds.Root)
-  expect(rootHoleAgain).toBeInTheDocument()
+  const hole1stAgain = getByText(hole4th, DegreeIds.Root)
+  expect(hole1stAgain).toBeInTheDocument()
 })
 
 test('The Apparatus state of the HarpFace persists even after the Pitch has been shifted', () => {
@@ -141,8 +141,8 @@ test('The Apparatus state of the HarpFace persists even after the Pitch has been
   fireEvent.click(getByText(controlPanel, PitchIds.Db))
   fireEvent.click(getByText(controlPanel, PitchIds.C))
 
-  const stillGbHole = getByText(fHole, PitchIds.Gb)
-  expect(stillGbHole).toBeInTheDocument()
+  const holeGbStill = getByText(fHole, PitchIds.Gb)
+  expect(holeGbStill).toBeInTheDocument()
 })
 
 test('The Pozition state of the HarpFace persists even after the Pitch has been shifted', () => {
@@ -155,18 +155,18 @@ test('The Pozition state of the HarpFace persists even after the Pitch has been 
   fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
 
-  const [ rootHole ] = getAllByText(harpFace, DegreeIds.Root)
-  expect(rootHole).toBeInTheDocument()
+  const [ hole1st ] = getAllByText(harpFace, DegreeIds.Root)
+  expect(hole1st).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PozitionIds.Second))
 
-  const fourthHole = getByText(rootHole, DegreeIds.Fourth)
-  expect(fourthHole).toBeInTheDocument()
+  const hole4th = getByText(hole1st, DegreeIds.Fourth)
+  expect(hole4th).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PitchIds.Db))
 
-  const stillFourthHole = getByText(rootHole, DegreeIds.Fourth)
-  expect(stillFourthHole).toBeInTheDocument()
+  const hole4thStill = getByText(hole1st, DegreeIds.Fourth)
+  expect(hole4thStill).toBeInTheDocument()
 })
 
 test('The Pitch state of the HarpFace persists even after the Apparatus has been shifted', () => {
@@ -179,16 +179,16 @@ test('The Pitch state of the HarpFace persists even after the Apparatus has been
   fireEvent.click(getByText(controlPanel, PitchIds.C))
   fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
 
-  const [ cHole ] = getAllByText(harpFace, PitchIds.C)
-  expect(cHole).toBeInTheDocument()
+  const [ holeC ] = getAllByText(harpFace, PitchIds.C)
+  expect(holeC).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, PitchIds.Db))
 
-  const DbHole = getByText(cHole, PitchIds.Db)
-  expect(DbHole).toBeInTheDocument()
+  const holeDb = getByText(holeC, PitchIds.Db)
+  expect(holeDb).toBeInTheDocument()
 
   fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
 
-  const stillDbHole = getByText(DbHole, PitchIds.Db)
-  expect(stillDbHole).toBeInTheDocument()
+  const holeDbStill = getByText(holeDb, PitchIds.Db)
+  expect(holeDbStill).toBeInTheDocument()
 })
