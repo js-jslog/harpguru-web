@@ -1,10 +1,6 @@
-import type { ApparatusIds, PozitionIds, PitchIds } from 'harpstrata'
+import type { PozitionButtonsProps } from '../../PozitionButtons'
+import type { PitchButtonsProps } from '../../PitchButtons'
+import type { DisplayModeTogglerProps } from '../../DisplayModeToggler'
+import type { ApparatusButtonsProps } from '../../ApparatusButtons'
 
-import type { DisplayModes } from '../../../HarpFace'
-
-export type ControlPanelProps = {
-  readonly setApparatusId: (apparatusId: ApparatusIds) => void;
-  readonly setPozitionId: (pozitionId: PozitionIds) => void;
-  readonly setPitchId: (pitchId: PitchIds) => void;
-  readonly setDisplayMode: (displayMode: DisplayModes) => void;
-}
+export type ControlPanelProps = ApparatusButtonsProps & PozitionButtonsProps & PitchButtonsProps & DisplayModeTogglerProps
