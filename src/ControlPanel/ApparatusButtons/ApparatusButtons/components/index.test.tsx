@@ -14,7 +14,7 @@ test('ApparatusButtons renders a dom element with a \'Harp Apparatus\' label', (
   expect(getByText('Harp Apparatus')).toBeInTheDocument()
 })
 
-test('ApparatusButtons renders a first position button which calls the passed function parameter when clicked', () => {
+test('ApparatusButtons renders a Major Diatonic button which calls the passed function parameter when clicked', () => {
   const setApparatusId = jest.fn()
   const apparatusButtonsProps: ApparatusButtonsProps = { setApparatusId }
 
