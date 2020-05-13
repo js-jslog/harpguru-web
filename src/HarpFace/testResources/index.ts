@@ -15,9 +15,11 @@ const harpStrataProps: HarpStrataProps = {
 const harpStrata = getHarpStrata(harpStrataProps)
 const { Degree: displayMode } = DisplayModes
 const styles = generateHarpFaceStyles(getTheme())
+const toggleActiveDegreeId = jest.fn()
 
 export const exampleHarpFaceProps: HarpFaceProps = {
   harpStrata,
   displayMode,
   styles,
+  toggleActiveDegreeId,
 }

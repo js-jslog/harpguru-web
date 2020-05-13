@@ -14,7 +14,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const degreeId: string | undefined = thisDegree && thisDegree.id
   const pitchId: string | undefined = thisPitch && thisPitch.id
 
-  const { yxCoord, displayMode } = props
+  const { yxCoord, displayMode, toggleActiveDegreeId } = props
   const [ yCoord, xCoord ] = yxCoord
 
   const displayModeValue = (displayMode === DisplayModes.Degree ? degreeId : pitchId)
@@ -25,15 +25,8 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)
 
-  const setNextValueToDisplay = (): void => {
-    const orderedValuesToDisplay = [ degreeId, pitchId ]
-    const currentIndex = orderedValuesToDisplay.indexOf(valueToDisplay)
-    const nextValue = orderedValuesToDisplay[currentIndex +1] || orderedValuesToDisplay[0]
-    setValueToDisplay(nextValue)
-  }
-
   return (
-    <div onClick={(): void => setNextValueToDisplay()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+    <div onClick={(): void => toggleActiveDegreeId()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
       {valueToDisplay}
     </div>
   )

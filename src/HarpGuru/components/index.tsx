@@ -57,9 +57,10 @@ export function HarpGuru(): ReactElement {
   const harpStrata = activeHarpStrata
   const displayMode = activeDisplayMode
   const styles = generateHarpFaceStyles(getTheme(themePrimer))
+  const toggleActiveDegreeId = (): void => {}
 
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
-  const harpFaceProps: HarpFaceProps = { harpStrata, displayMode, styles }
+  const harpFaceProps: HarpFaceProps = { harpStrata, displayMode, styles, toggleActiveDegreeId }
   return (
     <div>
       <ControlPanel {...controlPanelProps} />

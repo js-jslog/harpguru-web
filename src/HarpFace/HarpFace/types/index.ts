@@ -11,6 +11,7 @@ export type HarpFaceProps = {
   readonly harpStrata: HarpStrata;
   readonly displayMode: DisplayModes;
   readonly styles: HarpFaceStyles;
+  readonly toggleActiveDegreeId: Function;
 }
 
 export type YXCoord = [ number, number ]
