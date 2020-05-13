@@ -5,7 +5,7 @@ import { useStyles } from '../useStyles'
 import type { HoleInteractionProps } from '../types'
 import { analysePosition } from '../analysePosition'
 import type { PositionFacts } from '../analysePosition'
-import { PresentationModes } from '../../HarpFace'
+import { DisplayModes } from '../../HarpFace'
 
 
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
@@ -14,13 +14,13 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const degreeId: string | undefined = thisDegree && thisDegree.id
   const pitchId: string | undefined = thisPitch && thisPitch.id
 
-  const { yxCoord, presentationMode } = props
+  const { yxCoord, displayMode } = props
   const [ yCoord, xCoord ] = yxCoord
 
-  const presentationValue = (presentationMode === PresentationModes.Degree ? degreeId : pitchId)
+  const displayModeValue = (displayMode === DisplayModes.Degree ? degreeId : pitchId)
 
-  const [ valueToDisplay, setValueToDisplay ] = useState(presentationValue)
-  useEffect(() => { setValueToDisplay(presentationValue)}, [presentationValue])
+  const [ valueToDisplay, setValueToDisplay ] = useState(displayModeValue)
+  useEffect(() => { setValueToDisplay(displayModeValue)}, [displayModeValue])
 
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)

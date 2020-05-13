@@ -3,7 +3,7 @@ import { PozitionIds, ApparatusIds, PitchIds } from 'harpstrata'
 import { render, fireEvent } from '@testing-library/react'
 
 import type { ControlPanelProps } from '../types'
-import { PresentationModes } from '../../../HarpFace'
+import { DisplayModes } from '../../../HarpFace'
 
 import { ControlPanel } from './index'
 
@@ -55,7 +55,7 @@ test('ControlPanel has a DisplayModeToggler control which calls it\'s parameteri
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
   const { getByText } = render(<ControlPanel {...controlPanelProps} />)
 
-  expect(getByText(PresentationModes.Degree)).toBeInTheDocument()
-  fireEvent.click(getByText(PresentationModes.Degree))
+  expect(getByText(DisplayModes.Degree)).toBeInTheDocument()
+  fireEvent.click(getByText(DisplayModes.Degree))
   expect(setDisplayMode.mock.calls.length).toBe(1)
 })

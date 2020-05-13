@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, PitchIds, getHarpStrata } from 'harpstrata'
 import type { HarpStrata } from 'harpstrata'
 
-import { HarpFace, PresentationModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
+import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../HarpFace'
 import { ControlPanel } from '../../ControlPanel'
 import type { ControlPanelProps } from '../../ControlPanel'
@@ -27,7 +27,7 @@ export function HarpGuru(): ReactElement {
   const [ activeApparatusId, setActiveApparatusId ] = useState(apparatusId)
   const [ activePozitionId, setActivePozitionId ] = useState(pozitionId)
   const [ activePitchId, setActivePitchId ] = useState(pitchId)
-  const [ activeDisplayMode, setDisplayMode ] = useState(PresentationModes.Degree)
+  const [ activeDisplayMode, setDisplayMode ] = useState(DisplayModes.Degree)
 
   const setApparatusId = (apparatusId: ApparatusIds): void => {
     setActiveApparatusId(apparatusId)
@@ -43,10 +43,10 @@ export function HarpGuru(): ReactElement {
   }
 
   const harpStrata = activeHarpStrata
-  const presentationMode = activeDisplayMode
+  const displayMode = activeDisplayMode
 
   const controlPanelProps: ControlPanelProps = { setApparatusId, setPozitionId, setPitchId, setDisplayMode }
-  const harpFaceProps: HarpFaceProps = { harpStrata, presentationMode, styles }
+  const harpFaceProps: HarpFaceProps = { harpStrata, displayMode, styles }
   return (
     <div>
       <ControlPanel {...controlPanelProps} />
