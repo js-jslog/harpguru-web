@@ -6,6 +6,7 @@ import { analysePosition } from './index'
 const { harpStrata } = exampleHarpFaceProps
 const { degreeMatrix: [,,,[,,,ourDegree]]} = harpStrata
 const { pitchMatrix: [,,,[,,,ourPitch]]} = harpStrata
+const { isActiveComplex: { isActiveMatrix: [,,,[,,,ourIsActive]]}} = harpStrata
 const { apparatus: { interactionMatrix: [,,,[,,,ourInteraction]]}} = harpStrata
 
 test('leftmost is true if the provided coord has is 0 in the x axis and false otherwise', () => {
@@ -19,8 +20,9 @@ test('leftmost is true if the provided coord has is 0 in the x axis and false ot
 
 test('thisDegree, thisPitch & thisInteraction provide the degree, pitch and interaction at this position', () => {
   const ourCoord: YXCoord = [ 3, 3 ]
-  const { thisDegree, thisPitch, thisInteraction } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourCoord})
+  const { thisDegree, thisPitch, thisInteraction, thisIsActive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourCoord})
   expect(thisDegree).toBe(ourDegree)
   expect(thisPitch).toBe(ourPitch)
   expect(thisInteraction).toBe(ourInteraction)
+  expect(thisIsActive).toBe(ourIsActive)
 })
