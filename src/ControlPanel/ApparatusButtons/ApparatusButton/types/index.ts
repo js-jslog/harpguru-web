@@ -1,6 +1,7 @@
 import type { ApparatusIds } from 'harpstrata'
 
-export type ApparatusButtonProps = {
+import type { ApparatusButtonsProps } from '../../ApparatusButtons'
+
+export type ApparatusButtonProps = ApparatusButtonsProps & {
   readonly id: ApparatusIds;
-  readonly setApparatusId: (apparatusId: ApparatusIds) => void;
 }

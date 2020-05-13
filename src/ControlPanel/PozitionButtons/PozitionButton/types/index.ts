@@ -1,6 +1,7 @@
 import type { PozitionIds } from 'harpstrata'
 
-export type PozitionButtonProps = {
+import type { PozitionButtonsProps } from '../../PozitionButtons'
+
+export type PozitionButtonProps = PozitionButtonsProps & {
   readonly id: PozitionIds;
-  readonly setPozitionId: (pozitionId: PozitionIds) => void;
 }

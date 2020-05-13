@@ -1,6 +1,7 @@
 import type { PitchIds } from 'harpstrata'
 
-export type PitchButtonProps = {
+import type { PitchButtonsProps } from '../../PitchButtons'
+
+export type PitchButtonProps = PitchButtonsProps & {
   readonly id: PitchIds;
-  readonly setPitchId: (pitchId: PitchIds) => void;
 }
