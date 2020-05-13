@@ -192,7 +192,7 @@ test('The Pitch state of the HarpFace persists even after the Apparatus has been
   expect(holeDbStill).toBeInTheDocument()
 })
 
-test('The holes activity is toggled on click', () => {
+test('The holes activity is toggled on click and persists after a harpstrata resubmission', () => {
   render(<HarpGuru />)
   const controlPanel = getControlPanel(screen)
   const harpFace = getHarpFace(screen)
@@ -212,5 +212,8 @@ test('The holes activity is toggled on click', () => {
   expect(holeC).toHaveStyle(expectedInactiveStyle)
 
   fireEvent.click(holeC)
+  expect(holeC).not.toHaveStyle(expectedInactiveStyle)
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
   expect(holeC).not.toHaveStyle(expectedInactiveStyle)
 })

@@ -35,7 +35,7 @@ export function HarpGuru(): ReactElement {
     const { apparatus: { id: apparatusId }} = activeHarpStrata
     const pozitionId = activePozitionId
     const keyPitchId = activePitchId
-    const activeIds: ActiveIds = []
+    const { isActiveComplex: { activeDegreeIds: activeIds }} = activeHarpStrata
 
     return { apparatusId, pozitionId, keyPitchId, activeIds }
   }
