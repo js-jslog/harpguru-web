@@ -6,7 +6,7 @@ import { PresentationModes } from '../../../HarpFace'
 
 import { DisplayModeToggler } from './index'
 
-test('DisplayModeToggler renders a component with both \'Display Mode\' title', () => {
+test('DisplayModeToggler renders a component with \'Display Mode\' title', () => {
   const setDisplayMode = jest.fn()
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
   const { getByText } = render(<DisplayModeToggler {...displayModeTogglerProps} />)

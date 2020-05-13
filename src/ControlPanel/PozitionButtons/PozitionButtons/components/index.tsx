@@ -13,7 +13,7 @@ export function PozitionButtons(props: PozitionButtonsProps): ReactElement {
   const secondPozitionButtonProps: PozitionButtonProps = { id: Second, setPozitionId }
 
   return (
-    <div>
+    <div role='menu'>
       <div>Harp Position</div>
       <PozitionButton {...firstPozitionButtonProps} />
       <PozitionButton {...secondPozitionButtonProps} />

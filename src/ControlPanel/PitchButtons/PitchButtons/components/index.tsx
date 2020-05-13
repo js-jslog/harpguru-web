@@ -13,7 +13,7 @@ export function PitchButtons(props: PitchButtonsProps): ReactElement {
   const pitchDbPitchButtonProps: PitchButtonProps = { id: Db, setPitchId }
 
   return (
-    <div>
+    <div role='menu'>
       <div>Harp Key Pitch</div>
       <PitchButton {...pitchCPitchButtonProps} />
       <PitchButton {...pitchDbPitchButtonProps} />
