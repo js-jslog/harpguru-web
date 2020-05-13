@@ -21,10 +21,11 @@ test('DisplayModeToggler renders a component with both \'Degree\' and \'Pitch\' 
   expect(getByText(DisplayModes.Pitch)).toBeInTheDocument()
 })
 
-test('DisplayModeToggler calls a paramaterised function when \'Degree\' is clicked', () => {
+test('DisplayModeToggler Degree button calls a paramaterised function with it\'s identity when it is clicked', () => {
   const setDisplayMode = jest.fn()
   const displayModeTogglerProps: DisplayModeTogglerProps = { setDisplayMode }
   const { getByText } = render(<DisplayModeToggler {...displayModeTogglerProps} />)
   fireEvent.click(getByText(DisplayModes.Degree))
   expect(setDisplayMode.mock.calls.length).toBe(1)
+  expect(setDisplayMode.mock.calls[0][0]).toBe(DisplayModes.Degree)
 })

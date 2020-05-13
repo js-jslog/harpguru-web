@@ -14,11 +14,12 @@ test('ApparatusButton renders a component with the id used as the label', () => 
   expect(getByText(id)).toBeInTheDocument()
 })
 
-test('ApparatusButton renders a component which calls a paramaterised function when clicked', () => {
+test('ApparatusButton renders a component which calls a paramaterised function with it\'s identity when clicked', () => {
   const { MajorDiatonic: id } = ApparatusIds
   const setApparatusId = jest.fn()
   const apparatusButtonProps: ApparatusButtonProps = { id, setApparatusId }
   const { getByText } = render(<ApparatusButton {...apparatusButtonProps} />)
   fireEvent.click(getByText(id))
   expect(setApparatusId.mock.calls.length).toBe(1)
+  expect(setApparatusId.mock.calls[0][0]).toBe(id)
 })
