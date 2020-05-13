@@ -25,8 +25,13 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const useStylesProps = { ...props, positionFacts }
   const classes = useStyles(useStylesProps)
 
+  const toggleActiveDegreeIfHoleExists = (): void => {
+    if (degreeId === undefined) return
+    toggleActiveDegreeId(degreeId)
+  }
+
   return (
-    <div onClick={(): void => toggleActiveDegreeId()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+    <div onClick={(): void => toggleActiveDegreeIfHoleExists()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
       {valueToDisplay}
     </div>
   )

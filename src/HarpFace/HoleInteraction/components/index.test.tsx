@@ -33,13 +33,22 @@ test('HoleInteraction renders with a class identifying it\'s position in the mat
 })
 
 test('HoleInteraction calls it\'s props function when clicked passing it\'s Degree value as a parameter', () => {
-  const toggleActiveDegreeId = jest.fn()
-  const harpFaceProps = { ...exampleHarpFaceProps, toggleActiveDegreeId }
-  const { getByText } = render(<HoleInteraction {...harpFaceProps} yxCoord={[3,0]} />)
+  const yxCoord: [3,0] = [3,0]
+  const [ yCoord, xCoord ] = yxCoord
 
-  const holeInteraction = getByText(DegreeIds.Second)
+  const { harpStrata: { degreeMatrix }} = exampleHarpFaceProps
+  const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
+  const { id: degreeId } = thisDegree || {id: 'ID_NOT_TO_BE_FOUND'}
+
+  const toggleActiveDegreeId = jest.fn()
+
+  const harpFaceProps = { ...exampleHarpFaceProps, toggleActiveDegreeId }
+  const { getByText } = render(<HoleInteraction {...harpFaceProps} yxCoord={yxCoord} />)
+
+  const holeInteraction = getByText(degreeId)
   expect(holeInteraction).toBeInTheDocument()
 
   fireEvent.click(holeInteraction)
   expect(toggleActiveDegreeId.mock.calls.length).toBe(1)
+  expect(toggleActiveDegreeId.mock.calls[0][0]).toBe(degreeId)
 })
