@@ -69,7 +69,6 @@ test('The HarpFace presents shifting Pitches when the relevant Key Pitches are s
 
   fireEvent.click(getByText(controlPanel, PitchIds.C))
 
-
   const holeCAgain = getByText(holeDb, PitchIds.C)
   expect(holeCAgain).toBeInTheDocument()
 })
