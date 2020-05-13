@@ -2,11 +2,11 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import * as serviceWorker from './serviceWorker'
-import { HarpUI } from './HarpUI'
+import { HarpGuru } from './HarpGuru'
 
 ReactDOM.render(
   <React.StrictMode>
-    <HarpUI />
+    <HarpGuru />
   </React.StrictMode>,
   document.getElementById('root')
 )

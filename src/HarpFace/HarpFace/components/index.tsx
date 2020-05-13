@@ -15,10 +15,10 @@ export function HarpFace(props: HarpFaceProps): ReactElement {
   const holeNumbers = HoleNumberRow(props)
 
   return (
-    <div className={classes.harpFaceClass}>
+    <main role='application' className={classes.harpFaceClass}>
       { holeInteractionRowsTop }
       { holeNumbers }
       { holeInteractionRowsBottom }
-    </div>
+    </main>
   )
 }
