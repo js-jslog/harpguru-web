@@ -1,12 +1,13 @@
 import React from 'react'
 import type { ReactElement } from 'react'
+import Button from '@material-ui/core/Button'
 
 import type { PitchButtonProps } from '../types'
 
 export function PitchButton(props: PitchButtonProps): ReactElement {
   return (
-    <button role='menuitem' onClick={(): void => props.setPitchId(props.id)}>
+    <Button role='menuitem' onClick={(): void => props.setPitchId(props.id)}>
       {props.id}
-    </button>
+    </Button>
   )
 }
