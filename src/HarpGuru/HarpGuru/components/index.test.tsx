@@ -17,18 +17,12 @@ const getHarpFace = (screen: Screen): HTMLElement => {
 }
 
 const expectActive = (hole: HTMLElement): void => {
-  const expectedInactiveStyle = `
-    color: #ddd;
-  `
-
+  const expectedInactiveStyle = 'color: #ddd;'
   expect(hole).not.toHaveStyle(expectedInactiveStyle)
 }
 
 const expectInactive = (hole: HTMLElement): void => {
-  const expectedInactiveStyle = `
-    color: #ddd;
-  `
-
+  const expectedInactiveStyle = 'color: #ddd;'
   expect(hole).toHaveStyle(expectedInactiveStyle)
 }
 
