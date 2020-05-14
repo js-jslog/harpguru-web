@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { getApparatusIds, ApparatusIds, getPozitionIds, PozitionIds, getPitchIds, PitchIds, getHarpStrata } from 'harpstrata'
 import type { HarpStrata, HarpStrataProps, ActiveIds, DegreeIds } from 'harpstrata'
 
-import { toggleActiveDegreeIds } from '../../toggleActiveIds'
+import { getToggledActiveDegreeIds } from '../../getToggledActiveDegreeIds'
 import { HarpFace, DisplayModes, generateHarpFaceStyles, getActiveColorSchemeIds, getTheme } from '../../../HarpFace'
 import type { HarpFaceProps, ThemePrimer } from '../../../HarpFace'
 import { ControlPanel } from '../../../ControlPanel'
@@ -65,7 +65,7 @@ export function HarpGuru(): ReactElement {
   const styles = generateHarpFaceStyles(getTheme(themePrimer))
   const toggleActiveDegreeId = (degreeId: DegreeIds): void => {
     const { isActiveComplex: { activeDegreeIds }} = activeHarpStrata
-    const newActiveDegreeIds = toggleActiveDegreeIds(degreeId, activeDegreeIds)
+    const newActiveDegreeIds = getToggledActiveDegreeIds(degreeId, activeDegreeIds)
     setActiveIds(newActiveDegreeIds)
   }
 

@@ -1,6 +1,6 @@
 import type { DegreeIds, ActiveDegreeIds } from 'harpstrata'
 
-export const toggleActiveDegreeIds = (degreeId: DegreeIds, activeDegreeIds: ActiveDegreeIds): ActiveDegreeIds => {
+export const getToggledActiveDegreeIds = (degreeId: DegreeIds, activeDegreeIds: ActiveDegreeIds): ActiveDegreeIds => {
   if (activeDegreeIds.includes(degreeId)) {
     const arrayHead = activeDegreeIds.slice(0, activeDegreeIds.indexOf(degreeId))
     const arrayTail = activeDegreeIds.slice(activeDegreeIds.indexOf(degreeId) +1)
