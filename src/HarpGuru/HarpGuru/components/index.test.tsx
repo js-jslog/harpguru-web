@@ -217,3 +217,56 @@ test('The holes activity is toggled on click and persists after a harpstrata res
   fireEvent.click(getByText(controlPanel, ApparatusIds.CountryTuned))
   expect(holeC).not.toHaveStyle(expectedInactiveStyle)
 })
+
+test('The holes\' stasis or movement around the face during property updates is governed by the display mode', () => {
+  render(<HarpGuru />)
+  const controlPanel = getControlPanel(screen)
+  const harpFace = getHarpFace(screen)
+
+  const expectedInactiveStyle = `
+    color: #ddd;
+  `
+
+  fireEvent.click(getByText(controlPanel, ApparatusIds.MajorDiatonic))
+  fireEvent.click(getByText(controlPanel, PozitionIds.First))
+  fireEvent.click(getByText(controlPanel, PitchIds.C))
+  fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
+
+  // get a C hole which should be inactive like everything else
+  const [ holeC ] = getAllByText(harpFace, PitchIds.C)
+  expect(holeC).toBeInTheDocument()
+
+  // show that it becomes active after interaction
+  expect(holeC).toHaveStyle(expectedInactiveStyle)
+  fireEvent.click(holeC)
+  expect(holeC).not.toHaveStyle(expectedInactiveStyle)
+
+  // show that it's counterpart pozition (root) is active when
+  // degree display mode is selected
+  fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
+  const [ hole1stWhereCWas ] = getAllByText(harpFace, DegreeIds.Root)
+  expect(hole1stWhereCWas).toBeInTheDocument()
+  expect(hole1stWhereCWas).not.toHaveStyle(expectedInactiveStyle)
+
+  // return to pitch mode and see that C is once again visible and active
+  fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
+  const [ holeCAgain ] = getAllByText(harpFace, PitchIds.C)
+  expect(holeCAgain).toBeInTheDocument()
+  expect(holeC).not.toHaveStyle(expectedInactiveStyle)
+
+  // switch pozitions but observe no activity change while in pitch display mode
+  fireEvent.click(getByText(controlPanel, PozitionIds.Second))
+  expect(holeCAgain).toBeInTheDocument()
+  expect(holeC).not.toHaveStyle(expectedInactiveStyle)
+  
+  // switch to pitch display mode and observe that it is now the 4th degree
+  // which is active and the root no longer is
+  fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
+  const [ hole4thWhereCWas ] = getAllByText(harpFace, DegreeIds.Fourth)
+  expect(hole4thWhereCWas).toBeInTheDocument()
+  expect(hole4thWhereCWas).not.toHaveStyle(expectedInactiveStyle)
+
+  const [ hole1stNowElsewhere ] = getAllByText(harpFace, DegreeIds.Root)
+  expect(hole1stNowElsewhere).toBeInTheDocument()
+  expect(hole1stNowElsewhere).toHaveStyle(expectedInactiveStyle)
+})
