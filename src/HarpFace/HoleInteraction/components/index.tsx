@@ -14,8 +14,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const { id: degreeId } = thisDegree || { id: undefined }
   const { id: pitchId } = thisPitch || { id: undefined }
 
-  const { yxCoord, displayMode, toggleActiveDegreeId } = props
-  const [ yCoord, xCoord ] = yxCoord
+  const { displayMode, toggleActiveDegreeId } = props
 
   const displayModeValue = (displayMode === DisplayModes.Degree ? degreeId : pitchId)
 
@@ -28,7 +27,7 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   }
 
   return (
-    <div onClick={(): void => toggleActiveDegreeIfHoleExists()} className={`${classes.holeInteractionClass} yx-coord-${yCoord}-${xCoord}`}>
+    <div onClick={(): void => toggleActiveDegreeIfHoleExists()} className={classes.holeInteractionClass}>
       {displayModeValue}
     </div>
   )

@@ -27,11 +27,6 @@ test('HoleInteraction renders an invisible dom element if it is undefined', () =
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
 
-test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
-  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [2,0] } />)
-  expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-2-0/)
-})
-
 test('HoleInteraction calls it\'s props function when clicked passing it\'s Degree value as a parameter', () => {
   const yxCoord: [3,0] = [3,0]
   const [ yCoord, xCoord ] = yxCoord
