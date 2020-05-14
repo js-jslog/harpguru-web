@@ -1,4 +1,4 @@
-import type { HarpStrata } from 'harpstrata'
+import type { HarpStrata, DegreeIds } from 'harpstrata'
 
 import type { HarpFaceStyles } from '../index'
 
@@ -11,6 +11,7 @@ export type HarpFaceProps = {
   readonly harpStrata: HarpStrata;
   readonly displayMode: DisplayModes;
   readonly styles: HarpFaceStyles;
+  readonly toggleActiveDegreeId: (degreeId: DegreeIds) => void;
 }
 
 export type YXCoord = [ number, number ]

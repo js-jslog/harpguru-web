@@ -1,1 +1,1 @@
-export { HarpGuru } from './components'
+export { HarpGuru } from './HarpGuru'

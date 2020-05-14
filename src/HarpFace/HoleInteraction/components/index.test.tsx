@@ -27,16 +27,23 @@ test('HoleInteraction renders an invisible dom element if it is undefined', () =
   expect(container.firstChild).toHaveStyle(expectedStyle)
 })
 
-test('HoleInteraction renders with a class identifying it\'s position in the matrix', () => {
-  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={ [2,0] } />)
-  expect(getByText(DegreeIds.Root).getAttribute('class')).toMatch(/yx-coord-2-0/)
-})
+test('HoleInteraction calls it\'s props function when clicked passing it\'s Degree value as a parameter', () => {
+  const yxCoord: [3,0] = [3,0]
+  const [ yCoord, xCoord ] = yxCoord
 
-test('HoleInteraction renders a value toggled between degree and pitch by a click', () => {
-  const { getByText } = render(<HoleInteraction {...exampleHarpFaceProps} yxCoord={[3,0]} />)
-  expect(getByText(DegreeIds.Second)).toBeInTheDocument()
-  fireEvent.click(getByText(DegreeIds.Second))
-  expect(getByText(PitchIds.D)).toBeInTheDocument()
-  fireEvent.click(getByText(PitchIds.D))
-  expect(getByText(DegreeIds.Second)).toBeInTheDocument()
+  const { harpStrata: { degreeMatrix }} = exampleHarpFaceProps
+  const { [yCoord]: {[xCoord]: thisDegree} } = degreeMatrix
+  const { id: degreeId } = thisDegree || {id: 'ID_NOT_TO_BE_FOUND'}
+
+  const toggleActiveDegreeId = jest.fn()
+
+  const harpFaceProps = { ...exampleHarpFaceProps, toggleActiveDegreeId }
+  const { getByText } = render(<HoleInteraction {...harpFaceProps} yxCoord={yxCoord} />)
+
+  const holeInteraction = getByText(degreeId)
+  expect(holeInteraction).toBeInTheDocument()
+
+  fireEvent.click(holeInteraction)
+  expect(toggleActiveDegreeId.mock.calls.length).toBe(1)
+  expect(toggleActiveDegreeId.mock.calls[0][0]).toBe(degreeId)
 })
