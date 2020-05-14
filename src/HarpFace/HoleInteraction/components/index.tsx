@@ -27,8 +27,8 @@ export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   }
 
   return (
-    <div onClick={(): void => toggleActiveDegreeIfHoleExists()} className={classes.holeInteractionClass}>
+    <button onClick={(): void => toggleActiveDegreeIfHoleExists()} className={classes.holeInteractionClass}>
       {displayModeValue}
-    </div>
+    </button>
   )
 }
