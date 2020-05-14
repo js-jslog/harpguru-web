@@ -18,7 +18,7 @@ test('leftmost is true if the provided coord has is 0 in the x axis and false ot
   expect(leftmostFalse).toBeFalsy()
 })
 
-test('thisDegree, thisPitch & thisInteraction provide the degree, pitch and interaction at this position', () => {
+test('thisDegree, thisPitch, thisInteraction, & thisIsActive provide the degree, pitch, interaction and isActive at this position', () => {
   const ourCoord: YXCoord = [ 3, 3 ]
   const { thisDegree, thisPitch, thisInteraction, thisIsActive } = analysePosition({ ...exampleHarpFaceProps, yxCoord: ourCoord})
   expect(thisDegree).toBe(ourDegree)
