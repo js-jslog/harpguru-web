@@ -40,5 +40,6 @@ export const useStyles = createUseStyles({
     'text-align': 'center',
     visibility: (props: UseStylesProps): string => determineStyles(props).visibility,
     width: (props: UseStylesProps): string => determineStyles(props).width,
+    transition: 'color 0.5s, background-color 0.5s, box-shadow 0.5s',
   }
 })
