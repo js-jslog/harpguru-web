@@ -11,8 +11,8 @@ import { DisplayModes } from '../../HarpFace'
 export function HoleInteraction(props: HoleInteractionProps): ReactElement {
   const positionFacts: PositionFacts = analysePosition(props)
   const { thisDegree, thisPitch } = positionFacts
-  const degreeId: string | undefined = thisDegree && thisDegree.id
-  const pitchId: string | undefined = thisPitch && thisPitch.id
+  const { id: degreeId } = thisDegree || { id: undefined }
+  const { id: pitchId } = thisPitch || { id: undefined }
 
   const { yxCoord, displayMode, toggleActiveDegreeId } = props
   const [ yCoord, xCoord ] = yxCoord
