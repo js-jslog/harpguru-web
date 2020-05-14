@@ -252,25 +252,22 @@ test('The holes\' stasis or movement around the face during property updates is 
   // show that it's counterpart pozition (root) is active when
   // degree display mode is selected
   fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
-  const [ hole1stWhereCWas ] = getAllByText(harpFace, DegreeIds.Root)
+  const [ hole1stWhereCWas ] = getAllByText(holeC, DegreeIds.Root)
   expect(hole1stWhereCWas).toBeInTheDocument()
   expectActive(hole1stWhereCWas)
 
   // return to pitch mode and see that C is once again visible and active
   fireEvent.click(getByText(controlPanel, DisplayModes.Pitch))
-  const [ holeCAgain ] = getAllByText(harpFace, PitchIds.C)
-  expect(holeCAgain).toBeInTheDocument()
   expectActive(holeC)
 
   // switch pozitions but observe no activity change while in pitch display mode
   fireEvent.click(getByText(controlPanel, PozitionIds.Second))
-  expect(holeCAgain).toBeInTheDocument()
   expectActive(holeC)
   
   // switch to pitch display mode and observe that it is now the 4th degree
   // which is active and the root no longer is
   fireEvent.click(getByText(controlPanel, DisplayModes.Degree))
-  const [ hole4thWhereCWas ] = getAllByText(harpFace, DegreeIds.Fourth)
+  const [ hole4thWhereCWas ] = getAllByText(hole1stWhereCWas, DegreeIds.Fourth)
   expect(hole4thWhereCWas).toBeInTheDocument()
   expectActive(hole4thWhereCWas)
 
